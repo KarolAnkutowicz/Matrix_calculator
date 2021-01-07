@@ -69,7 +69,11 @@ class cMatrix
      * POST:
      * - brak.
      */
-    inline void setRows(typeSize parRows);
+    inline void setRows(typeSize parRows)
+    {
+        vRows = parRows;
+    }
+
     /*
      * void setColumns(typeSize parColumns) - metoda umozliwiajaca
      * zmiane liczby kolumn w tablicy elementow macierzy.
@@ -78,7 +82,11 @@ class cMatrix
      * POST:
      * - brak.
      */
-    inline void setColumns(typeSize parColumns);
+    inline void setColumns(typeSize parColumns)
+    {
+        vColumns = parColumns;
+    }
+
     /*
      * void mClearElements() - metoda "zerujaca" wszystkie elementy
      * macierzy.
@@ -97,7 +105,11 @@ class cMatrix
      * POST:
      * - brak.
      */
-    inline void mTestVector();
+    inline void mTestVector()
+    {
+        ((vRows == 1) || (vColumns == 1)) ? vIfVector = true : vIfVector = false;
+    }
+
     /*
      * void mTestMatrixZeros() - metoda sprawdzajaca czy macierz jest
      * macierza zerowa.
@@ -115,7 +127,11 @@ class cMatrix
      * POST:
      * - brak.
      */
-    inline void mTestMatrixSquare();
+    inline void mTestMatrixSquare()
+    {
+        (vRows == vColumns) ? vIfMatrixSquare = true : vIfMatrixSquare = false;
+    }
+
     /*
      * void mTestMatrixIdentity() - metoda sprawdzajaca czy macierz
      * jest macierza jednostkowa.
@@ -216,7 +232,10 @@ public:
      * POST:
      * - zwrocenie wartosci pola vRows.
      */
-    inline typeSize getRows();
+    inline typeSize getRows()
+    {
+        return vRows;
+    }
     /*
      * typeSize getColumns() - metoda zwracajaca liczbe kolumn macierzy
      * PRE:
@@ -224,7 +243,10 @@ public:
      * POST:
      * - zwrocenie wartosci pola vColumns.
      */
-    inline typeSize getColumns();
+    inline typeSize getColumns()
+    {
+        return vColumns;
+    }
     /*
      * typeSize getElement(typeSize parRows, typeSize parColumns) -
      * metoda pozwalajaca zmienic wartosc wskazanego elementu tablicy
@@ -235,7 +257,10 @@ public:
      * POST:
      * - zwrocenie wartosci z tablicy wedlug wskazanych wspolrzednych.
      */
-    inline typeSize getElement(typeSize parRows, typeSize parColumns);
+    inline typeSize getElement(typeSize parRows, typeSize parColumns)
+    {
+        return tableElements[parRows * vColumns + parColumns];
+    }
     /*
      * bool getIfVector() - metoda zwracajaca informacje czy macierz
      * jest wektorem.
@@ -244,7 +269,10 @@ public:
      * POST:
      * - zwrocenie wartosci pola vIfVector.
      */
-    inline bool getIfVector();
+    inline bool getIfVector()
+    {
+        return vIfVector;
+    }
     /*
      * bool getIfMatrixZeros() - metoda zwracajaca informacje czy
      * macierz jest macierza zerowa.
@@ -253,7 +281,10 @@ public:
      * POST:
      * - zwrocenie wartosci pola vIfMatrixZeros.
      */
-    inline bool getIfMatrixZeros();
+    inline bool getIfMatrixZeros()
+    {
+        return vIfMatrixZeros;
+    }
     /*
      * bool getIfMatrixSquare() - metoda zwracajaca informacje czy
      * macierz jest macierza kwadratowa.
@@ -262,7 +293,10 @@ public:
      * POST:
      * - zwrocenie wartosci pola vIfMatrixSquare.
      */
-    inline bool getIfMatrixSquare();
+    inline bool getIfMatrixSquare()
+    {
+        return vIfMatrixSquare;
+    }
     /*
      * bool getIfMatrixIdentity() - metoda zwracajaca informacje czy
      * macierz jest macierza jednostkowa.
@@ -271,7 +305,10 @@ public:
      * POST:
      * - zwrocenie wartosci pola vIfMatrixIdentity.
      */
-    inline bool getIfMatrixIdentity();
+    inline bool getIfMatrixIdentity()
+    {
+        return vIfMatrixIdentity;
+    }
     /*
      * bool getIfMatrixDiagonal() - metoda zwracajaca informacje czy
      * macierz jest macierza diagonalna.
@@ -280,7 +317,10 @@ public:
      * POST:
      * - zwrocenie wartosci pola vIfMatrixDiagonal.
      */
-    inline bool getIfMatrixDiagonal();
+    inline bool getIfMatrixDiagonal()
+    {
+        return vIfMatrixDiagonal;
+    }
     /*
      * bool getIfMatrixTriangularUpper() - metoda zwracajaca informacje
      * czy macierz jest macierza trojkatna gorna.
@@ -289,7 +329,10 @@ public:
      * POST:
      * - zwrocenie wartosci pola vIfMatrixTriangularUpper.
      */
-    inline bool getIfMatrixTriangularUpper();
+    inline bool getIfMatrixTriangularUpper()
+    {
+        return vIfMatrixTriangularUpper;
+    }
     /*
      * bool getIfMatrixTriangularLower() - metoda zwracajaca informacje
      * czy macierz jest macierza trojkatna dolna.
@@ -298,7 +341,10 @@ public:
      * POST:
      * - zwrocenie wartosci pola vIfMatrixTriangularLower.
      */
-    inline bool getIfMatrixTriangularLower();
+    inline bool getIfMatrixTriangularLower()
+    {
+        return vIfMatrixTriangularLower;
+    }
 
     /*
      * void setElement(typeSize parRows, typeSize parColumns, double parValue) -
@@ -311,7 +357,10 @@ public:
      * POST:
      * - brak.
      */
-    inline void setElement(typeSize parRows, typeSize parColumns, double parValue);
+    inline void setElement(typeSize parRows, typeSize parColumns, double parValue)
+    {
+        tableElements[parRows * vColumns + parColumns] = parValue;
+    }
 
     /*
      * ostream &operator << (ostream &streamOut, cMatrix &M) -
@@ -389,7 +438,11 @@ public:
      * POST:
      * - zwrocenie wyniku (typ: double).
      */
-    inline double mCalculateDeterminant1x1();
+    inline double mCalculateDeterminant1x1()
+    {
+        return tableElements[0];
+    }
+
     /*
      * double mCalculateDeterminant2x2() - metoda obliczajaca
      * wyznacznik macierzy o wymiarze 2.
