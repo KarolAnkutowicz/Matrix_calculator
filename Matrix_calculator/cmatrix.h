@@ -5,6 +5,7 @@
 #define CMATRIX_H
 
 #include "constantsandtypes.h"
+#include <cmath>
 #include <iostream>
 
 using namespace std;
