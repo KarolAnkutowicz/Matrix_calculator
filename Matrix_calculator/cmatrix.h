@@ -12,6 +12,8 @@ using namespace std;
 
 class cMatrix
 {
+/********** PRIVATE: BEGINNING **********/
+
     /*
      * typeSize vRows, vColumns - wymiary macierzy
      */
@@ -97,6 +99,17 @@ class cMatrix
      * - brak.
      */
     void mClearElements();
+    /*
+     * void mCopyTableElements(typeSize parSize, double parTableElements[]) -
+     * metopa kopiujaca zawartosc tablicy zadanej jako parametr do tablicy
+     * elementow macierzy.
+     * PRE:
+     * - podanie rozmiaru tablicy (argument: parSize);
+     * - podanie tablicy elementow (atrgument: parTableElements[).
+     * POST:
+     * - brak.
+     */
+    void mCopyTableElements(typeSize parSize, double parTableElements[]);
 
     /*
      * void mTestVector() - metoda sprawdzajaca czy macierz jest
@@ -178,6 +191,10 @@ class cMatrix
      * - brak.
      */
     void mTests();
+
+/********** PRIVATE: END **********/
+
+/********** PUBLIC: BEGINNING **********/
 public:
     /*
      * cMatrix() - konstruktor wywolywany bez parametrow.
@@ -555,6 +572,7 @@ public:
      * - zwrocenie wyniku (typ: cMatrix).
      */
     double mLengthVector();
+/********** PUBLIC: END **********/
 };
 
 #endif // CMATRIX_H

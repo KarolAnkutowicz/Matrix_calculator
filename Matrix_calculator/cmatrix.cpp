@@ -18,6 +18,11 @@ void cMatrix::mClearElements()
             tableElements[i * vColumns + j] = 0; // wyzerowanie elementu tablicy
     }
 }
+/*
+ * void mCopyTableElements(typeSize parSize, double parTableElements[])
+ */
+//void cMatrix::mCopyTableElements(typeSize parSize, double parTableElements[]);
+
 
 /*
  * void mTestMatrixZeros()
@@ -194,22 +199,38 @@ void cMatrix::mTests()
  */
 cMatrix::cMatrix()
 {
-
+    vRows = vColumns = 1; // ustanowienie rozmiaru macierzy
+    mClearElements(); // "wyzerowanie" elementow
+    mTests(); // sprawdzenie wlasciwosci macierzy
+    vDeterminant = 0; // ustanowienie wyznacznika
 }
 /*
  * cMatrix(typeSize parRows, typeSize parColumns)
  */
-/*cMatrix::cMatrix(typeSize parRows, typeSize parColumns)
+cMatrix::cMatrix(typeSize parRows, typeSize parColumns)
 {
-
-}*/
+    vRows = parRows; // ustanowienie liczby wierszy
+    vColumns = parColumns; // ustanowienie liczby kolumn
+    mClearElements(); // "wyzerowanie" elementow
+    mTests(); // sprawdzenie wlasciwosci macierzy
+    //if (vRows != vColumns)
+        vDeterminant = 0; // ustanowienie wartosci wyznacznika (jedynie dla porzadku)
+    //else
+        //
+}
 /*
  * cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements)
  */
-/*cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements)
+cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements)
 {
-
-}*/
+    vRows = parRows; // ustanowienie liczby wierszy
+    vColumns = parColumns; // ustanowienie liczby kolumn
+    mTests(); // sprawdzenie wlasciwosci macierzy
+    //if (vRows != vColumns)
+        vDeterminant = 0; // ustanowienie wartosci wyznacznika (jedynie dla porzadku)
+    //else
+        //
+}
 /*
  * cMatrix(const cMatrix &M)
  */
@@ -220,10 +241,10 @@ cMatrix::cMatrix()
 /*
  * ~cMatrix()
  */
-/*cMatrix::~cMatrix()
+cMatrix::~cMatrix()
 {
-
-}*/
+    delete []tableElements;
+}
 
 
 /*
