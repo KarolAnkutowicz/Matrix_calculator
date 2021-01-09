@@ -21,8 +21,10 @@ void cMatrix::mClearElements()
 /*
  * void mCopyTableElements(typeSize parSize, double parTableElements[])
  */
-//void cMatrix::mCopyTableElements(typeSize parSize, double parTableElements[]);
+/*void cMatrix::mCopyTableElements(typeSize parSize, double parTableElements[])
+{
 
+}*/
 
 /*
  * void mTestMatrixZeros()
@@ -273,24 +275,53 @@ cMatrix::~cMatrix()
 /*
  * cMatrix operator + (cMatrix M)
  */
-/*cMatrix cMatrix::operator + (cMatrix M)
+cMatrix cMatrix::operator + (cMatrix M)
 {
+/*    if ((vRows == M.getRows()) && (vColumns == M.getColumns()))
+    {*/
+        cMatrix Result(getRows(), getColumns());
+        for (typeSize i = 0; i < vRows; i++)
+            for (typeSize j = 0; j < vColumns; j++)
+                Result.setElement(i, j, getElement(i, j) + M.getElement(i, j));
+        Result.mTests();
+        return Result;
+/*    }
+    else
+    {
 
-}*/
+    }*/
+}
 /*
  * cMatrix operator - (cMatrix M)
  */
-/*cMatrix cMatrix::operator - (cMatrix M)
+cMatrix cMatrix::operator - (cMatrix M)
 {
+/*    if ((vRows == M.getRows()) && (vColumns == M.getColumns()))
+    {*/
+        cMatrix Result(getRows(), getColumns());
+        for (typeSize i = 0; i < vRows; i++)
+            for (typeSize j = 0; j < vColumns; j++)
+                Result.setElement(i, j, getElement(i, j) - M.getElement(i, j));
+        Result.mTests();
+        return Result;
+    /*    }
+        else
+        {
 
-}*/
+        }*/
+}
 /*
  * cMatrix operator * (double parFactor)
  */
-/*cMatrix cMatrix::operator * (double parFactor)
+cMatrix cMatrix::operator * (double parFactor)
 {
-
-}*/
+    cMatrix Result(getRows(), getColumns());
+    for (typeSize i = 0; i < vRows; i++)
+        for (typeSize j = 0; j < vColumns; j++)
+            Result.setElement(i, j, getElement(i, j) * parFactor);
+    Result.mTests();
+    return Result;
+}
 /*
  * cMatrix operator * (cMatrix M)
  */
