@@ -437,10 +437,29 @@ cMatrix cMatrix::operator * (double parFactor)
 /*
  * double mLengthVector()
  */
-/*double cMatrix::mLengthVector()
+double cMatrix::mLengthVector()
 {
+    /*if (vIfVector == true)
+    {*/
+        double vSum = 0.0; // ustanowienie sumy poczatkowej
+        if (getRows() == 1) // sprawdzamy czy wektor jest poziomy
+        {
+            for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
+                vSum += getElement(0, j) * getElement(0, j); // dodanie do sumy iloczynow czastkowych
+        }
+        else // w przeciwnym przypadku jest top wektor pionowy
+        {
+            for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+                vSum += getElement(i, 0) * getElement(i, 0); // dodanie do sumy iloczynow czastkowych
+        }
+        vSum = sqrt(vSum); // obliczenie pierwiastka z calkowitej sumy
+        return vSum; // zwrocenie wyniku
+    /*}
+    else
+    {
 
-}*/
+    }*/
+}
 
 /********** PUBLIC: END **********/
 
