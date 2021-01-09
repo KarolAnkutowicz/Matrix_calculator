@@ -207,6 +207,29 @@ cMatrix::cMatrix()
     vDeterminant = 0; // ustanowienie wyznacznika
 }
 /*
+ * cMatrix(typeSize parColumns)
+ */
+cMatrix::cMatrix(typeSize parColumns)
+{
+    vRows = 1; // ustanowienie liczby wierszy
+    vColumns = parColumns; // ustanowienie liczby kolumn
+    mClearElements(); // "wyzerowanie" elementow
+    mTests(); // sprawdzenie wlasciwosci macierzy
+    vDeterminant = 0; // ustanowienie wyznacznika (jedynie dla porzadku)
+}
+/*
+ * cMatrix(typeSize parColumns, double *parTabElements)
+ */
+cMatrix::cMatrix(typeSize parColumns, double *parTabElements)
+{
+    vRows = 1; // ustanowienie liczby wierszy
+    vColumns = parColumns; // ustanowienie liczby kolumn
+
+    mTests(); // sprawdzenie wlasciwosci macierzy
+    vDeterminant = 0; // ustanowienie wyznacznika (jedynie dla porzadku)
+}
+
+/*
  * cMatrix(typeSize parRows, typeSize parColumns)
  */
 cMatrix::cMatrix(typeSize parRows, typeSize parColumns)
