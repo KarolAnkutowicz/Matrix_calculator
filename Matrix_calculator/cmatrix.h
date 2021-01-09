@@ -469,19 +469,6 @@ public:
     cMatrix operator * (cMatrix M);
 
     /*
-     * double mCalculateDeterminant1x1() - metoda obliczajaca
-     * wyznacznik macierzy o wymiarze 1.
-     * PRE:
-     * - brak.
-     * POST:
-     * - zwrocenie wyniku (typ: double).
-     */
-    inline double mCalculateDeterminant1x1()
-    {
-        return tableElements[0];
-    }
-
-    /*
      * double mCalculateDeterminant2x2() - metoda obliczajaca
      * wyznacznik macierzy o wymiarze 2.
      * PRE:

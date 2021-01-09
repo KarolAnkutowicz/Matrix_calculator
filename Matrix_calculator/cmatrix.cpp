@@ -220,13 +220,16 @@ cMatrix::cMatrix(typeSize parColumns)
 /*
  * cMatrix(typeSize parColumns, double *parTabElements)
  */
-cMatrix::cMatrix(typeSize parColumns, double *parTabElements)
+cMatrix::cMatrix(typeSize parColumns, double parTabElements[])
 {
     vRows = 1; // ustanowienie liczby wierszy
     vColumns = parColumns; // ustanowienie liczby kolumn
-
+    mCopyTableElements(parTabElements); // skopiowanie zawartosci tablicy
     mTests(); // sprawdzenie wlasciwosci macierzy
-    vDeterminant = 0; // ustanowienie wyznacznika (jedynie dla porzadku)
+    if (vIfMatrixSquare)
+        vDeterminant = getElement(0, 0); // ustanowienie wlasciwego wyznacznika
+    else
+        vDeterminant = 0; // ustanowienie wyznacznika (jedynie dla porzadku)
 }
 
 /*
@@ -238,23 +241,21 @@ cMatrix::cMatrix(typeSize parRows, typeSize parColumns)
     vColumns = parColumns; // ustanowienie liczby kolumn
     mClearElements(); // "wyzerowanie" elementow
     mTests(); // sprawdzenie wlasciwosci macierzy
-    //if (vRows != vColumns)
-        vDeterminant = 0; // ustanowienie wartosci wyznacznika (jedynie dla porzadku)
-    //else
-        //
+    vDeterminant = 0; // ustanowienie wartosci wyznacznika (dla porzadku)
 }
 /*
  * cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements)
  */
-cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements)
+cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double parTabElements[])
 {
     vRows = parRows; // ustanowienie liczby wierszy
     vColumns = parColumns; // ustanowienie liczby kolumn
+    mCopyTableElements(parTabElements); // skopiowanie zawartosci tablicy
     mTests(); // sprawdzenie wlasciwosci macierzy
-    //if (vRows != vColumns)
+    /*if (vIfMatrixSquare)
+        vDeterminant = ...
+    else*/
         vDeterminant = 0; // ustanowienie wartosci wyznacznika (jedynie dla porzadku)
-    //else
-        //
 }
 /*
  * cMatrix(const cMatrix &M)
