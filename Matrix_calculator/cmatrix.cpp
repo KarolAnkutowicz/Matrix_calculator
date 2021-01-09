@@ -13,18 +13,18 @@ using namespace std;
 void cMatrix::mClearElements()
 {
     for (typeSize i = 0; i < vRows; i++) // przejscie po wszystkich wierszach
-    {
         for (typeSize j = 0; j < vColumns; j++) // przejscie po wszystkich kolumnach
             tableElements[i * vColumns + j] = 0; // wyzerowanie elementu tablicy
-    }
 }
 /*
- * void mCopyTableElements(typeSize parSize, double parTableElements[])
+ * void mCopyTableElements(double parTableElements[])
  */
-/*void cMatrix::mCopyTableElements(typeSize parSize, double parTableElements[])
+void cMatrix::mCopyTableElements(double parTableElements[])
 {
-
-}*/
+    for (typeSize i = 0; i < vRows; i++) // przejscie po wszystkich wierszach
+        for (typeSize j = 0; j < vColumns; j++) // przejscie po wszystkich kolumnach
+            tableElements[i * vColumns + j] = parTableElements[i * vColumns + j]; // skopiowanie wartosci elementu tablicy
+}
 
 /*
  * void mTestMatrixZeros()
@@ -245,24 +245,48 @@ cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements)
  */
 cMatrix::~cMatrix()
 {
-    delete []tableElements;
+    delete []tableElements; // zwolnienie zasobow przydzielanych dynamicznie
 }
 
 
 /*
  * ostream &operator << (ostream &streamOut, cMatrix &M)
  */
-/*ostream &operator << (ostream &streamOut, cMatrix &M)
+ostream &operator << (ostream &streamOut, cMatrix &M)
 {
-
-}*/
+    streamOut << M.getRows() << " " << M.getColumns() << endl; // wypisanie wymiarow macierzy
+    for (typeSize i = 0; i < M.getRows(); i++) // przejscie po wszystkich wierszach
+    {
+        for (typeSize j = 0; j < M.getColumns(); j++) // przejscie po wszystkich kolumnach
+        {
+            streamOut << M.getElement(i, j); // wypisanie elementu
+            if (j < (M.getColumns() - 1)) // sprawdzenie czy nie wyszlismy poza ostatni element w danym wierszu
+                streamOut << " "; // wypisanie separatora pomieszy elementami
+        }
+        streamOut << endl; // przejscie do nowego wiersza
+    }
+    return streamOut; // zwrocenie strumienia
+}
 /*
- * istream &operator >> (istream & strIn, cMatrix &M)
+ * istream &operator >> (istream & streamIn, cMatrix &M)
  */
-/*istream &operator >> (istream & strIn, cMatrix &M)
+istream &operator >> (istream & streamIn, cMatrix &M)
 {
-
-}*/
+    typeSize vRows, vColumns; // deklaracja zmiennych wykorzystanych do wczytanie wymiarow tablicy elementow
+    double vElement; // deklaracja zmiennej wykorzystywanej do wczytania liczb do tablicy elementow
+    streamIn >> vRows >> vColumns; // wczytanie wymiarow tablicy
+    M.setRows(vRows); // ustanowienie liczby wierszy
+    M.setColumns(vColumns); // ustanowienie liczby kolumn
+    for (typeSize i = 0; i < vRows; i++) // przejscie po wszystkich wierszach
+    {
+        for (typeSize j = 0; j < vColumns; j++) // przejscie po wszystkich kolumnach
+        {
+            streamIn >> vElement; // wczytanie wartosci
+            M.setElement(i, j, vElement); // ustanowienie wartosci wskazanego elementu
+        }
+    }
+    return streamIn; // zwrocenie strumienia
+}
 
 /*
  * cMatrix &operator = (const cMatrix &M)

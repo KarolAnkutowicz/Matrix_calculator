@@ -100,16 +100,15 @@ class cMatrix
      */
     void mClearElements();
     /*
-     * void mCopyTableElements(typeSize parSize, double parTableElements[]) -
+     * void mCopyTableElements(double parTableElements[]) -
      * metopa kopiujaca zawartosc tablicy zadanej jako parametr do tablicy
      * elementow macierzy.
      * PRE:
-     * - podanie rozmiaru tablicy (argument: parSize);
      * - podanie tablicy elementow (atrgument: parTableElements[).
      * POST:
      * - brak.
      */
-    void mCopyTableElements(typeSize parSize, double parTableElements[]);
+    void mCopyTableElements(double parTableElements[]);
 
     /*
      * void mTestVector() - metoda sprawdzajaca czy macierz jest
@@ -391,7 +390,7 @@ public:
      */
     friend ostream &operator << (ostream &streamOut, cMatrix &M);
     /*
-     * istream &operator >> (istream & strIn, cMatrix &M) -
+     * istream &operator >> (istream & streamIn, cMatrix &M) -
      * przeladowanie operatora wejjscia.
      * PRE:
      * - podanie referencji do obiektu klasy istream;
@@ -399,7 +398,7 @@ public:
      * POST:
      * - zwrocenie strumienia wejsciowego.
      */
-    friend istream &operator >> (istream & strIn, cMatrix &M);
+    friend istream &operator >> (istream & streamIn, cMatrix &M);
 
     /*
      * cMatrix &operator = (const cMatrix &M) - przeladowanie
