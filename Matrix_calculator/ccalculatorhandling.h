@@ -22,10 +22,9 @@ public:
     cCalculatorHandling();
 
     /*
-     * char c -
-     * char operatorSymbol -
+     * char vOperatorSymbol -
      */
-    char c, operatorSymbol;
+    char vOptions, vOperatorSymbol;
 
     /*
      * void mMainChoice() -
@@ -36,87 +35,24 @@ public:
      */
     void mMainChoice();
 
-    /*
-     * void mChoiceNumber() -
-     * PRE:
-     * - brak.
-     * POST:
-     * - brak.
-     */
-    void mChoiceNumber();
-    /*
-     * void mChoiceNumberAddSub(double parValue) -
-     * PRE:
-     * - brak.
-     * POST:
-     * - brak.
-     */
-    void mChoiceNumberAddSub(double parValue);
-    /*
-     * void mChoiceNumberMultiplications(double parValue) -
-     * PRE:
-     * - brak.
-     * POST:
-     * - brak.
-     */
-    void mChoiceNumberMultiplications(double parValue);
-    /*
-     * void mChoiceNumberDivision(double parValue) -
-     * PRE:
-     * - brak.
-     * POST:
-     * - brak.
-     */
-    void mChoiceNumberDivision(double parValue);
 
     /*
-     * void mChoiceMatrix() -
-     * PRE:
-     * - brak.
-     * POST:
-     * - brak.
+     * void mChoiceOneArgument()
      */
-    void mChoiceMatrix();
+    void mChoiceOneArgument();
+
     /*
-     * void mChoiceMatrixAddSub(cMatrix M) -
-     * PRE:
-     * - brak.
-     * POST:
-     * - brak.
+     * void mChoiceTwoArgumentMatrixMatrix()
      */
-    void mChoiceMatrixAddSub(cMatrix M);
+    void mChoiceTwoArgumentMatrixMatrix();
+
     /*
-     * void mChoiceMatrixMultiplications(cMatrix M) -
-     * PRE:
-     * - brak.
-     * POST:
-     * - brak.
+     * void mChoiceTwoArgumentMatrixNumber()
      */
-    void mChoiceMatrixMultiplications(cMatrix M);
-    /*
-     * void mChoiceMatrixDeterminant(cMatrix M) -
-     * PRE:
-     * - brak.
-     * POST:
-     * - brak.
-     */
-    void mChoiceMatrixDeterminant(cMatrix M);
-    /*
-     * void mChoiceMatrixReversal(cMatrix M) -
-     * PRE:
-     * - brak.
-     * POST:
-     * - brak.
-     */
-    void mChoiceMatrixReversal(cMatrix M);
-    /*
-     * void mChoiceMatrixProductsAnsOthers(cMatrix M) -
-     * PRE:
-     * - brak.
-     * POST:
-     * - brak.
-     */
-    void mChoiceMatrixProductsAnsOthers(cMatrix M);
+    void mChoiceTwoArgumentMatrixNumber();
+
+
+
 
     /*
      * void mPrintHelp() -
