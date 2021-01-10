@@ -325,38 +325,24 @@ istream &operator >> (istream & streamIn, cMatrix &M)
  */
 cMatrix cMatrix::operator + (cMatrix M)
 {
-/*    if ((vRows == M.getRows()) && (vColumns == M.getColumns()))
-    {*/
-        cMatrix Result(getRows(), getColumns());
-        for (typeSize i = 0; i < vRows; i++)
-            for (typeSize j = 0; j < vColumns; j++)
-                Result.setElement(i, j, getElement(i, j) + M.getElement(i, j));
-        Result.mTests();
-        return Result;
-/*    }
-    else
-    {
-
-    }*/
+    cMatrix Result(getRows(), getColumns());
+    for (typeSize i = 0; i < vRows; i++)
+        for (typeSize j = 0; j < vColumns; j++)
+            Result.setElement(i, j, getElement(i, j) + M.getElement(i, j));
+    Result.mTests();
+    return Result;
 }
 /*
  * cMatrix operator - (cMatrix M)
  */
 cMatrix cMatrix::operator - (cMatrix M)
 {
-/*    if ((vRows == M.getRows()) && (vColumns == M.getColumns()))
-    {*/
-        cMatrix Result(getRows(), getColumns());
-        for (typeSize i = 0; i < vRows; i++)
-            for (typeSize j = 0; j < vColumns; j++)
-                Result.setElement(i, j, getElement(i, j) - M.getElement(i, j));
-        Result.mTests();
-        return Result;
-    /*    }
-        else
-        {
-
-        }*/
+    cMatrix Result(getRows(), getColumns());
+    for (typeSize i = 0; i < vRows; i++)
+        for (typeSize j = 0; j < vColumns; j++)
+            Result.setElement(i, j, getElement(i, j) - M.getElement(i, j));
+    Result.mTests();
+    return Result;
 }
 /*
  * cMatrix operator * (double parFactor)
@@ -463,26 +449,19 @@ cMatrix cMatrix::operator * (double parFactor)
  */
 double cMatrix::mLengthVector()
 {
-    /*if (vIfVector == true)
-    {*/
-        double vSum = 0.0; // ustanowienie sumy poczatkowej
-        if (getRows() == 1) // sprawdzamy czy wektor jest poziomy
-        {
-            for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
-                vSum += getElement(0, j) * getElement(0, j); // dodanie do sumy iloczynow czastkowych
-        }
-        else // w przeciwnym przypadku jest top wektor pionowy
-        {
-            for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
-                vSum += getElement(i, 0) * getElement(i, 0); // dodanie do sumy iloczynow czastkowych
-        }
-        vSum = sqrt(vSum); // obliczenie pierwiastka z calkowitej sumy
-        return vSum; // zwrocenie wyniku
-    /*}
-    else
+    double vSum = 0.0; // ustanowienie sumy poczatkowej
+    if (getRows() == 1) // sprawdzamy czy wektor jest poziomy
     {
-
-    }*/
+        for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
+            vSum += getElement(0, j) * getElement(0, j); // dodanie do sumy iloczynow czastkowych
+    }
+    else // w przeciwnym przypadku jest top wektor pionowy
+    {
+        for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+            vSum += getElement(i, 0) * getElement(i, 0); // dodanie do sumy iloczynow czastkowych
+    }
+    vSum = sqrt(vSum); // obliczenie pierwiastka z calkowitej sumy
+    return vSum; // zwrocenie wyniku
 }
 
 /********** PUBLIC: END **********/

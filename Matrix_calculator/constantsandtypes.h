@@ -31,6 +31,15 @@ const char operatorDeterminant = 'D';
  */
 const char operatorReversal = '@';
 /*
+ * char operatorExponentiation - zdefiniowanie operatora potegowania macierzy
+ */
+const char operatorExponentiation = '^';
+/*
+ * char operatorTransposition - zdefiniowanie operatora transponowania macierzy
+ */
+const char operatorTransposition = 'T';
+
+/*
  * char printHelp - zdefiniowanie operatora wyswietlania pomocy
  */
 const char printHelp = '?';
