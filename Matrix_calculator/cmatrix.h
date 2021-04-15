@@ -222,6 +222,76 @@ public:
      */
     cMatrix();
 
+    /*
+     * cMatrix(typeSize parColumns) - konstruktor wywo³ywany z jednym
+     * parametrem - jednym wymniarem macierzy. Efektem jest utworzenie
+     * macierzy o jednym wierszu (wektor poziomy).
+     * PRE:
+     * - podanie liczby kolumn (argument: parColumns).
+     * POST:
+     * -utworzenie obiektu.
+     */
+    cMatrix(typeSize parColumns);
+
+    /*
+     * cMatrix(typeSize parColumns, double *parTabElements) -
+     * konstruktor wywolywany z dwoma parametrami: liczba kolumn
+     * (zatem jest to wektor) oraz tablica liczb.
+     * PRE:
+     * - podanie liczby kolumn (argument: parColumns);
+     * - podanie wartosci kolejnych elementow (argument: *parTabElements).
+     * POST:
+     * - utworzenie obiektu.
+     */
+    cMatrix(typeSize parColumns, double *parTabElements);
+
+    /*
+     * cMatrix(typeSize parRows, typeSize parColumns) - konstruktor
+     * wywolywany z dwoma parametrami - wymiarami macierzy.
+     * PRE:
+     * - podanie liczby wierszy (argument: parRows);
+     * - podanie liczby kolumn (argument: parColumns).
+     * POST:
+     * - utworzenie obiektu.
+     */
+    cMatrix(typeSize parRows, typeSize parColumns);
+
+    /*
+     * cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements) -
+     * konstruktor wywolywany z trzema parametrami - wymiarami
+     * macierzy oraz tablica elementow.
+     * PRE:
+     * - podanie liczby wierszy (argument: parRows);
+     * - podanie liczby kolumn (argument: parColumns);
+     * - podanie wartosci kolejnych elementow (argument: *parTabElements).
+     * POST:
+     * - utworzenie obiektu.
+     */
+    cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements);
+
+    /*
+     * cMatrix(const cMatrix &M) - konstruktor kopiujacy.
+     * PRE:
+     * - brak.
+     * POST:
+     * - utworzenie obiektu.
+     */
+
+    cMatrix(const cMatrix &M);
+    /*
+     * ~cMatrix() - destruktor klasy cMatrix.
+     * PRE:
+     * - brak.
+     * POST:
+     * - zwalnianie pamieci przydzielanej dynamicznie.
+     */
+    ~cMatrix();
+
+
+
+
+
+
 /********** PUBLIC: END **********/
 };
 
