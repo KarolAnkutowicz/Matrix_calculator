@@ -462,6 +462,48 @@ public:
 
 
 
+    /*
+     * cMatrix operator + (cMatrix M) - przeladowanie operatora
+     * dodawania.
+     * PRE:
+     * - podanie obiektu klasy cMatrix.
+     * POST:
+     * - wynik dodawania macierzy (typ: cMatrix).
+     */
+    cMatrix operator + (cMatrix M);
+
+    /*
+     * cMatrix operator - (cMatrix M) - przeladowanie operatora
+     * odejmowania.
+     * PRE:
+     * - podanie obiektu klasy cMatrix.
+     * POST:
+     * - wynik odejmowania macierzy (typ: cMatrix).
+     */
+    cMatrix operator - (cMatrix M);
+
+    /*
+     * cMatrix operator * (double parFactor) - przeladowanie operatora
+     * mnozenia (macierz i liczba rzeczywista).
+     * PRE:
+     * - podanie liczby rzeczywistej (argument: parFactor.
+     * POST:
+     * - zwrocenie wyniku mnozenia (typ: cMatrix).
+     */
+    cMatrix operator * (double parFactor);
+
+    /*
+     * cMatrix operator * (cMatrix M) - przeladowanie operatora
+     * mnozenia (macierz i macierz).
+     * PRE:
+     * - podanie obiektu klasy cMatrix.
+     * POST:
+     * - zwrocenie wyniku mnozenia (typ: cMatrix).
+     */
+    cMatrix operator * (cMatrix M);
+
+
+
 
 /********** PUBLIC: END **********/
 };
