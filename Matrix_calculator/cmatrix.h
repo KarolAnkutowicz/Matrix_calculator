@@ -5,6 +5,7 @@
 #define CMATRIX_H
 
 #include "constantsandtypes.h"
+#include <ostream>
 
 using namespace std;
 
@@ -426,6 +427,38 @@ public:
         tableElements[parRows * vColumns + parColumns] = parValue;
     }
 
+
+
+    /*
+     * ostream &operator << (ostream &streamOut, cMatrix &M) -
+     * przeladowanie operatora wyjscia.
+     * PRE:
+     * - podanie referancji do obiektu klasy ostream;
+     * - podanie referencji do obiektu klasy cMatrix.
+     * POST:
+     * - zwrocenie strumiena wyjsciowego.
+     */
+    friend ostream &operator << (ostream &streamOut, cMatrix &M);
+    /*
+     * istream &operator >> (istream & streamIn, cMatrix &M) -
+     * przeladowanie operatora wejjscia.
+     * PRE:
+     * - podanie referencji do obiektu klasy istream;
+     * - podanie referencji do obiektu klasy cMatrix.
+     * POST:
+     * - zwrocenie strumienia wejsciowego.
+     */
+    friend istream &operator >> (istream & streamIn, cMatrix &M);
+
+    /*
+     * void operator = (const cMatrix &M) - przeladowanie
+     * operatora przypisania.
+     * PRE:
+     * - podanie referencji do obiektu klasy cMatrix.
+     * POST:
+     * - brak.
+     */
+    void operator = (const cMatrix &M);
 
 
 
