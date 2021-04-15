@@ -546,6 +546,89 @@ public:
     double mCalculateDeterminant();
 
 
+
+    /*
+     * cMatrix mExponentiationMatrix(typeSize parPower) -
+     * metoda obliczajaca potege macierzy.
+     * PRE:
+     * - podanie potegi (argument: parPower).
+     * POST:
+     * - zwrocenie wyniku (typ: cMatrix).
+     */
+    cMatrix mExponentiationMatrix(typeSize parPower);
+
+    /*
+     * cMatrix mInversalMatrix1x1() - metoda wyznaczajaca macierz
+     * odwrotna dla macierzy o wymiarze 1.
+     * PRE:
+     * - brak.
+     * POST:
+     * - zwrocenie wyniku (typ: cMatrix).
+     */
+    cMatrix mInversalMatrix1x1();
+
+    /*
+     * cMatrix mInversalMatrix2x2() - metoda wyznaczajaca macierz
+     * odwrotna dla macierzy o wymiarze 2.
+     * PRE:
+     * - brak.
+     * POST:
+     * - zwrocenie wyniku (typ: cMatrix).
+     */
+    cMatrix mInversalMatrix2x2();
+
+    /*
+     * cMatrix mInversalMatrix3x3() - metoda wyznaczajaca macierz
+     * odwrotna dla macierzy o wymiarze 3.
+     * PRE:
+     * - brak.
+     * POST:
+     * - zwrocenie wyniku (typ: cMatrix).
+     */
+    cMatrix mInversalMatrix3x3();
+
+    /*
+     * cMatrix mInversalMatrix() - metoda wyznaczajaca macierz odwrotna
+     * dla macierzy o wymiarze wiekszym niz 3.
+     * PRE:
+     * - brak.
+     * POST:
+     * - zwrocenie wyniku (typ: cMatrix).
+     */
+    cMatrix mInversalMatrix();
+
+
+
+    /*
+     * double mScalarProduct(cMatrix M) - metoda wyznaczajaca iloczyn
+     * skalarny dwoch wektorow.
+     * PRE:
+     * - podanie obiektu klasy cMatrix.
+     * POST:
+     * - zwrocenie wyniku (typ: double).
+     */
+    double mScalarProduct(cMatrix M);
+
+    /*
+     * cMatrix mCrossProduct(cMatrix M) - metoda wyznaczajaca iloczyn
+     * wektorowy dwoch wektorow.
+     * PRE:
+     * - podanie obiektu klasy cMatrix.
+     * POST:
+     * - zwrocenie wyniku (typ: cMatrix).
+     */
+    cMatrix mCrossProduct(cMatrix M);
+
+    /*
+     * double mLengthVector() - metoda wyznaczajaca dlugosc wektora.
+     * PRE:
+     * - brak.
+     * POST:
+     * - zwrocenie wyniku (typ: cMatrix).
+     */
+    double mLengthVector();
+
+
 /********** PUBLIC: END **********/
 };
 
