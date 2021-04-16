@@ -11,6 +11,23 @@ using namespace std;
  */
 typedef unsigned short typeSize;
 
+
+
+/*
+ * char separatorElement, char startOfMatrix, char endOfMatrix,
+ * char startOfRow, char endOfRow - stale znakowe pozwalajace
+ * na odpowiednie wypisywanie i wczytywanie macierzy:
+ * znaki otwierajace i zamykajace macierz i otwierajaca i zamykajace
+ * kolejne wiersze oraz separator kolejnych elementow w wierszach.
+ */
+const char separatorElement = '_';
+const char startOfMatrix = '[';
+const char endOfMatrix = ']';
+const char startOfRow = '<';
+const char endOfRow = '>';
+
+
+
 /*
  * char operatorScalarProduct - zdefiniowanie operatora iloczynu skalarnego
  */

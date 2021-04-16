@@ -207,6 +207,79 @@ void cMatrix::mTests()
  */
 cMatrix::cMatrix()
 {
+    vRows = vColumns = 1; // ustanowienie rozmiaru macierzy
+    mClearElements(); // "wyzerowanie" elementow
+    mTests(); // sprawdzenie wlasciwosci macierzy
+    vDeterminant = 0; // ustanowienie wyznacznika
+}
+
+/*
+ * cMatrix(typeSize parColumns)
+ */
+cMatrix::cMatrix(typeSize parColumns)
+{
+    vRows = 1; // ustanowienie liczby wierszy
+    vColumns = parColumns; // ustanowienie liczby kolumn
+    mClearElements(); // "wyzerowanie" elementow
+    mTests(); // sprawdzenie wlasciwosci macierzy
+    vDeterminant = 0; // ustanowienie wyznacznika (jedynie dla porzadku)
+}
+
+/*
+ * cMatrix(typeSize parColumns, double *parTabElements)
+ */
+cMatrix::cMatrix(typeSize parColumns, double parTabElements[])
+{
+    vRows = 1; // ustanowienie liczby wierszy
+    vColumns = parColumns; // ustanowienie liczby kolumn
+    mCopyTableElements(parTabElements); // skopiowanie zawartosci tablicy
+    mTests(); // sprawdzenie wlasciwosci macierzy
+    if (vIfMatrixSquare)
+        vDeterminant = getElement(0, 0); // ustanowienie wlasciwego wyznacznika
+    else
+        vDeterminant = 0; // ustanowienie wyznacznika (jedynie dla porzadku)
+}
+
+/*
+ * cMatrix(typeSize parRows, typeSize parColumns)
+ */
+cMatrix::cMatrix(typeSize parRows, typeSize parColumns)
+{
+    vRows = parRows; // ustanowienie liczby wierszy
+    vColumns = parColumns; // ustanowienie liczby kolumn
+    mClearElements(); // "wyzerowanie" elementow
+    mTests(); // sprawdzenie wlasciwosci macierzy
+    vDeterminant = 0; // ustanowienie wartosci wyznacznika (dla porzadku)
+}
+
+/*
+ * cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements)
+ */
+cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double parTabElements[])
+{
+    vRows = parRows; // ustanowienie liczby wierszy
+    vColumns = parColumns; // ustanowienie liczby kolumn
+    mCopyTableElements(parTabElements); // skopiowanie zawartosci tablicy
+    mTests(); // sprawdzenie wlasciwosci macierzy
+    /*if (vIfMatrixSquare)
+        vDeterminant = ...
+    else*/
+        vDeterminant = 0; // ustanowienie wartosci wyznacznika (jedynie dla porzadku)
+}
+
+/*
+ * cMatrix(const cMatrix &M)
+ */
+/*cMatrix::cMatrix(const cMatrix &M)
+{
+}*/
+
+/*
+ * ~cMatrix()
+ */
+cMatrix::~cMatrix()
+{
+    delete []tableElements; // zwolnienie zasobow przydzielanych dynamicznie
 }
 
 /********** PUBLIC: END **********/

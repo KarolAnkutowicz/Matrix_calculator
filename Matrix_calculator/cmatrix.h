@@ -277,8 +277,8 @@ public:
      * POST:
      * - utworzenie obiektu.
      */
+    //cMatrix(const cMatrix &M);
 
-    cMatrix(const cMatrix &M);
     /*
      * ~cMatrix() - destruktor klasy cMatrix.
      * PRE:
