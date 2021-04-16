@@ -282,6 +282,79 @@ cMatrix::~cMatrix()
     delete []tableElements; // zwolnienie zasobow przydzielanych dynamicznie
 }
 
+
+
+/*
+ * ostream &operator << (ostream &streamOut, cMatrix &M)
+ */
+ostream &operator << (ostream &streamOut, cMatrix &M)
+{
+    streamOut << startOfMatrix; // wypisanie znaku pocz¹tku macierzy
+    for (typeSize i = 0; i < M.getRows(); i++) // przejœcie przez wszystkie wiersze
+    {
+        streamOut << startOfRow; // wypisanie znaku pocz¹tku wiersza
+        for (typeSize j = 0; j < M.getColumns(); j++) // przejœcie przez wszystkie kolumny
+        {
+            streamOut << M.tableElements[i * M.getColumns() + j]; // wypisanie wartoœci elementu
+            if (j < (M.getColumns() - 1)) // warunek wypisania separatora pomiêdzy elementami danego wiersza
+                streamOut << separatorElement; // wypisanie separatora
+        }
+        streamOut << endOfRow; // wypisanie znaku koñca wiersza
+        if (i < (M.getRows() - 1)) // warunek przejœcia do nowej linii
+            streamOut << endl; // przejœcie do nowej linii
+    }
+    streamOut << endOfMatrix << endl; // wypisanie znaku koñca macierzy
+    return streamOut; // zwrócenie strumienia
+}
+
+/*
+ *  istream &operator >> (istream & streamIn, cMatrix &M)
+ */
+istream &operator >> (istream & streamIn, cMatrix &M)
+{
+    char c; // deklaracja znaku
+    typeSize rows = 0, separator = 0, columns; // deklaracje i definicje zmiennych potrzebnych do wyznaczenia wymiarów macierzy
+    double *tabElem, *tabElemAux; // deklaracja wskaŸników do tablic: g³ównej i pomocniczej
+    tabElem = new double[1]; // stworzenie nowej tablicy g³ównej
+    streamIn >> c; // wczytanie znaku
+    if (c == startOfMatrix) // sprawdzenie warunku wczytania znaku pocz¹tku macierzy
+    {
+        do
+        {
+            streamIn >> c; // wczytanie znaku
+            if (c == startOfRow) // sprawdzenie warunku wczytania znaku pocz¹tku wiersza
+            {
+                rows++; // zwiêkszenie siê liczby wierszy
+                do
+                {
+                    tabElemAux = new double[rows + separator]; // stworzenie nowej, powiêkszonej tablicy pomocniczej
+                    for (typeSize i = 0; i < ((rows + separator) - 1); i++) // przejœcie przez wszystkie elementy tablicy g³ównej
+                        tabElemAux[i] = tabElem[i]; // przypisanie elementów do tablicy pomocniczej
+                    delete []tabElem; // destrukcja tablicy g³ównej
+                    tabElem = new double[rows + separator]; // stworzenie nowej, powiêkszonej tablicy g³ównej
+                    for (typeSize i = 0; i < ((rows + separator) - 1); i++) // przejœcie przez wszystkie elementy tablicy pomocniczej
+                        tabElem[i] = tabElemAux[i]; // przypisanie elementów do tablicy g³ównej
+                    delete []tabElemAux; // destrukcja tablicy pomocniczej
+                    streamIn >> tabElem[rows + separator - 1]; // wczytanie nowego elementu do g³ównej tablicy
+                    streamIn >> c; // wczytanie znaku
+                    if (c == separatorElement) // sprawdzenie warunku wczytania separatora
+                        separator++; // zwiêkszenie siê liczby separatorów
+                } while (c != endOfRow); // sprawdzenie warunku wczytanie znaku koñca wiersza
+            }
+        } while (c != endOfMatrix); // sprawdzenie warunku wczytania znaku koñca macierzy
+    }
+    columns = (rows + separator) / rows; // wyznaczenie liczby kolumn macierzy
+    M.setRows(rows); // ustawienie liczby wierszy
+    M.setColumns(columns); // ustawienie liczby kolumn
+    M.tableElements = new double[rows * columns]; // stworzenie nowej tablicy elementów
+    for (typeSize i = 0; i < (rows * columns); i++) // przejœcie przez wszystkie elementy
+        M.tableElements[i] = tabElem[i]; // przypisanie wartoœci do tablicy obiektu
+    M.mTests(); // okreœlenie parametrów macierzy
+    return streamIn; // zwrócenie strumienia
+}
+
+
+
 /********** PUBLIC: END **********/
 
 /* cmatrix.cpp */

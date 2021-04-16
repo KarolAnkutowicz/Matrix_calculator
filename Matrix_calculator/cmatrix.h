@@ -5,7 +5,7 @@
 #define CMATRIX_H
 
 #include "constantsandtypes.h"
-#include <ostream>
+#include <iostream>
 
 using namespace std;
 
@@ -438,6 +438,7 @@ public:
      * POST:
      * - zwrocenie strumiena wyjsciowego.
      */
+
     friend ostream &operator << (ostream &streamOut, cMatrix &M);
     /*
      * istream &operator >> (istream & streamIn, cMatrix &M) -
