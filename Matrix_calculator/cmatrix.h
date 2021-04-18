@@ -244,7 +244,7 @@ public:
      * POST:
      * - utworzenie obiektu.
      */
-    cMatrix(typeSize parColumns, double *parTabElements);
+    //cMatrix(typeSize parColumns, double *parTabElements);
 
     /*
      * cMatrix(typeSize parRows, typeSize parColumns) - konstruktor

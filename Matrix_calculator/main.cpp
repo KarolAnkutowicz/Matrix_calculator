@@ -1,6 +1,8 @@
 /********** BEGIN_OF_FILE **********/
 /* main.cpp */
 
+#include <cmatrix.h>
+
 using namespace std;
 
 int main()
