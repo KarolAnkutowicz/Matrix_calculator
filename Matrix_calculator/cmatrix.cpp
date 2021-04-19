@@ -355,6 +355,35 @@ istream &operator >> (istream & streamIn, cMatrix &M)
 
 
 
+/*
+ * cMatrix operator + (cMatrix M)
+ */
+cMatrix cMatrix::operator + (cMatrix M)
+{
+    cMatrix Result(getRows(), getColumns());
+    for (typeSize i = 0; i < vRows; i++)
+        for (typeSize j = 0; j < vColumns; j++)
+            Result.setElement(i, j, getElement(i, j) + M.getElement(i, j));
+    Result.mTests();
+    return Result;
+}
+
+/*
+ * cMatrix operator - (cMatrix M)
+ */
+cMatrix cMatrix::operator - (cMatrix M)
+{
+    cMatrix Result(getRows(), getColumns());
+    for (typeSize i = 0; i < vRows; i++)
+        for (typeSize j = 0; j < vColumns; j++)
+            Result.setElement(i, j, getElement(i, j) - M.getElement(i, j));
+    Result.mTests();
+    return Result;
+}
+
+
+
+
 /********** PUBLIC: END **********/
 
 /* cmatrix.cpp */
