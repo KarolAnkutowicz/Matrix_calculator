@@ -381,8 +381,17 @@ cMatrix cMatrix::operator - (cMatrix M)
     return Result;
 }
 
-
-
+/*
+ * cMatrix operator * (double parFactor)
+ */
+cMatrix cMatrix::operator * (double parFactor)
+{
+    cMatrix Result(getRows(), getColumns());
+    for (typeSize i = 0; i < getRows(); i++)
+        for (typeSize j = 0; j < getColumns(); j++)
+            Result.setElement(i, j, getElement(i, j) * parFactor);
+    return Result;
+}
 
 /********** PUBLIC: END **********/
 
