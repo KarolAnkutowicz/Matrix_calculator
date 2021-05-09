@@ -1,5 +1,8 @@
 /********** BEGIN_OF_FILE **********/
-/* cmatrix.h */
+/*
+ * author: Karol Ankutowicz
+ * file: cmatrix.h
+ */
 
 #ifndef CMATRIX_H
 #define CMATRIX_H

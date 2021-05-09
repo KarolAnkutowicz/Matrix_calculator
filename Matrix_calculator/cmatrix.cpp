@@ -1,5 +1,8 @@
 /********** BEGIN_OF_FILE **********/
-/* cmatrix.cpp */
+/*
+ * author: Karol Ankutowicz
+ * file: cmatrix.cpp
+ */
 
 #include "cmatrix.h"
 

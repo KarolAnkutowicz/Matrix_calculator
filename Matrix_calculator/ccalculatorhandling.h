@@ -1,5 +1,8 @@
 /********** BEGIN_OF_FILE **********/
-/* ccalculatorhandling.h */
+/*
+ * author: Karol Ankutowicz
+ * file: ccalculatorhandling.h
+ */
 
 #ifndef CCALCULATORHANDLING_H
 #define CCALCULATORHANDLING_H

@@ -1,5 +1,8 @@
 /********** BEGIN_OF_FILE **********/
-/* ccalculatorhandling.cpp */
+/*
+ * author: Karol Ankutowicz
+ * file: ccalculatorhandling.cpp
+ */
 
 #include "ccalculatorhandling.h"
 
