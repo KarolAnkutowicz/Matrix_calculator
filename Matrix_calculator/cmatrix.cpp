@@ -356,6 +356,20 @@ istream &operator >> (istream & streamIn, cMatrix &M)
     return streamIn; // zwrócenie strumienia
 }
 
+/*
+ * void operator = (const cMatrix &M)
+ */
+/*void cMatrix::operator = (const cMatrix &M)
+{
+    setRows(M.getRows());
+    setColumns(M.getColumns());
+    tableElements = new double[getRows() * getColumns()];
+    for (typeSize i = 0; i < getRows(); i++)
+        for (typeSize j = 0; j < getColumns(); j++)
+            tableElements[i * getColumns() + j] = M.getElement(i, j);
+    mTests();
+}*/
+
 
 
 /*
@@ -395,6 +409,107 @@ cMatrix cMatrix::operator * (double parFactor)
             Result.setElement(i, j, getElement(i, j) * parFactor);
     return Result;
 }
+
+/*
+ * cMatrix operator * (cMatrix M)
+ */
+/*cMatrix cMatrix::operator * (cMatrix M)
+{
+}*/
+
+
+
+/*
+ * double mCalculateDeterminant2x2()
+ */
+/*double cMatrix::mCalculateDeterminant2x2()
+{
+}*/
+
+/*
+ * double mCalculateDeterminant3x3()
+ */
+/*double cMatrix::mCalculateDeterminant3x3()
+{
+}*/
+
+/*
+ * double mCalculateDeterminantDiagonal()
+ */
+/*double cMatrix::mCalculateDeterminantDiagonal()
+{
+}*/
+
+/*
+ * double mCalculateDeterminant()
+ */
+/*double cMatrix::mCalculateDeterminant()
+{
+}*/
+
+
+
+/*
+ * cMatrix mExponentiationMatrix(typeSize parPower)
+ */
+/*cMatrix cMatrix::mExponentiationMatrix(typeSize parPower)
+{
+}*/
+
+/*
+ * cMatrix mInversalMatrix1x1()
+ */
+/*cMatrix cMatrix::mInversalMatrix1x1()
+{
+}*/
+
+/*
+ * cMatrix mInversalMatrix2x2()
+ */
+/*cMatrix cMatrix::mInversalMatrix2x2()
+{
+}*/
+
+/*
+ * cMatrix mInversalMatrix3x3()
+ */
+/*cMatrix cMatrix::mInversalMatrix3x3()
+{
+}*/
+
+/*
+ * cMatrix mInversalMatrix()
+ */
+/*cMatrix cMatrix::mInversalMatrix()
+{
+}*/
+
+
+
+/*
+ * double mScalarProduct(cMatrix M)
+ */
+/*double cMatrix::mScalarProduct(cMatrix M)
+{
+}*/
+
+/*
+ * cMatrix mCrossProduct(cMatrix M)
+ */
+/*cMatrix cMatrix::mCrossProduct(cMatrix M)
+{
+}*/
+
+/*
+ * double mLengthVector()
+ */
+/*double cMatrix::mLengthVector()
+{
+}*/
+
+
+
+
 
 /********** PUBLIC: END **********/
 
