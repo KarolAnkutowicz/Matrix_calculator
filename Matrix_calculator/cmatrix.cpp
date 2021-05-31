@@ -525,6 +525,20 @@ double cMatrix::mLengthVector()
         return 0.0; // zwrocenie wyniku
 }
 
+/*
+ * cMatrix mTransposition()
+ */
+cMatrix cMatrix::mTransposition()
+{
+    cMatrix M(getColumns(), getRows());
+    M.tableElements = new double[getRows() * getColumns()];
+    for (typeSize i = 0; i < M.getRows(); i++)
+        for (typeSize j = 0; j < M.getColumns(); j++)
+            M.setElement(i, j, getElement(j, i));
+    M.mTests();
+    return M;
+}
+
 
 
 

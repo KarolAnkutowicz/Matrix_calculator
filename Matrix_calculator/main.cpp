@@ -12,7 +12,7 @@ int main()
 {
     cMatrix M;
     cin >> M;
-    cout << M.mLengthVector() << endl;
+    //cout << M.mTransposition() << endl;
     return 0;
 }
 

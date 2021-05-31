@@ -633,6 +633,15 @@ public:
      */
     double mLengthVector();
 
+    /*
+     * cMatrix mTransposition() - metoda wyznaczajaca macierz transponowana.
+     * PRE:
+     * - brak.
+     * POST:
+     * - zwrocenie macierzy transponowanej.
+     */
+    cMatrix mTransposition();
+
 
 /********** PUBLIC: END **********/
 };
