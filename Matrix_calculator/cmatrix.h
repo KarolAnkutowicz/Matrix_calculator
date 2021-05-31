@@ -8,6 +8,7 @@
 #define CMATRIX_H
 
 #include "constantsandtypes.h"
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -462,7 +463,7 @@ public:
      * POST:
      * - brak.
      */
-    void operator = (const cMatrix &M);
+    void operator = (/*const */cMatrix /*&*/M);
 
 
 

@@ -359,7 +359,7 @@ istream &operator >> (istream & streamIn, cMatrix &M)
 /*
  * void operator = (const cMatrix &M)
  */
-/*void cMatrix::operator = (const cMatrix &M)
+void cMatrix::operator = (/*const */cMatrix /*&*/M)
 {
     setRows(M.getRows());
     setColumns(M.getColumns());
@@ -368,7 +368,7 @@ istream &operator >> (istream & streamIn, cMatrix &M)
         for (typeSize j = 0; j < getColumns(); j++)
             tableElements[i * getColumns() + j] = M.getElement(i, j);
     mTests();
-}*/
+}
 
 
 
@@ -503,9 +503,27 @@ cMatrix cMatrix::operator * (double parFactor)
 /*
  * double mLengthVector()
  */
-/*double cMatrix::mLengthVector()
+double cMatrix::mLengthVector()
 {
-}*/
+    if (vIfVector)
+    {
+        double vSum = 0.0; // ustanowienie sumy poczatkowej
+        if (getColumns() == 1) // obliczenia dla wektora pionowego
+        {
+            for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich elementach
+                vSum += (getElement(i, 0) * getElement(i, 0)); // dodanie kwadratow kolejnych elementow
+        }
+        else // obliczenia dla wektora poziomego
+        {
+            for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich elementach
+                vSum += (getElement(0, j) * getElement(0, j)); // dodanie kwadratow kolejnych elementow
+        }
+        vSum = sqrt(vSum); // obliczenie pierwiastka z sumy kwadratow
+        return vSum; // zwrocenie wyniku
+    }
+    else
+        return 0.0; // zwrocenie wyniku
+}
 
 
 
