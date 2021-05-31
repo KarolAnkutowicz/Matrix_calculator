@@ -17,9 +17,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     cmatrix.cpp \
-    ccalculatorhandling.cpp
+    ccalculatorhandling.cpp \
+    cexceptionsanderrors.cpp
 
 HEADERS += \
     constantsandtypes.h \
     cmatrix.h \
-    ccalculatorhandling.h
+    ccalculatorhandling.h \
+    cexceptionsanderrors.h
