@@ -12,7 +12,7 @@ int main()
 {
     cMatrix M;
     cin >> M;
-    //cout << M.mTransposition() << endl;
+    cout << M.mCalculateDeterminant2x2() << endl;
     return 0;
 }
 

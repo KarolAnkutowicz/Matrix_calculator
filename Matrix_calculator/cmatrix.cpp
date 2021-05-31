@@ -422,9 +422,13 @@ cMatrix cMatrix::operator * (double parFactor)
 /*
  * double mCalculateDeterminant2x2()
  */
-/*double cMatrix::mCalculateDeterminant2x2()
+double cMatrix::mCalculateDeterminant2x2()
 {
-}*/
+    if ((getRows() == 2) && (getColumns() == 2)) // sprawdzenie wymiarow macierzy
+        return (getElement(0, 0) * getElement(1, 1) - getElement(1, 0) * getElement(0, 1)); // zwrocenie wartosci
+    else
+        return 0.0; // zwrocenie wartosci
+}
 
 /*
  * double mCalculateDeterminant3x3()
@@ -530,13 +534,13 @@ double cMatrix::mLengthVector()
  */
 cMatrix cMatrix::mTransposition()
 {
-    cMatrix M(getColumns(), getRows());
-    M.tableElements = new double[getRows() * getColumns()];
-    for (typeSize i = 0; i < M.getRows(); i++)
-        for (typeSize j = 0; j < M.getColumns(); j++)
-            M.setElement(i, j, getElement(j, i));
-    M.mTests();
-    return M;
+    cMatrix M(getColumns(), getRows()); // utworzenie nowej macierzy
+    M.tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
+    for (typeSize i = 0; i < M.getRows(); i++) // przejscie po wszystkich wierszach
+        for (typeSize j = 0; j < M.getColumns(); j++) // przejscie po wszystkich kolumnach
+            M.setElement(i, j, getElement(j, i)); // przypisanie elementow
+    M.mTests(); // ustalanie wlasnosci macierzy
+    return M; // zwrocenie macierzy
 }
 
 
