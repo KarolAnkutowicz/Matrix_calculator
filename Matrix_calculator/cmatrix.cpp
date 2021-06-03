@@ -447,16 +447,26 @@ double cMatrix::mCalculateDeterminant2x2()
 /*
  * double mCalculateDeterminant3x3()
  */
-/*double cMatrix::mCalculateDeterminant3x3()
+double cMatrix::mCalculateDeterminant3x3()
 {
-}*/
+    return (getElement(0, 0) * getElement(1, 1) * getElement(2, 2)
+          + getElement(0 ,1) * getElement(1, 2) * getElement(2, 0)
+          + getElement(0, 2) * getElement(1, 0) * getElement(2, 1)
+          - getElement(0, 2) * getElement(1, 1) * getElement(2, 0)
+          - getElement(0, 1) * getElement(1, 0) * getElement(2, 2)
+          - getElement(0, 0) * getElement(1, 2) * getElement(2, 1));
+}
 
 /*
  * double mCalculateDeterminantDiagonal()
  */
-/*double cMatrix::mCalculateDeterminantDiagonal()
+double cMatrix::mCalculateDeterminantDiagonal()
 {
-}*/
+    double det = 1.0;
+    for (typeSize i = 0; i < getRows(); i++)
+        det *= getElement(i, i);
+    return det;
+}
 
 /*
  * double mCalculateDeterminant()
