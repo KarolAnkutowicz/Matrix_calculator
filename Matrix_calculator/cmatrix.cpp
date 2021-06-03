@@ -413,9 +413,23 @@ cMatrix cMatrix::operator * (double parFactor)
 /*
  * cMatrix operator * (cMatrix M)
  */
-/*cMatrix cMatrix::operator * (cMatrix M)
+cMatrix cMatrix::operator * (cMatrix M)
 {
-}*/
+    cMatrix Result(getRows(), M.getColumns());
+    Result.tableElements = new double[getRows() * M.getColumns()];
+    for (typeSize i = 0; i < getRows(); i++)
+    {
+        double sum;
+        for (typeSize j = 0; j < M.getColumns(); j++)
+        {
+            sum = 0.0;
+            for (typeSize k = 0; k < getColumns(); k++)
+                sum += (getElement(i, k) * M.getElement(k, j));
+            Result.setElement(i, j, sum);
+        }
+    }
+    return Result;
+}
 
 
 
