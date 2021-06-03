@@ -21,7 +21,7 @@ cCalculatorHandling::cCalculatorHandling()
 
 
 /*
- * mMainHandling()
+ * void mMainHandling()
  */
 void cCalculatorHandling::mMainHandling()
 {
@@ -31,7 +31,7 @@ void cCalculatorHandling::mMainHandling()
 
 
 /*
- * mChooseNumber()
+ * void mChooseNumber()
  */
 void cCalculatorHandling::mChooseNumber()
 {
@@ -39,7 +39,7 @@ void cCalculatorHandling::mChooseNumber()
 }
 
 /*
- * mChooseNumberSum()
+ * void mChooseNumberSum()
  */
 void cCalculatorHandling::mChooseNumberSum()
 {
@@ -47,7 +47,7 @@ void cCalculatorHandling::mChooseNumberSum()
 }
 
 /*
- * mChooseNumberMultiplication()
+ * void mChooseNumberMultiplication()
  */
 void cCalculatorHandling::mChooseNumberMultiplication()
 {
@@ -55,7 +55,7 @@ void cCalculatorHandling::mChooseNumberMultiplication()
 }
 
 /*
- * mChooseNumberOthers()
+ * void mChooseNumberOthers()
  */
 void cCalculatorHandling::mChooseNumberOthers()
 {
@@ -66,7 +66,7 @@ void cCalculatorHandling::mChooseNumberOthers()
 
 
 /*
- * mChooseMatrix()
+ * void mChooseMatrix()
  */
 void cCalculatorHandling::mChooseMatrix()
 {
@@ -74,7 +74,7 @@ void cCalculatorHandling::mChooseMatrix()
 }
 
 /*
- * mChooseMatrixSum()
+ * void mChooseMatrixSum()
  */
 void cCalculatorHandling::mChooseMatrixSum()
 {
@@ -82,7 +82,7 @@ void cCalculatorHandling::mChooseMatrixSum()
 }
 
 /*
- * mChooseMatrixMultiplication()
+ * void mChooseMatrixMultiplication()
  */
 void cCalculatorHandling::mChooseMatrixMultiplication()
 {
@@ -90,7 +90,7 @@ void cCalculatorHandling::mChooseMatrixMultiplication()
 }
 
 /*
- * mChooseMatrixExponentiation()
+ * void mChooseMatrixExponentiation()
  */
 void cCalculatorHandling::mChooseMatrixExponentiation()
 {
@@ -98,7 +98,7 @@ void cCalculatorHandling::mChooseMatrixExponentiation()
 }
 
 /*
- * mChooseMatrixProducts()
+ * void mChooseMatrixProducts()
  */
 void cCalculatorHandling::mChooseMatrixProducts()
 {
@@ -106,7 +106,7 @@ void cCalculatorHandling::mChooseMatrixProducts()
 }
 
 /*
- * mChooseMatrixOthers()
+ * void mChooseMatrixOthers()
  */
 void cCalculatorHandling::mChooseMatrixOthers()
 {

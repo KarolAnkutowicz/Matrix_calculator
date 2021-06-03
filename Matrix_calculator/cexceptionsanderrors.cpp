@@ -22,6 +22,11 @@ cExceptionsAndErrors::cExceptionsAndErrors()
  */
 void cExceptionsAndErrors::mDisplayMessage(typeSize pNumber)
 {
+    switch (pNumber)
+    {
+    case 101: break;
+    default: break;
+    }
 }
 
 

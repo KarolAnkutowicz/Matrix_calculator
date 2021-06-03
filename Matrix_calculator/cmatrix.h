@@ -18,53 +18,53 @@ class cMatrix
 /********** PRIVATE: BEGINNING **********/
 
     /*
-     * vRows, vColumns - pola przechowujace wymiary macierzy
+     * typeSize vRows, vColumns - pola przechowujace wymiary macierzy
      */
     typeSize vRows, vColumns;
 
     /*
-     * *tableElements - tablica elementow macierzy
+     * double *tableElements - tablica elementow macierzy
      */
     double *tableElements;
 
     /*
-     * vIfVector - pole przechowujaca informacje czy macierz
+     * bool vIfVector - pole przechowujaca informacje czy macierz
      * jest wektorem
      */
     bool vIfVector;
 
     /*
-     * vIfMatrixZeros - pole przechowujace informacje czy macierz
+     * bool vIfMatrixZeros - pole przechowujace informacje czy macierz
      * jest macierza zerowa
      */
     bool vIfMatrixZeros;
 
     /*
-     * vIfMatrixSquare - pole przechowujace informacje czy macierz
+     * bool vIfMatrixSquare - pole przechowujace informacje czy macierz
      * jest kwadratowa
      */
     bool vIfMatrixSquare;
 
     /*
-     * vIfMatrixIdentity - pole przechowujace informacje czy macierz
+     * bool vIfMatrixIdentity - pole przechowujace informacje czy macierz
      * jest jednostkowa
      */
     bool vIfMatrixIdentity;
 
     /*
-     * vIfMatrixDiagonal - pole przechowujace informacje czy macierz
+     * bool vIfMatrixDiagonal - pole przechowujace informacje czy macierz
      * jest diagonalna
      */
     bool vIfMatrixDiagonal;
 
     /*
-     * vIfMatrixTriangularUpper - pole przechowujace informacje czy
+     * bool vIfMatrixTriangularUpper - pole przechowujace informacje czy
      * macierz jest macierza trojkatna gorna
      */
     bool vIfMatrixTriangularUpper;
 
     /*
-     * vIfMatrixTriangularLower - pole przechowujace informacje czy
+     * bool vIfMatrixTriangularLower - pole przechowujace informacje czy
      * macierz jest macierza trojkatna dolna
      */
     bool vIfMatrixTriangularLower;
@@ -223,7 +223,7 @@ public:
      * PRE:
      * - brak.
      * POST:
-     * - utworzenie obiektu.
+     * - utworzenie obiektu klasy cMatrix.
      */
     cMatrix();
 
@@ -234,7 +234,7 @@ public:
      * PRE:
      * - podanie liczby kolumn (argument: parColumns).
      * POST:
-     * -utworzenie obiektu.
+     * -utworzenie obiektu klasy cMatrix.
      */
     cMatrix(typeSize parColumns);
 
@@ -246,7 +246,7 @@ public:
      * - podanie liczby kolumn (argument: parColumns);
      * - podanie wartosci kolejnych elementow (argument: *parTabElements).
      * POST:
-     * - utworzenie obiektu.
+     * - utworzenie obiektu klasy cMatrix.
      */
     //cMatrix(typeSize parColumns, double *parTabElements);
 
@@ -257,7 +257,7 @@ public:
      * - podanie liczby wierszy (argument: parRows);
      * - podanie liczby kolumn (argument: parColumns).
      * POST:
-     * - utworzenie obiektu.
+     * - utworzenie obiektu klasy cMatrix.
      */
     cMatrix(typeSize parRows, typeSize parColumns);
 
@@ -270,7 +270,7 @@ public:
      * - podanie liczby kolumn (argument: parColumns);
      * - podanie wartosci kolejnych elementow (argument: *parTabElements).
      * POST:
-     * - utworzenie obiektu.
+     * - utworzenie obiektu klasy cMatrix.
      */
     cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements);
 
@@ -279,7 +279,7 @@ public:
      * PRE:
      * - brak.
      * POST:
-     * - utworzenie obiektu.
+     * - utworzenie obiektu klasy cMatrix.
      */
     //cMatrix(const cMatrix &M);
 
