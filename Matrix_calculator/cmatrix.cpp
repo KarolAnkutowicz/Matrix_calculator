@@ -507,9 +507,13 @@ double cMatrix::mCalculateDeterminant2x2()
 /*
  * double mScalarProduct(cMatrix M)
  */
-/*double cMatrix::mScalarProduct(cMatrix M)
+double cMatrix::mScalarProduct(cMatrix M)
 {
-}*/
+    double sum = 0.0;
+    for (typeSize i = 0; i < getColumns(); i++)
+        sum += (getElement(1, i) * M.getElement(1, i));
+    return sum;
+}
 
 /*
  * cMatrix mCrossProduct(cMatrix M)
