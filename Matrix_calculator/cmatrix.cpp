@@ -518,9 +518,31 @@ double cMatrix::mScalarProduct(cMatrix M)
 /*
  * cMatrix mCrossProduct(cMatrix M)
  */
-/*cMatrix cMatrix::mCrossProduct(cMatrix M)
+cMatrix cMatrix::mCrossProduct(cMatrix M)
 {
-}*/
+    cMatrix Result(1, getColumns());
+    if (getColumns() > 2)
+    {
+        Result.tableElements = new double[getColumns()];
+        for (typeSize i = 0; i < getColumns(); i++)
+        {
+            typeSize a = i + 1;
+            if (a >= getColumns())
+                a -= getColumns();
+            typeSize b = i + 2;
+            if (b >= getColumns())
+                b -= getColumns();
+            typeSize c = i + getColumns() - 1;
+            if (c >= getColumns())
+                c -= getColumns();
+            typeSize d = i + getColumns() - 2;
+            if (d >= getColumns())
+                d -= getColumns();
+            Result.setElement(1, i, (getElement(1, a) * M.getElement(1, b) - getElement(1, c) * M.getElement(1, d)));
+        }
+    }
+    return Result;
+}
 
 /*
  * double mLengthVector()
