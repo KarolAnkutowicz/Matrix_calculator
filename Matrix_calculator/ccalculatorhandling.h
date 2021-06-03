@@ -7,6 +7,7 @@
 #ifndef CCALCULATORHANDLING_H
 #define CCALCULATORHANDLING_H
 
+#include "cexceptionsanderrors.h"
 #include "cmatrix.h"
 
 using namespace std;
@@ -51,6 +52,14 @@ public:
      * do wczytywania macierzy.
      */
     cMatrix M1, M2, M3;
+
+
+    /*
+     * cExceptionsAndErrors Error - obiekt klasy
+     * cExceptionsAndErrors obslugujacy komunikaty wyjatkow
+     * i bledow w obsludze kalkulatora.
+     */
+    cExceptionsAndErrors Error;
 
 
 

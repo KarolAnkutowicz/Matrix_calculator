@@ -24,7 +24,13 @@ void cExceptionsAndErrors::mDisplayMessage(typeSize pNumber)
 {
     switch (pNumber)
     {
-    case 101: break;
+    case 101: cerr << "Blednie wczytany argument!" << endl; break;
+    case 102: cerr << "Bledny operator!" << endl; break;
+    case 103: cerr << "" << endl; break;
+    case 104: cerr << "" << endl; break;
+    case 105: cerr << "" << endl; break;
+    case 106: cerr << "" << endl; break;
+    case 107: cerr << "" << endl; break;
     default: break;
     }
 }
