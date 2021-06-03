@@ -10,9 +10,9 @@ using namespace std;
 
 int main()
 {
-    cMatrix M;
-    cin >> M;
-    cout << M.mCalculateDeterminant2x2() << endl;
+    //cMatrix M;
+    //cin >> M;
+    //cout << M.mCalculateDeterminant2x2() << endl;
     return 0;
 }
 

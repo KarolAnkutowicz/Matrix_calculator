@@ -510,45 +510,45 @@ public:
 
 
     /*
-     * double mCalculateDeterminant2x2() - metoda obliczajaca
+     * void mCalculateDeterminant2x2() - metoda obliczajaca
      * wyznacznik macierzy o wymiarze 2.
      * PRE:
      * - brak.
      * POST:
-     * - zwrocenie wyniku (typ: double).
+     * - brak.
      */
-    double mCalculateDeterminant2x2();
+    void mCalculateDeterminant2x2();
 
     /*
-     * double mCalculateDeterminant3x3() - metoda obliczajaca
+     * void mCalculateDeterminant3x3() - metoda obliczajaca
      * wyznacznik macierzy o wymiarze 3.
      * PRE:
      * - brak.
      * POST:
-     * - zwrocenie wyniku (typ: double).
+     * - brak.
      */
-    double mCalculateDeterminant3x3();
+    void mCalculateDeterminant3x3();
 
     /*
-     * double mCalculateDeterminantDiagonal() - metoda obliczajaca
+     * void mCalculateDeterminantDiagonal() - metoda obliczajaca
      * wyznacznik macierzy diagonalnej o dowolnym wymiarze wiekszym
      * od 3.
      * PRE:
      * - brak.
      * POST:
-     * - zwrocenie wyniku (typ: double).
+     * - brak.
      */
-    double mCalculateDeterminantDiagonal();
+    void mCalculateDeterminantDiagonal();
 
     /*
-     * double mCalculateDeterminant() - metoda obliczajaca
+     * void mCalculateDeterminant() - metoda obliczajaca
      * wyznacznik macierzy o dowolnym wymiarze wiekszym od 3.
      * PRE:
      * - brak.
      * POST:
-     * - zwrocenie wyniku (typ: double).
+     * - void.
      */
-    double mCalculateDeterminant();
+    void mCalculateDeterminant();
 
 
 

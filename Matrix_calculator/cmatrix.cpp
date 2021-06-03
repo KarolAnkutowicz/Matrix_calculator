@@ -434,44 +434,43 @@ cMatrix cMatrix::operator * (cMatrix M)
 
 
 /*
- * double mCalculateDeterminant2x2()
+ * void mCalculateDeterminant2x2()
  */
-double cMatrix::mCalculateDeterminant2x2()
+void cMatrix::mCalculateDeterminant2x2()
 {
     if ((getRows() == 2) && (getColumns() == 2)) // sprawdzenie wymiarow macierzy
-        return (getElement(0, 0) * getElement(1, 1) - getElement(1, 0) * getElement(0, 1)); // zwrocenie wartosci
+        vDeterminant = getElement(0, 0) * getElement(1, 1) - getElement(1, 0) * getElement(0, 1);
     else
-        return 0.0; // zwrocenie wartosci
+        vDeterminant = 0.0;
 }
 
 /*
- * double mCalculateDeterminant3x3()
+ * void mCalculateDeterminant3x3()
  */
-double cMatrix::mCalculateDeterminant3x3()
+void cMatrix::mCalculateDeterminant3x3()
 {
-    return (getElement(0, 0) * getElement(1, 1) * getElement(2, 2)
-          + getElement(0 ,1) * getElement(1, 2) * getElement(2, 0)
-          + getElement(0, 2) * getElement(1, 0) * getElement(2, 1)
-          - getElement(0, 2) * getElement(1, 1) * getElement(2, 0)
-          - getElement(0, 1) * getElement(1, 0) * getElement(2, 2)
-          - getElement(0, 0) * getElement(1, 2) * getElement(2, 1));
+    vDeterminant = getElement(0, 0) * getElement(1, 1) * getElement(2, 2)
+                 + getElement(0 ,1) * getElement(1, 2) * getElement(2, 0)
+                 + getElement(0, 2) * getElement(1, 0) * getElement(2, 1)
+                 - getElement(0, 2) * getElement(1, 1) * getElement(2, 0)
+                 - getElement(0, 1) * getElement(1, 0) * getElement(2, 2)
+                 - getElement(0, 0) * getElement(1, 2) * getElement(2, 1);
 }
 
 /*
- * double mCalculateDeterminantDiagonal()
+ * void mCalculateDeterminantDiagonal()
  */
-double cMatrix::mCalculateDeterminantDiagonal()
+void cMatrix::mCalculateDeterminantDiagonal()
 {
-    double det = 1.0;
+    vDeterminant = 1.0;
     for (typeSize i = 0; i < getRows(); i++)
-        det *= getElement(i, i);
-    return det;
+        vDeterminant *= getElement(i, i);
 }
 
 /*
- * double mCalculateDeterminant()
+ * void mCalculateDeterminant()
  */
-/*double cMatrix::mCalculateDeterminant()
+/*void cMatrix::mCalculateDeterminant()
 {
 }*/
 
@@ -487,9 +486,14 @@ double cMatrix::mCalculateDeterminantDiagonal()
 /*
  * cMatrix mInversalMatrix1x1()
  */
-/*cMatrix cMatrix::mInversalMatrix1x1()
+cMatrix cMatrix::mInversalMatrix1x1()
 {
-}*/
+    cMatrix Result(getRows(), getColumns());
+    Result.tableElements = new double[1];
+    Result.setElement(0, 0, 1 / getElement(0, 0));
+    Result.vDeterminant = Result.getElement(0, 0);
+    return Result;
+}
 
 /*
  * cMatrix mInversalMatrix2x2()
