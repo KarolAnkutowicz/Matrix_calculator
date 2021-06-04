@@ -395,7 +395,7 @@ cMatrix cMatrix::operator + (cMatrix M)
         Result.mTests(); // sprawdzenie wlasciwosci macierzy
         return Result; // zwrocenie wyniku
     }
-    else
+    else // macierze maja rozne wymiary
     {
         // !!! Rozne wymiary macierzy
         cMatrix Result; // utworzenie fikcyjnej macierzy wynikowej
@@ -408,12 +408,21 @@ cMatrix cMatrix::operator + (cMatrix M)
  */
 cMatrix cMatrix::operator - (cMatrix M)
 {
-    cMatrix Result(getRows(), getColumns());
-    for (typeSize i = 0; i < vRows; i++)
-        for (typeSize j = 0; j < vColumns; j++)
-            Result.setElement(i, j, getElement(i, j) - M.getElement(i, j));
-    Result.mTests();
-    return Result;
+    if ((getRows() == M.getRows()) && (getColumns() == M.getColumns())) // s[rawdzenie czy macierz maja te same wymiary
+    {
+        cMatrix Result(getRows(), getColumns()); // utworzenie amcierzy wynikowej
+        for (typeSize i = 0; i < vRows; i++) // przejscie po wszystkich wierszach
+            for (typeSize j = 0; j < vColumns; j++) // przejscie po wszystkich kolumnach
+                Result.setElement(i, j, getElement(i, j) - M.getElement(i, j)); // obliczanie kolejnych elementow
+        Result.mTests(); // sprawdzenie wlasciwosci macierzy
+        return Result; // zwrocenie wyniku
+    }
+    else // macierza maja rozne wymiary
+    {
+        // !!! Rozne wymiary macierzy
+        cMatrix Result; // utworzenie fikcyjnej macierzy wynikowej
+        return Result; // zwrocenie fikcyjnej macierzy wynikowej
+    }
 }
 
 /*
@@ -421,11 +430,12 @@ cMatrix cMatrix::operator - (cMatrix M)
  */
 cMatrix cMatrix::operator * (double parFactor)
 {
-    cMatrix Result(getRows(), getColumns());
-    for (typeSize i = 0; i < getRows(); i++)
-        for (typeSize j = 0; j < getColumns(); j++)
-            Result.setElement(i, j, getElement(i, j) * parFactor);
-    return Result;
+    cMatrix Result(getRows(), getColumns()); // utworzenie macierzy wynikowej
+    for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+        for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
+            Result.setElement(i, j, getElement(i, j) * parFactor); // obliczanie kolejnych elementow
+    Result.mTests(); // sprawdzenie wlasciwosci macierzy
+    return Result; // zwrocenie wyniku
 }
 
 /*
@@ -457,9 +467,12 @@ cMatrix cMatrix::operator * (cMatrix M)
 void cMatrix::mCalculateDeterminant2x2()
 {
     if ((getRows() == 2) && (getColumns() == 2)) // sprawdzenie wymiarow macierzy
-        vDeterminant = getElement(0, 0) * getElement(1, 1) - getElement(1, 0) * getElement(0, 1);
-    else
-        vDeterminant = 0.0;
+        vDeterminant = getElement(0, 0) * getElement(1, 1) - getElement(1, 0) * getElement(0, 1); // obliczenie wyniku
+    else // dzialanie dla niepoprawnych wymiarow macierzy
+    {
+        // !!! Macierz ma nieprawidlowe wymiary
+        vDeterminant = 0.0; // ustanowienie fikcyjnego wyniku
+    }
 }
 
 /*
@@ -467,12 +480,20 @@ void cMatrix::mCalculateDeterminant2x2()
  */
 void cMatrix::mCalculateDeterminant3x3()
 {
-    vDeterminant = getElement(0, 0) * getElement(1, 1) * getElement(2, 2)
-                 + getElement(0 ,1) * getElement(1, 2) * getElement(2, 0)
-                 + getElement(0, 2) * getElement(1, 0) * getElement(2, 1)
-                 - getElement(0, 2) * getElement(1, 1) * getElement(2, 0)
-                 - getElement(0, 1) * getElement(1, 0) * getElement(2, 2)
-                 - getElement(0, 0) * getElement(1, 2) * getElement(2, 1);
+    if ((getRows() == 3) && (getColumns() == 3)) // sprawdzenie wymiarow macierzy
+    {
+        vDeterminant = getElement(0, 0) * getElement(1, 1) * getElement(2, 2)
+                     + getElement(0 ,1) * getElement(1, 2) * getElement(2, 0)
+                     + getElement(0, 2) * getElement(1, 0) * getElement(2, 1)
+                     - getElement(0, 2) * getElement(1, 1) * getElement(2, 0)
+                     - getElement(0, 1) * getElement(1, 0) * getElement(2, 2)
+                     - getElement(0, 0) * getElement(1, 2) * getElement(2, 1); // obliczenie wyniku
+    }
+    else // dzialanie dla niepoprawnych wymiarow macierzy
+    {
+        // !!! Macierz ma nieprawidlowe wymiary
+        vDeterminant = 0.0; // ustanowienie fikcyjnego wyniku
+    }
 }
 
 /*
@@ -598,7 +619,10 @@ double cMatrix::mLengthVector()
         return vSum; // zwrocenie wyniku
     }
     else
-        return 0.0; // zwrocenie wyniku
+    {
+        // !!! Macierz nie jest wektorem
+        return 0.0; // zwrocenie fikcyjnego wyniku
+    }
 }
 
 /*
