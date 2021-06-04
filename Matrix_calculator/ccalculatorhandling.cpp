@@ -376,7 +376,7 @@ void cCalculatorHandling::mChooseMatrixProducts()
         cin >> M2; // wczytanie drugiego argumentu
         if ((M1.getIfVector()) && (M2.getIfVector())) // sprawdzenie czy argumenty sa wektorami
         {
-            if ((M1.getRows() == M2.getRows()) || (M1.getColumns() == M2.getColumns())) // sprawdzenie wymiarow
+            if ((M1.getRows() == M2.getRows()) && (M1.getColumns() == M2.getColumns())) // sprawdzenie wymiarow
             {
                 d3 = M1.mScalarProduct(M2); // wyznaczenie iloczynu skalarnego
                 cout << d3 << endl; // wypisanie wyniku
@@ -400,7 +400,7 @@ void cCalculatorHandling::mChooseMatrixProducts()
         cin >> M2; // wczytanie drugiego argumentu
         if ((M1.getIfVector()) && (M2.getIfVector())) // sprawdzenie czy argumenty sa wektorami
         {
-            if ((M1.getRows() == M2.getRows()) || (M1.getColumns() == M2.getColumns())) // sprawdzenie wymiarow
+            if ((M1.getRows() == M2.getRows()) && (M1.getColumns() == M2.getColumns())) // sprawdzenie wymiarow
             {
                 cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
                 M3 = M1.mCrossProduct(M2); // wyznaczenie iloczynu wektorowego
