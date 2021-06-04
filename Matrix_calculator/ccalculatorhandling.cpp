@@ -317,7 +317,18 @@ void cCalculatorHandling::mChooseMatrixExponentiation()
  */
 void cCalculatorHandling::mChooseMatrixProducts()
 {
-
+    if (oper == operatorScalarProduct) // wyznaczamy iloczyn skalarny
+    {
+        cin >> M2; // wczytanie drugiego argumentu
+        M3 = M1.mScalarProduct(M2); // wyznaczenie iloczynu skalarnego
+        cout << M3 << endl; // wypisanie wyniku
+    }
+    else // wyznaczamy iloczyn wektorowy
+    {
+        cin >> M2; // wczytanie drugiego argumentu
+        M3 = M1.mCrossProduct(M2); // wyznaczenie iloczynu wektorowego
+        cout << M3 << endl; // wypisanie wyniku
+    }
 }
 
 /*
