@@ -454,8 +454,8 @@ public:
      * POST:
      * - zwrocenie strumiena wyjsciowego.
      */
-
     friend ostream &operator << (ostream &streamOut, cMatrix &M);
+
     /*
      * istream &operator >> (istream & streamIn, cMatrix &M) -
      * przeladowanie operatora wejjscia.

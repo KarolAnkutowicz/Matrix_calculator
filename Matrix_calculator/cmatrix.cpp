@@ -386,12 +386,21 @@ void cMatrix::operator = (/*const */cMatrix /*&*/M)
  */
 cMatrix cMatrix::operator + (cMatrix M)
 {
-    cMatrix Result(getRows(), getColumns());
-    for (typeSize i = 0; i < vRows; i++)
-        for (typeSize j = 0; j < vColumns; j++)
-            Result.setElement(i, j, getElement(i, j) + M.getElement(i, j));
-    Result.mTests();
-    return Result;
+    if ((getRows() == M.getRows()) && (getColumns() == M.getColumns())) // s[rawdzenie czy macierz maja te same wymiary
+    {
+        cMatrix Result(getRows(), getColumns()); // utworzenie macierzy wynikowej
+        for (typeSize i = 0; i < vRows; i++) // przejscie po wszystkich wierszach
+            for (typeSize j = 0; j < vColumns; j++) // przejscie po wszystkich kolumnach
+                Result.setElement(i, j, getElement(i, j) + M.getElement(i, j)); // obliczanie kolejnych elementow
+        Result.mTests(); // sprawdzenie wlasciwosci macierzy
+        return Result; // zwrocenie wyniku
+    }
+    else
+    {
+        // !!! Rozne wymiary macierzy
+        cMatrix Result; // utworzenie fikcyjnej macierzy wynikowej
+        return Result; // zwrocenie fikcyjnej macierzy wynikowej
+    }
 }
 
 /*
