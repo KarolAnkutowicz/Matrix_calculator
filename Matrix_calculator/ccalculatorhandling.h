@@ -44,10 +44,15 @@ public:
 
     /*
      * short i - zmienna calkowita uzywana do wczytania
-     * wykladnikow w potegowaniach liczb rzeczywistych
-     * lub macierzy.
+     * wykladnikow w potegowaniach liczb rzeczywistych.
      */
     short i;
+
+    /*
+     * unsigned short j - zmienna calkowita bez znaku uzywana
+     * do wczytania wykladnikow w potegowaniu macierzy.
+     */
+    unsigned short j;
 
     /*
      * cMatrix M1, M2, M3 - obiekty klasy cMatrix uzywane

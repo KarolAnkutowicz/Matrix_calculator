@@ -195,15 +195,15 @@ void cCalculatorHandling::mChooseMatrix()
     switch(oper)
     {
     case '+':
-    case '-': mChooseMatrixSum(); break;
-    case '*': mChooseMatrixMultiplication(); break;
+    case '-': mChooseMatrixSum(); break; // obsluga dodawani i odejmowania
+    case '*': mChooseMatrixMultiplication(); break; // obsluga mnozenia
     case operatorExponentiation:
-    case operatorReversal: mChooseMatrixExponentiation(); break;
+    case operatorReversal: mChooseMatrixExponentiation(); break; // obsluga potegowania i odwracania macierzy
     case operatorScalarProduct:
-    case operatorCrossProduct: mChooseMatrixProducts(); break;
+    case operatorCrossProduct: mChooseMatrixProducts(); break; // obsluga iloczynow: skalarnego i wektorowego
     case operatorLengthVector:
     case operatorDeterminant:
-    case operatorTransposition: mChooseMatrixOthers(); break;
+    case operatorTransposition: mChooseMatrixOthers(); break; // obsluga pozostalych operacji
     default: /* !!! Bledny operator */ break;
     }
 }
@@ -213,7 +213,18 @@ void cCalculatorHandling::mChooseMatrix()
  */
 void cCalculatorHandling::mChooseMatrixSum()
 {
-
+    if (oper == '+') // sprawdzamy czy bedziemy dodawac macierze
+    {
+        cin >> skipws >> M2; // wczytanie drugiego argumentu
+        M3 = M1 + M2; // obliczenie wyniku
+        cout << M3; // wypisanie wyniku
+    }
+    else // tutaj bedziemy odejmowac macierze
+    {
+        cin >> skipws >> M2; // wczytanie drugiego argumentu
+        M3 = M1 - M2; // obliczenie wyniku
+        cout << M3; // wypisanie wyniku
+    }
 }
 
 /*
@@ -221,7 +232,37 @@ void cCalculatorHandling::mChooseMatrixSum()
  */
 void cCalculatorHandling::mChooseMatrixMultiplication()
 {
-
+    cin >> skipws >> c; // wczytanie znaku
+    if (isdigit(c)) // sprawdzenie czy argument bedzie liczba
+    {
+        cin.unget(); // zwrocenie znaku do strumienia
+        cin >> d2; // wczytanie drugiego argumentu
+        M3 = M1 * d2; // obliczenie wyniku
+        cout << M3 << endl; // zwrocenie wyniku
+    }
+    else if (c == '-') // sprawdzenie czy argument bedzie ujemny
+    {
+        cin >> skipws >> c; // wczytanie znaku
+        if (isdigit(c)) // sprawdzenie czy argument jest liczba
+        {
+            cin.unget(); // zwrocenie znaku do strumienia
+            cin >> d2; // wczytanie drugiego argumentu
+            d2 = -d2; // przywrocenie wlasciwego znaku argumentu
+            M3 = M1 * d2; // obliczenie wyniku
+            cout << M3 << endl; // wypisanie wyniku
+        }
+    }
+    else if (c == startOfMatrix)
+    {
+        cin.unget(); // zwrocenie znaku do strumienia
+        cin >> skipws >> M2; // wczytanie drugiego argumentu
+        M3 = M1 * M2; // obliczenie wyniku
+        cout << M3 << endl; // wypisanie wyniku
+    }
+    /*else
+    {
+        // !!! Bledny argument
+    }*/
 }
 
 /*
