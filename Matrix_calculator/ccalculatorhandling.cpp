@@ -378,9 +378,8 @@ void cCalculatorHandling::mChooseMatrixProducts()
         {
             if ((M1.getRows() == M2.getRows()) || (M1.getColumns() == M2.getColumns())) // sprawdzenie wymiarow
             {
-                cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
-                M3 = M1.mScalarProduct(M2); // wyznaczenie iloczynu skalarnego
-                cout << M3 << endl; // wypisanie wyniku
+                d3 = M1.mScalarProduct(M2); // wyznaczenie iloczynu skalarnego
+                cout << d3 << endl; // wypisanie wyniku
             }
             else // argumenty sa wektorami ale maja rozne wymiary
             {
