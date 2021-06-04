@@ -17,11 +17,12 @@ int main()
 }
 
 /*
- * liczba + liczba   ?
- * liczba - liczba   ?
- * liczba * liczba   ?
+ * liczba + liczba   DZIALA
+ * liczba - liczba   DZIALA
+ * liczba * liczba   DZIALA
  * liczba * macierz  ?
- * liczba / liczba   ?
+ * liczba / liczba   DZIALA
+ * liczba ^ liczba   DZIALA
  * macierz + macierz ?
  * macierz - macierz ?
  * macierz * liczba  ?
