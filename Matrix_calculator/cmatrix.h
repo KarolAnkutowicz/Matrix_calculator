@@ -416,6 +416,18 @@ public:
     }
 
     /*
+     * double getDeterminant() - metoda zwracajaca wartosc wyznacznika.
+     * PRE:
+     * - brak.
+     * POST:
+     * - zwrocenie wartosci pola vDeterminant.
+     */
+    inline double getDeterminant()
+    {
+        return vDeterminant;
+    }
+
+    /*
      * void setElement(typeSize parRows, typeSize parColumns, double parValue) -
      * metoda pozwalajaca na ustanowienie nowej wartosci wskazanego
      * elementu tablicy elementow macierzy.

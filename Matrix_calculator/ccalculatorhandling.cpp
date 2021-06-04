@@ -336,7 +336,42 @@ void cCalculatorHandling::mChooseMatrixProducts()
  */
 void cCalculatorHandling::mChooseMatrixOthers()
 {
-
+    if (oper == operatorLengthVector) // sprawdzenie czy bedziemy wyznaczac dlugosc wektora
+    {
+        M3 = M1.mLengthVector(); // wyznaczanie dlugosci wektora
+        cout << M3 << endl; // wypisanie wyniku
+    }
+    else if (oper == operatorDeterminant) // sprawdzenie czy bedziemy obliczac wyznacznik macierzy
+    {
+        if (M1.getRows() == 1) // sprawdzamy czy macierz ma wymiar 1
+        {
+            d3 = M1.getElement(0, 0); // wyznacznik bedzie rowny wartosci jedynego elementu
+            cout << d3 << endl; // wypisanie wyniku
+        }
+        else if (M1.getRows() == 2) // sprawdzamy czy macierz ma wymair 2
+        {
+            M1.mCalculateDeterminant2x2(); // obliczenie wyznacznika
+            d3 = M1.getDeterminant(); // przypisanie wyniku
+            cout << d3 << endl; // wypisanie wyniku
+        }
+        else if (M1.getRows() == 3) // sprawdzamy czy macierz ma wymiar 3
+        {
+            M1.mCalculateDeterminant3x3(); // obliczenie wyznacznika
+            d3 = M1.getDeterminant(); // przypisanie wyniku
+            cout << d3 << endl; // wypisanie wyniku
+        }
+        /*else // tutaj macierz ma wymiar wiekszy niz 3
+        {
+            M1.mCalculateDeterminant(); // obliczenie wyznacznika
+            d3 = M1.getDeterminant(); // przypisanie wyniku
+            cout << d3 << endl; // wypisanie wyniku
+        }*/
+    }
+    else // bedziemy wyznaczac macierz transponowana
+    {
+        M3 = M1.mTransposition(); // wyznaczanie macierzy transponowanej
+        cout << M3 << endl; // wypisanie wyniku
+    }
 }
 
 
