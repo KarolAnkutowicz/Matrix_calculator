@@ -9,6 +9,8 @@
 
 #include "cexceptionsanderrors.h"
 #include "cmatrix.h"
+#include "constantsandtypes.h"
+#include <iostream>
 
 using namespace std;
 

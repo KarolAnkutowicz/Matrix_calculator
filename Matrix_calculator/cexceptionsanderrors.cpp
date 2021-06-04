@@ -5,6 +5,7 @@
  */
 
 #include "cexceptionsanderrors.h"
+#include <iostream>
 
 using namespace std;
 

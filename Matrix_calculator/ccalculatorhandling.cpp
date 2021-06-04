@@ -5,6 +5,9 @@
  */
 
 #include "ccalculatorhandling.h"
+#include "cexceptionsanderrors.h"
+#include "cmatrix.h"
+#include "constantsandtypes.h"
 #include <cctype>
 #include <iomanip>
 #include <iostream>
@@ -87,7 +90,18 @@ void cCalculatorHandling::mChooseNumber()
  */
 void cCalculatorHandling::mChooseNumberSum()
 {
-
+    if (oper == '+')
+    {
+        cin >> skipws >> d2;
+        d3 = d1 + d2;
+        cout << d3 << endl;
+    }
+    else
+    {
+        cin >> skipws >> d2;
+        d3 = d1 - d2;
+        cout << d3 << endl;
+    }
 }
 
 /*

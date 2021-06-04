@@ -4,7 +4,11 @@
  * file: cmatrix.cpp
  */
 
+#include "cexceptionsanderrors.h"
 #include "cmatrix.h"
+#include "constantsandtypes.h"
+#include <cmath>
+#include <iostream>
 
 using namespace std;
 
@@ -211,6 +215,7 @@ void cMatrix::mTests()
 cMatrix::cMatrix()
 {
     vRows = vColumns = 1; // ustanowienie rozmiaru macierzy
+    tableElements = new double[vRows * vColumns];
     mClearElements(); // "wyzerowanie" elementow
     mTests(); // sprawdzenie wlasciwosci macierzy
     vDeterminant = 0; // ustanowienie wyznacznika
@@ -223,6 +228,7 @@ cMatrix::cMatrix(typeSize parColumns)
 {
     vRows = 1; // ustanowienie liczby wierszy
     vColumns = parColumns; // ustanowienie liczby kolumn
+    tableElements = new double[vRows * vColumns];
     mClearElements(); // "wyzerowanie" elementow
     mTests(); // sprawdzenie wlasciwosci macierzy
     vDeterminant = 0; // ustanowienie wyznacznika (jedynie dla porzadku)
@@ -235,6 +241,7 @@ cMatrix::cMatrix(typeSize parColumns)
 {
     vRows = 1; // ustanowienie liczby wierszy
     vColumns = parColumns; // ustanowienie liczby kolumn
+    tableElements = new double[vRows * vColumns];
     mCopyTableElements(parTabElements); // skopiowanie zawartosci tablicy
     mTests(); // sprawdzenie wlasciwosci macierzy
     if (vIfMatrixSquare)
@@ -250,6 +257,7 @@ cMatrix::cMatrix(typeSize parRows, typeSize parColumns)
 {
     vRows = parRows; // ustanowienie liczby wierszy
     vColumns = parColumns; // ustanowienie liczby kolumn
+    tableElements = new double[vRows * vColumns];
     mClearElements(); // "wyzerowanie" elementow
     mTests(); // sprawdzenie wlasciwosci macierzy
     vDeterminant = 0; // ustanowienie wartosci wyznacznika (dla porzadku)
@@ -262,6 +270,7 @@ cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double parTabElements[])
 {
     vRows = parRows; // ustanowienie liczby wierszy
     vColumns = parColumns; // ustanowienie liczby kolumn
+    tableElements = new double[vRows * vColumns];
     mCopyTableElements(parTabElements); // skopiowanie zawartosci tablicy
     mTests(); // sprawdzenie wlasciwosci macierzy
     /*if (vIfMatrixSquare)

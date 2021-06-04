@@ -4,15 +4,15 @@
  * file: main.cpp
  */
 
-#include <cmatrix.h>
+#include "ccalculatorhandling.h"
+#include <iostream>
 
 using namespace std;
 
 int main()
 {
-    //cMatrix M;
-    //cin >> M;
-    //cout << M.mCalculateDeterminant2x2() << endl;
+    cCalculatorHandling Calc;
+
     return 0;
 }
 
@@ -30,7 +30,7 @@ int main()
  * macierz x macierz ?
  * macierz ^-1       ?
  * macierz ^n        ?
- * macierz len       DZIALA
+ * macierz len       ?
  * macierz det       ?
  * macierz T         ?
  */
