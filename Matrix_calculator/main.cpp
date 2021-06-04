@@ -5,6 +5,7 @@
  */
 
 #include "ccalculatorhandling.h"
+#include "cmatrix.h"
 #include <iostream>
 
 using namespace std;

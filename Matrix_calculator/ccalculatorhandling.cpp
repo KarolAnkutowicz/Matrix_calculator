@@ -131,6 +131,7 @@ void cCalculatorHandling::mChooseNumberMultiplication()
     {
         cin.unget(); // zwrocenie znaku do strumienia
         cin >> skipws >> M2; // wczytanie drugiego argumentu
+        cMatrix M3(M2.getRows(), M2.getColumns());
         M3 = M2 * d1; // obliczenie wyniku
         cout << M3 << endl; // zwrocenie wyniku
     }
@@ -216,14 +217,34 @@ void cCalculatorHandling::mChooseMatrixSum()
     if (oper == '+') // sprawdzamy czy bedziemy dodawac macierze
     {
         cin >> skipws >> M2; // wczytanie drugiego argumentu
-        M3 = M1 + M2; // obliczenie wyniku
-        cout << M3; // wypisanie wyniku
+        if ((M1.getRows() == M2.getRows()) && (M1.getColumns() == M2.getColumns())) // sprawdzenie wymiarow macierzy
+        {
+            cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
+            M3 = M1 + M2; // obliczenie wyniku
+            cout << M3 << endl; // wypisanie wyniku
+        }
+        else // wymiary macierzy sie nie zgadzaja
+        {
+            // !!! Rozne wymiary macierzy
+            cMatrix M3; // utworzenie fikcyjnego wyniku
+            cout << M3 << endl; // wypisanie fikcyjnego wyniku
+        }
     }
     else // tutaj bedziemy odejmowac macierze
     {
         cin >> skipws >> M2; // wczytanie drugiego argumentu
-        M3 = M1 - M2; // obliczenie wyniku
-        cout << M3; // wypisanie wyniku
+        if ((M1.getRows() == M2.getRows()) && (M1.getColumns() == M2.getColumns())) // sprawdzenie wymiarow macierzy
+        {
+            cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
+            M3 = M1 - M2; // obliczenie wyniku
+            cout << M3 << endl; // wypisanie wyniku
+        }
+        else // wymiary macierzy sie nie zgadzaja
+        {
+            // !!! Rozne wymiary macierzy
+            cMatrix M3; // utworzenie fikcyjnego wyniku
+            cout << M3 << endl; // wypisanie fikcyjnego wyniku
+        }
     }
 }
 
@@ -237,6 +258,7 @@ void cCalculatorHandling::mChooseMatrixMultiplication()
     {
         cin.unget(); // zwrocenie znaku do strumienia
         cin >> d2; // wczytanie drugiego argumentu
+        cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
         M3 = M1 * d2; // obliczenie wyniku
         cout << M3 << endl; // zwrocenie wyniku
     }
@@ -248,6 +270,7 @@ void cCalculatorHandling::mChooseMatrixMultiplication()
             cin.unget(); // zwrocenie znaku do strumienia
             cin >> d2; // wczytanie drugiego argumentu
             d2 = -d2; // przywrocenie wlasciwego znaku argumentu
+            cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
             M3 = M1 * d2; // obliczenie wyniku
             cout << M3 << endl; // wypisanie wyniku
         }
@@ -256,8 +279,18 @@ void cCalculatorHandling::mChooseMatrixMultiplication()
     {
         cin.unget(); // zwrocenie znaku do strumienia
         cin >> skipws >> M2; // wczytanie drugiego argumentu
-        M3 = M1 * M2; // obliczenie wyniku
-        cout << M3 << endl; // wypisanie wyniku
+        if (M1.getColumns() == M2.getRows()) // sprawdzenie warunku wymiarow macierzy
+        {
+            cMatrix M3(M1.getRows(), M2.getColumns()); // utworzenie obiektu wynikowego
+            M3 = M1 * M2; // obliczenie wyniku
+            cout << M3 << endl; // wypisanie wyniku
+        }
+        else
+        {
+            // !!! Niepoprawne wymiary macierzy
+            cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
+            cout << M3 << endl; // wypisanie fikcyjnego wyniku
+        }
     }
     /*else
     {
@@ -272,19 +305,28 @@ void cCalculatorHandling::mChooseMatrixExponentiation()
 {
     if (oper == operatorExponentiation) // bedziemy potegowac macierz
     {
-        cin >> skipws >> j; // wczytanie wykladnika
-        M3 = M1; // przypisanie macierzy poczatkowej do wynikowej
-        if (j == 0) // potegujemy do potegi '0'
+        if (M1.getIfMatrixSquare()) // sprawdzamy czy chcemy potegowac macierz kwardatowa
         {
-            // robimy macierz jednostkowa
+            cin >> skipws >> j; // wczytanie wykladnika
+            cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie macierzy wynikowej
+            M3 = M1; // przypisanie macierzy poczatkowej do wynikowej
+            if (j == 0) // potegujemy do potegi '0'
+            {
+                // robimy macierz jednostkowa
+            }
+            else if (j == 1) // potegujemy do potegi 1
+                cout << M3 << endl; // wypisanie wyniku
+            else // potegujemy do potegi wiekszej niz 1
+            {
+                M3 = M1.mExponentiationMatrix(j); // wywolanie metody potegujacej macierze
+                cout << M3 << endl; // wypisanie wyniku
+            }
         }
-        else if (j == 1) // potegujemy do potegi 1
-            cout << M3 << endl; // wypisanie wyniku
-        else // potegujemy do potegi wiekszej niz 1
+        else // nieudana proba potegowania macierzy niekwadratowej
         {
-            for (unsigned short i = j - 1; i > 0; i--) // wykonujemy odpowiednia liczbe mnozen
-                M3 = M3 * M1; // mnozenie macierzy
-            cout << M3 << endl; // wypisanie wyniku
+            // !!! Macierz nie jest kwadratowa
+            cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
+            cout << M3 << endl; // wypisanie fikcyjnego wyniku
         }
     }
     else // bedziemy odwracac macierz

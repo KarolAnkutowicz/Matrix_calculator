@@ -58,7 +58,7 @@ public:
      * cMatrix M1, M2, M3 - obiekty klasy cMatrix uzywane
      * do wczytywania macierzy.
      */
-    cMatrix M1, M2, M3;
+    cMatrix M1, M2;
 
 
     /*
