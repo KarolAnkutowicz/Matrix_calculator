@@ -162,14 +162,23 @@ public:
 
     /*
      * void mChooseMatrixExponentiation() - metoda obslugujaca
-     * potegowanie macierzy - w tym do potegi (-1) czyli
-     * odwracanie macierzy.
+     * potegowanie macierzy.
      * PRE:
      * - brak;
      * POST:
      * - brak.
      */
     void mChooseMatrixExponentiation();
+
+    /*
+     * void mChooseMatrixReversal() - metoda obslugujaca
+     * odwracanie macierzy.
+     * PRE:
+     * - brak;
+     * POST:
+     * - brak.
+     */
+    void mChooseMatrixReversal();
 
     /*
      * void mChooseMatrixProducts() - metoda obslugujaca

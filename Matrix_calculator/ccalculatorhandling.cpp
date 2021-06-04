@@ -198,8 +198,8 @@ void cCalculatorHandling::mChooseMatrix()
     case '+':
     case '-': mChooseMatrixSum(); break; // obsluga dodawani i odejmowania
     case '*': mChooseMatrixMultiplication(); break; // obsluga mnozenia
-    case operatorExponentiation:
-    case operatorReversal: mChooseMatrixExponentiation(); break; // obsluga potegowania i odwracania macierzy
+    case operatorExponentiation: mChooseMatrixExponentiation(); break; // obsluga potegowania macierzy
+    case operatorReversal: mChooseMatrixReversal(); break; // obsluga odwracania macierzy
     case operatorScalarProduct:
     case operatorCrossProduct: mChooseMatrixProducts(); break; // obsluga iloczynow: skalarnego i wektorowego
     case operatorLengthVector:
@@ -303,66 +303,68 @@ void cCalculatorHandling::mChooseMatrixMultiplication()
  */
 void cCalculatorHandling::mChooseMatrixExponentiation()
 {
-    if (oper == operatorExponentiation) // bedziemy potegowac macierz
+    if (M1.getIfMatrixSquare()) // sprawdzamy czy chcemy potegowac macierz kwardatowa
     {
-        if (M1.getIfMatrixSquare()) // sprawdzamy czy chcemy potegowac macierz kwardatowa
+        cin >> skipws >> j; // wczytanie wykladnika
+        cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie macierzy wynikowej
+        M3 = M1; // przypisanie macierzy poczatkowej do wynikowej
+        if (j == 0) // potegujemy do potegi '0'
         {
-            cin >> skipws >> j; // wczytanie wykladnika
-            cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie macierzy wynikowej
-            M3 = M1; // przypisanie macierzy poczatkowej do wynikowej
-            if (j == 0) // potegujemy do potegi '0'
-            {
-                // robimy macierz jednostkowa
-            }
-            else if (j == 1) // potegujemy do potegi 1
-                cout << M3 << endl; // wypisanie wyniku
-            else // potegujemy do potegi wiekszej niz 1
-            {
-                /*M3 = M1.mExponentiationMatrix(j); // wywolanie metody potegujacej macierze
-                cout << M3 << endl; // wypisanie wyniku*/
-            }
+            // robimy macierz jednostkowa
         }
-        else // nieudana proba potegowania macierzy niekwadratowej
+        else if (j == 1) // potegujemy do potegi 1
+            cout << M3 << endl; // wypisanie wyniku
+        else // potegujemy do potegi wiekszej niz 1
         {
-            // !!! Macierz nie jest kwadratowa
-            cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
-            cout << M3 << endl; // wypisanie fikcyjnego wyniku
+            /*M3 = M1.mExponentiationMatrix(j); // wywolanie metody potegujacej macierze
+            cout << M3 << endl; // wypisanie wyniku*/
         }
     }
-    else // bedziemy odwracac macierz
+    else // nieudana proba potegowania macierzy niekwadratowej
     {
-        if (M1.getIfMatrixSquare()) // s[rawdzenie czy macierz jest kwadratowa
-        {
-            if (M1.getRows() == 1) // sprawdzamy czy wymiar macierzy jest rowny 1
-            {
-                cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
-                M3 = M1.mInversalMatrix1x1(); // wywolanie metody wyznaczajacaj macierz odwrotna 1x1
-                cout << M3 << endl; // wypisanie wyniku
-            }
-            /*else if (M1.getRows() == 2) // sprawdzamy czy wymiar macierzy jest rowny 2
-            {
-                M3 = M1.mInversalMatrix2x2(); // wywolanie metody wyznaczajacej macierz odwrotna 2x2
-                cout << M3 << endl; // wypisanie wyniku
-            }*/
-            /*else if (M1.getRows() == 3) // sprawdzamy czy wymiar macierzy jest rowny 3
-            {
-                M3 = M1.mInversalMatrix3x3(); // wywolanie metody wyznaczajacej macierz odwrotna 3x3
-                cout << M3 << endl; // wypisanie wyniku
-            }*/
-            /*else // wyznaczamy macierz dla wymiarow wiekszych niz 3
-            {
-                M3 = M1.mInversalMatrix(); // wywolanie metody wyznaczajacej macierz odwrotna o wymiarach wiekszych niz 3x3
-                cout << M3 << endl; // wypisanie wyniku
-            }*/
-        }
-        else // jednak macierz nie jest kwadratowa
-        {
-            // !!! Macierz nie jest kwadratowa
-            cMatrix M3; // utworzenie fikcyjnego wyniku
-            cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
-        }
+        // !!! Macierz nie jest kwadratowa
+        cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
+        cout << M3 << endl; // wypisanie fikcyjnego wyniku
     }
 }
+
+/*
+ * void mChooseMatrixReversal()
+ */
+void cCalculatorHandling::mChooseMatrixReversal()
+{
+    if (M1.getIfMatrixSquare()) // s[rawdzenie czy macierz jest kwadratowa
+    {
+        if (M1.getRows() == 1) // sprawdzamy czy wymiar macierzy jest rowny 1
+        {
+            cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
+            M3 = M1.mInversalMatrix1x1(); // wywolanie metody wyznaczajacaj macierz odwrotna 1x1
+            cout << M3 << endl; // wypisanie wyniku
+        }
+        /*else if (M1.getRows() == 2) // sprawdzamy czy wymiar macierzy jest rowny 2
+        {
+            M3 = M1.mInversalMatrix2x2(); // wywolanie metody wyznaczajacej macierz odwrotna 2x2
+            cout << M3 << endl; // wypisanie wyniku
+        }*/
+        /*else if (M1.getRows() == 3) // sprawdzamy czy wymiar macierzy jest rowny 3
+        {
+            M3 = M1.mInversalMatrix3x3(); // wywolanie metody wyznaczajacej macierz odwrotna 3x3
+            cout << M3 << endl; // wypisanie wyniku
+        }*/
+        /*else // wyznaczamy macierz dla wymiarow wiekszych niz 3
+        {
+            M3 = M1.mInversalMatrix(); // wywolanie metody wyznaczajacej macierz odwrotna o wymiarach wiekszych niz 3x3
+            cout << M3 << endl; // wypisanie wyniku
+        }*/
+    }
+    else // jednak macierz nie jest kwadratowa
+    {
+        // !!! Macierz nie jest kwadratowa
+        cMatrix M3; // utworzenie fikcyjnego wyniku
+        cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
+    }
+}
+
 
 /*
  * void mChooseMatrixProducts()
