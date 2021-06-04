@@ -384,15 +384,15 @@ void cCalculatorHandling::mChooseMatrixProducts()
             else // argumenty sa wektorami ale maja rozne wymiary
             {
                 // !!! Argumenty maja rozne wymiary
-                cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
-                cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
+                d3 = 0.0; // nadanie wynikowi fikcyjnej wartosci
+                cout << d3 << endl; // wyswietlenie fikcyjnego wyniku
             }
         }
         else // co najmniej jeden z argumentow nie jest wektorem
         {
             // !!! Bledne argumenty
-            cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
-            cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
+            d3 = 0.0; // nadanie wynikowi fikcyjnej wartosci
+            cout << d3 << endl; // wyswietlenie fikcyjnego wyniku
         }
     }
     else // wyznaczamy iloczyn wektorowy
@@ -431,42 +431,50 @@ void cCalculatorHandling::mChooseMatrixOthers()
     {
         if (M1.getIfVector()) // sprawdzenie czy argument jest wektorem
         {
-            cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
-            M3 = M1.mLengthVector(); // wyznaczanie dlugosci wektora
-            cout << M3 << endl; // wypisanie wyniku
+            d3 = M1.mLengthVector(); // wyznaczanie dlugosci wektora
+            cout << d3 << endl; // wypisanie wyniku
         }
         else // argument jednak nie jest wektorem
         {
             // !!! Argument nie jest wektorem
-             cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
-             cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
+            d3 = 0.0; // nadanie wynikowi fikcyjnej wartosci
+            cout << d3 << endl; // wyswietlenie fikcyjnego wyniku
         }
     }
     else if (oper == operatorDeterminant) // sprawdzenie czy bedziemy obliczac wyznacznik macierzy
     {
-        if (M1.getRows() == 1) // sprawdzamy czy macierz ma wymiar 1
+        if (M1.getIfMatrixSquare()) // sprawdzenie czy macierz jest kwadratowa
         {
-            d3 = M1.getElement(0, 0); // wyznacznik bedzie rowny wartosci jedynego elementu
-            cout << d3 << endl; // wypisanie wyniku
+            if (M1.getRows() == 1) // sprawdzamy czy macierz ma wymiar 1
+            {
+                d3 = M1.getElement(0, 0); // wyznacznik bedzie rowny wartosci jedynego elementu
+                cout << d3 << endl; // wypisanie wyniku
+            }
+            else if (M1.getRows() == 2) // sprawdzamy czy macierz ma wymair 2
+            {
+                M1.mCalculateDeterminant2x2(); // obliczenie wyznacznika
+                d3 = M1.getDeterminant(); // przypisanie wyniku
+                cout << d3 << endl; // wypisanie wyniku
+            }
+            else if (M1.getRows() == 3) // sprawdzamy czy macierz ma wymiar 3
+            {
+                M1.mCalculateDeterminant3x3(); // obliczenie wyznacznika
+                d3 = M1.getDeterminant(); // przypisanie wyniku
+                cout << d3 << endl; // wypisanie wyniku
+            }
+            /*else // tutaj macierz ma wymiar wiekszy niz 3
+            {
+                M1.mCalculateDeterminant(); // obliczenie wyznacznika
+                d3 = M1.getDeterminant(); // przypisanie wyniku
+                cout << d3 << endl; // wypisanie wyniku
+            }*/
         }
-        else if (M1.getRows() == 2) // sprawdzamy czy macierz ma wymair 2
+        else // macierz jednak nie jest kwadratowa
         {
-            M1.mCalculateDeterminant2x2(); // obliczenie wyznacznika
-            d3 = M1.getDeterminant(); // przypisanie wyniku
-            cout << d3 << endl; // wypisanie wyniku
+            // !!! Macierz nie jest kwadratowa
+            d3 = 0.0; // przypisanie fikcyjnej wartosci
+            cout << d3 << endl; // wypisanie fikcyjnej wartosci
         }
-        else if (M1.getRows() == 3) // sprawdzamy czy macierz ma wymiar 3
-        {
-            M1.mCalculateDeterminant3x3(); // obliczenie wyznacznika
-            d3 = M1.getDeterminant(); // przypisanie wyniku
-            cout << d3 << endl; // wypisanie wyniku
-        }
-        /*else // tutaj macierz ma wymiar wiekszy niz 3
-        {
-            M1.mCalculateDeterminant(); // obliczenie wyznacznika
-            d3 = M1.getDeterminant(); // przypisanie wyniku
-            cout << d3 << endl; // wypisanie wyniku
-        }*/
     }
     else // bedziemy wyznaczac macierz transponowana
     {
