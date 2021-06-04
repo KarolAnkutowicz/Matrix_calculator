@@ -316,7 +316,8 @@ void cCalculatorHandling::mChooseMatrixExponentiation()
             cout << M3 << endl; // wypisanie wyniku
         else // potegujemy do potegi wiekszej niz 1
         {
-            /*M3 = M1.mExponentiationMatrix(j); // wywolanie metody potegujacej macierze
+            /* cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
+            M3 = M1.mExponentiationMatrix(j); // wywolanie metody potegujacej macierze
             cout << M3 << endl; // wypisanie wyniku*/
         }
     }
@@ -333,29 +334,41 @@ void cCalculatorHandling::mChooseMatrixExponentiation()
  */
 void cCalculatorHandling::mChooseMatrixReversal()
 {
-    if (M1.getIfMatrixSquare()) // s[rawdzenie czy macierz jest kwadratowa
+    if (M1.getIfMatrixSquare()) // sprawdzenie czy macierz jest kwadratowa
     {
-        if (M1.getRows() == 1) // sprawdzamy czy wymiar macierzy jest rowny 1
+        if (M1.getDeterminant() != 0) // sprawdzenie czy wyznacznik jest rozny od '0'
         {
-            cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
-            M3 = M1.mInversalMatrix1x1(); // wywolanie metody wyznaczajacaj macierz odwrotna 1x1
-            cout << M3 << endl; // wypisanie wyniku
+            if (M1.getRows() == 1) // sprawdzamy czy wymiar macierzy jest rowny 1
+            {
+                cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
+                M3 = M1.mInversalMatrix1x1(); // wywolanie metody wyznaczajacaj macierz odwrotna 1x1
+                cout << M3 << endl; // wypisanie wyniku
+            }
+            /*else if (M1.getRows() == 2) // sprawdzamy czy wymiar macierzy jest rowny 2
+            {
+                cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
+                M3 = M1.mInversalMatrix2x2(); // wywolanie metody wyznaczajacej macierz odwrotna 2x2
+                cout << M3 << endl; // wypisanie wyniku
+            }*/
+            /*else if (M1.getRows() == 3) // sprawdzamy czy wymiar macierzy jest rowny 3
+            {
+                cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
+                M3 = M1.mInversalMatrix3x3(); // wywolanie metody wyznaczajacej macierz odwrotna 3x3
+                cout << M3 << endl; // wypisanie wyniku
+            }*/
+            /*else // wyznaczamy macierz dla wymiarow wiekszych niz 3
+            {
+                cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
+                M3 = M1.mInversalMatrix(); // wywolanie metody wyznaczajacej macierz odwrotna o wymiarach wiekszych niz 3x3
+                cout << M3 << endl; // wypisanie wyniku
+            }*/
         }
-        /*else if (M1.getRows() == 2) // sprawdzamy czy wymiar macierzy jest rowny 2
+        else // jednak wyznacznik jest '0'
         {
-            M3 = M1.mInversalMatrix2x2(); // wywolanie metody wyznaczajacej macierz odwrotna 2x2
-            cout << M3 << endl; // wypisanie wyniku
-        }*/
-        /*else if (M1.getRows() == 3) // sprawdzamy czy wymiar macierzy jest rowny 3
-        {
-            M3 = M1.mInversalMatrix3x3(); // wywolanie metody wyznaczajacej macierz odwrotna 3x3
-            cout << M3 << endl; // wypisanie wyniku
-        }*/
-        /*else // wyznaczamy macierz dla wymiarow wiekszych niz 3
-        {
-            M3 = M1.mInversalMatrix(); // wywolanie metody wyznaczajacej macierz odwrotna o wymiarach wiekszych niz 3x3
-            cout << M3 << endl; // wypisanie wyniku
-        }*/
+            // !!! Wyznacznik rozny od zera
+            cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
+            cout << M3 << endl; // wyswietlenie fikcynego wyniku
+        }
     }
     else // jednak macierz nie jest kwadratowa
     {
