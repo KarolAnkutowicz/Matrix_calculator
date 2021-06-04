@@ -49,10 +49,10 @@ public:
     short i;
 
     /*
-     * unsigned short j - zmienna calkowita bez znaku uzywana
+     * typeSize j - zmienna calkowita bez znaku uzywana
      * do wczytania wykladnikow w potegowaniu macierzy.
      */
-    unsigned short j;
+    typeSize j;
 
     /*
      * cMatrix M1, M2, M3 - obiekty klasy cMatrix uzywane

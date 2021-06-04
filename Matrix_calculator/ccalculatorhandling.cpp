@@ -318,8 +318,8 @@ void cCalculatorHandling::mChooseMatrixExponentiation()
                 cout << M3 << endl; // wypisanie wyniku
             else // potegujemy do potegi wiekszej niz 1
             {
-                M3 = M1.mExponentiationMatrix(j); // wywolanie metody potegujacej macierze
-                cout << M3 << endl; // wypisanie wyniku
+                /*M3 = M1.mExponentiationMatrix(j); // wywolanie metody potegujacej macierze
+                cout << M3 << endl; // wypisanie wyniku*/
             }
         }
         else // nieudana proba potegowania macierzy niekwadratowej
@@ -372,7 +372,7 @@ void cCalculatorHandling::mChooseMatrixProducts()
     if (oper == operatorScalarProduct) // wyznaczamy iloczyn skalarny
     {
         cin >> M2; // wczytanie drugiego argumentu
-        if ((M1.getIfVector()) && (M2.getIfVector()))
+        if ((M1.getIfVector()) && (M2.getIfVector())) // sprawdzenie czy argumenty sa wektorami
         {
             if ((M1.getRows() == M2.getRows()) || (M1.getColumns() == M2.getColumns())) // sprawdzenie wymiarow
             {
@@ -397,8 +397,27 @@ void cCalculatorHandling::mChooseMatrixProducts()
     else // wyznaczamy iloczyn wektorowy
     {
         cin >> M2; // wczytanie drugiego argumentu
-        M3 = M1.mCrossProduct(M2); // wyznaczenie iloczynu wektorowego
-        cout << M3 << endl; // wypisanie wyniku
+        if ((M1.getIfVector()) && (M2.getIfVector())) // sprawdzenie czy argumenty sa wektorami
+        {
+            if ((M1.getRows() == M2.getRows()) || (M1.getColumns() == M2.getColumns())) // sprawdzenie wymiarow
+            {
+                cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
+                M3 = M1.mCrossProduct(M2); // wyznaczenie iloczynu wektorowego
+                cout << M3 << endl; // wypisanie wyniku
+            }
+            else // argumenty sa wektorami ale maja rozne wymiary
+            {
+                // !!! Argumenty maja rozne wymiary
+                cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
+                cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
+            }
+        }
+        else // co najmniej jeden z argumentow nie jest wektorem
+        {
+            // !!! Bledne argumenty
+            cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
+            cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
+        }
     }
 }
 
@@ -409,8 +428,18 @@ void cCalculatorHandling::mChooseMatrixOthers()
 {
     if (oper == operatorLengthVector) // sprawdzenie czy bedziemy wyznaczac dlugosc wektora
     {
-        M3 = M1.mLengthVector(); // wyznaczanie dlugosci wektora
-        cout << M3 << endl; // wypisanie wyniku
+        if (M1.getIfVector()) // sprawdzenie czy argument jest wektorem
+        {
+            cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
+            M3 = M1.mLengthVector(); // wyznaczanie dlugosci wektora
+            cout << M3 << endl; // wypisanie wyniku
+        }
+        else // argument jednak nie jest wektorem
+        {
+            // !!! Argument nie jest wektorem
+             cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
+             cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
+        }
     }
     else if (oper == operatorDeterminant) // sprawdzenie czy bedziemy obliczac wyznacznik macierzy
     {
@@ -440,6 +469,7 @@ void cCalculatorHandling::mChooseMatrixOthers()
     }
     else // bedziemy wyznaczac macierz transponowana
     {
+        cMatrix M3(M1.getColumns(), M1.getRows()); // utworzenie obiektu wynikowego
         M3 = M1.mTransposition(); // wyznaczanie macierzy transponowanej
         cout << M3 << endl; // wypisanie wyniku
     }
