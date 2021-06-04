@@ -270,7 +270,46 @@ void cCalculatorHandling::mChooseMatrixMultiplication()
  */
 void cCalculatorHandling::mChooseMatrixExponentiation()
 {
-
+    if (oper == operatorExponentiation) // bedziemy potegowac macierz
+    {
+        cin >> skipws >> j; // wczytanie wykladnika
+        M3 = M1; // przypisanie macierzy poczatkowej do wynikowej
+        if (j == 0) // potegujemy do potegi '0'
+        {
+            // robimy macierz jednostkowa
+        }
+        else if (j == 1) // potegujemy do potegi 1
+            cout << M3 << endl; // wypisanie wyniku
+        else // potegujemy do potegi wiekszej niz 1
+        {
+            for (unsigned short i = j - 1; i > 0; i--) // wykonujemy odpowiednia liczbe mnozen
+                M3 = M3 * M1; // mnozenie macierzy
+            cout << M3 << endl; // wypisanie wyniku
+        }
+    }
+    else // bedziemy odwracac macierz
+    {
+        if (M1.getRows() == 1) // sprawdzamy czy wymiar macierzy jest rowny 1
+        {
+            M3 = M1.mInversalMatrix1x1(); // wywolanie metody wyznaczajacaj macierz odwrotna 1x1
+            cout << M3 << endl; // wypisanie wyniku
+        }
+        /*else if (M1.getRows() == 2) // sprawdzamy czy wymiar macierzy jest rowny 2
+        {
+            M3 = M1.mInversalMatrix2x2(); // wywolanie metody wyznaczajacej macierz odwrotna 2x2
+            cout << M3 << endl; // wypisanie wyniku
+        }*/
+        /*else if (M1.getRows() == 3) // sprawdzamy czy wymiar macierzy jest rowny 3
+        {
+            M3 = M1.mInversalMatrix3x3(); // wywolanie metody wyznaczajacej macierz odwrotna 3x3
+            cout << M3 << endl; // wypisanie wyniku
+        }*/
+        /*else // wyznaczamy macierz dla wymiarow wiekszych niz 3
+        {
+            M3 = M1.mInversalMatrix(); // wywolanie metody wyznaczajacej macierz odwrotna o wymiarach wiekszych niz 3x3
+            cout << M3 << endl; // wypisanie wyniku
+        }*/
+    }
 }
 
 /*
