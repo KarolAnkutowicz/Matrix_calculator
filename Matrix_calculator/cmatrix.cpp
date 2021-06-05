@@ -538,10 +538,10 @@ cMatrix cMatrix::mInversalMatrix1x1()
 {
     if ((getRows() == 1) && (getColumns() == 1)) // sprawdzenie czy macierz ma wymiary 1 na 1
     {
-        cMatrix Result(getRows(), getColumns()); // utworzenie obiektu wynikowego
-        Result.tableElements = new double[1]; // utworzenie nowej tablicy elementow
         if (getDeterminant() != 0) //  sprawdzenie czy wyznacznik jest rozny od '0'
         {
+            cMatrix Result(getRows(), getColumns()); // utworzenie obiektu wynikowego
+            Result.tableElements = new double[1]; // utworzenie nowej tablicy elementow
             Result.setElement(0, 0, 1 / getElement(0, 0)); // ustanowienie wartosci jedynego elementu tablicy
             return Result; // zwrocenie wyniku
         }
@@ -563,9 +563,34 @@ cMatrix cMatrix::mInversalMatrix1x1()
 /*
  * cMatrix mInversalMatrix2x2()
  */
-/*cMatrix cMatrix::mInversalMatrix2x2()
+cMatrix cMatrix::mInversalMatrix2x2()
 {
-}*/
+    if ((getRows() == 2) && (getColumns() == 2)) // sprawdzenie czy macierz ma wymiary 2 na 2
+    {
+        if (getDeterminant() != 0) //  sprawdzenie czy wyznacznik jest rozny od '0'
+        {
+            cMatrix Result(getRows(), getColumns()); // utworzenie obiektu wynikowego
+            Result.tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
+            Result.setElement(0, 0, getElement(1, 1)/getDeterminant()); // ustanowienie wartosci kolejnych elementow
+            Result.setElement(0, 1, getElement(1, 0)/getDeterminant());
+            Result.setElement(1, 0, getElement(0, 1)/getDeterminant());
+            Result.setElement(1, 1, getElement(0, 0)/getDeterminant());
+            return Result; // zwrocenie wyniku
+        }
+        else // jednak wyznacznik jest '0'
+        {
+            // !!! Wyznacznik jest rowny zero
+            cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+            return Result; // zwrocenie fikcyjnego wyniku
+        }
+    }
+    else // macierz ma jednak niepoprawne wymiary
+    {
+        // !!! Macierz ma niepoprawne wymiary
+        cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+        return Result; // zwrocenie fikcyjnego wyniku
+    }
+}
 
 /*
  * cMatrix mInversalMatrix3x3()
@@ -617,28 +642,37 @@ double cMatrix::mScalarProduct(cMatrix M)
  */
 cMatrix cMatrix::mCrossProduct(cMatrix M)
 {
-    cMatrix Result(1, getColumns());
-    if (getColumns() > 2)
+    if ((getIfVector() == true) && (M.getIfVector() == true)) // sprawdzenie czy argumantami sa wektory
     {
-        Result.tableElements = new double[getColumns()];
-        for (typeSize i = 0; i < getColumns(); i++)
+        cMatrix Result(1, getColumns());
+        if (getColumns() > 2)
         {
-            typeSize a = i + 1;
-            if (a >= getColumns())
-                a -= getColumns();
-            typeSize b = i + 2;
-            if (b >= getColumns())
-                b -= getColumns();
-            typeSize c = i + getColumns() - 1;
-            if (c >= getColumns())
-                c -= getColumns();
-            typeSize d = i + getColumns() - 2;
-            if (d >= getColumns())
-                d -= getColumns();
-            Result.setElement(1, i, (getElement(1, a) * M.getElement(1, b) - getElement(1, c) * M.getElement(1, d)));
+            Result.tableElements = new double[getColumns()];
+            for (typeSize i = 0; i < getColumns(); i++)
+            {
+                typeSize a = i + 1;
+                if (a >= getColumns())
+                    a -= getColumns();
+                typeSize b = i + 2;
+                if (b >= getColumns())
+                    b -= getColumns();
+                typeSize c = i + getColumns() - 1;
+                if (c >= getColumns())
+                    c -= getColumns();
+                typeSize d = i + getColumns() - 2;
+                if (d >= getColumns())
+                    d -= getColumns();
+                Result.setElement(1, i, (getElement(1, a) * M.getElement(1, b) - getElement(1, c) * M.getElement(1, d)));
+            }
         }
+        return Result;
     }
-    return Result;
+    else // co najmniej jeden z argumentow nie jest wektorem
+    {
+        // !!! Co najmniej jeden z argumentow nie jest wektorem
+        cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+        return Result; // zwrocenie fikcyjnego wyniku
+    }
 }
 
 /*
