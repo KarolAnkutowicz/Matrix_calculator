@@ -588,10 +588,28 @@ cMatrix cMatrix::mInversalMatrix1x1()
  */
 double cMatrix::mScalarProduct(cMatrix M)
 {
-    double sum = 0.0;
-    for (typeSize i = 0; i < getColumns(); i++)
-        sum += (getElement(1, i) * M.getElement(1, i));
-    return sum;
+    if ((getIfVector() == true) && (M.getIfVector() == true)) // sprawdzenie czy argumantami sa wektory
+    {
+        if ((getRows() == M.getRows()) && (getColumns() == M.getColumns())) // sprawdzenie czy wektory maja identyczne wymiary
+        {
+            double sum = 0.0; // ustanowienie sumy poczatkowej
+            for (typeSize i = 0; i < getColumns(); i++) // przejscie przez wszystkie elementy obu wektorow
+                sum += (getElement(1, i) * M.getElement(1, i)); // dodawanie kolejnych iloczynow do wyniku
+            return sum; // zwrocenie wyniku
+        }
+        else // jednak wektory maja rozne wymiary
+        {
+            // !!! Wektory maja rozne wymiary
+            double sum = 0.0; // ustanowienie fikcyjnej sumy poczatkowej
+            return sum; // zwrocenie fikcyjnego wyniku
+        }
+    }
+    else // co najmniej jeden z argumentow nie jest wektorem
+    {
+        // !!! Co najmniej jeden z argumentow nie jest wektorem
+        double sum = 0.0; // ustanowienie fikcyjnej sumy poczatkowej
+        return sum; // zwrocenie fikcyjnego wyniku
+    }
 }
 
 /*
