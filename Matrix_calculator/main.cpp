@@ -21,20 +21,20 @@ int main()
  * liczba + liczba   DZIALA
  * liczba - liczba   DZIALA
  * liczba * liczba   DZIALA
- * liczba * macierz  ?
+ * liczba * macierz  DZIALA
  * liczba / liczba   DZIALA
  * liczba ^ liczba   DZIALA
- * macierz + macierz ?
- * macierz - macierz ?
- * macierz * liczba  ?
- * macierz * macierz ?
- * macierz o macierz ?
- * macierz x macierz ?
+ * macierz + macierz DO POPRAWY - pierwszy rzad wyniku bledny
+ * macierz - macierz DO POPRAWY - pierwszy rzad wyniku bledny
+ * macierz * liczba  DZIALA
+ * macierz * macierz DO POPRAWY - pierwszy rzad wyniku bledny
+ * macierz o macierz DO POPRAWY - bledny wynik
+ * macierz x macierz DO POPRAWY - bledny wynik
  * macierz ^-1       ?
  * macierz ^n        ?
- * macierz len       ?
+ * macierz len       DZIALA
  * macierz det       ?
- * macierz T         ?
+ * macierz T         DZIALA
  */
 
 /* main.cpp */
