@@ -693,7 +693,7 @@ cMatrix cMatrix::mCrossProduct(cMatrix M)
                     typeSize d = i + getColumns() - 2; // ustalenie wspolrzednej "o 2 miejsca blizej"
                     if (d >= getColumns()) // sprawdzenie czy przekroczono zakres
                         d -= getColumns(); // naniesienie poprawki
-                    Result.setElement(1, i, (getElement(1, a) * M.getElement(1, b) - getElement(1, c) * M.getElement(1, d))); // ustanowienie wartosci elementu
+                    Result.setElement(0, i, (getElement(0, a) * M.getElement(0, b) - getElement(0, c) * M.getElement(0, d))); // ustanowienie wartosci elementu
                 }
             }
             else if ((getRows() == 1) && getColumns() == 2) // argumenty sa wektorami poziomymi majacymi po 2 elementy
@@ -707,7 +707,22 @@ cMatrix cMatrix::mCrossProduct(cMatrix M)
             }
             else if ((getRows() > 2) && (getColumns() == 1)) // argumenty sa wektorami pionowymi majacymi wiecej niz po 2 elementy
             {
-                //
+                for (typeSize j = 0; j < getRows(); j++) // przejscie po wszystkich elementach
+                {
+                    typeSize a = j + 1; // ustalenie wspolrzednej "o 1 miejsce dalej"
+                    if (a >= getRows()) // sprawdzenie czy przekroczono zakres
+                        a -= getRows(); // naniesienie poprawki
+                    typeSize b = j + 2; // ustalenie wspolrzednej "o 2 miejsca dalej"
+                    if (b >= getRows()) // sprawdzenie czy przekroczono zakres
+                        b -= getRows(); // naniesienie poprawki
+                    typeSize c = j + getRows() - 1; // ustalenie wspolrzednej "o 1 miejsce blizej"
+                    if (c >= getRows()) // sprawdzenie czy przekroczono zakres
+                        c -= getRows(); // naniesienie poprawki
+                    typeSize d = j + getRows() - 2; // ustalenie wspolrzednej "o 2 miejsca blizej"
+                    if (d >= getRows()) // sprawdzenie czy przekroczono zakres
+                        d -= getRows(); // naniesienie poprawki
+                    Result.setElement(j, 0, (getElement(a, 0) * M.getElement(b, 0) - getElement(c, 0) * M.getElement(d, 0))); // ustanowienie wartosci elementu
+                }
             }
             else // argumenty sa wektorami pionowymi majacymi po 2 elementy
             {
