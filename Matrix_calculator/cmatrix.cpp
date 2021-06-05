@@ -443,20 +443,29 @@ cMatrix cMatrix::operator * (double parFactor)
  */
 cMatrix cMatrix::operator * (cMatrix M)
 {
-    cMatrix Result(getRows(), M.getColumns());
-    Result.tableElements = new double[getRows() * M.getColumns()];
-    for (typeSize i = 0; i < getRows(); i++)
+    if (getColumns() == M.getRows()) // sprawdzenie czy macierze maja odpowiednie wymiary
     {
-        double sum;
-        for (typeSize j = 0; j < M.getColumns(); j++)
+        cMatrix Result(getRows(), M.getColumns()); // utworzenie obiektu wynikowego
+        Result.tableElements = new double[getRows() * M.getColumns()]; // utworzenie nowej tablicy elementow
+        for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
         {
-            sum = 0.0;
-            for (typeSize k = 0; k < getColumns(); k++)
-                sum += (getElement(i, k) * M.getElement(k, j));
-            Result.setElement(i, j, sum);
+            double sum; // utworzenie obiektu wynikowego
+            for (typeSize j = 0; j < M.getColumns(); j++) // przejscie po wszystkich kolumnach
+            {
+                sum = 0.0; // nadanie sumy poczatkowej
+                for (typeSize k = 0; k < getColumns(); k++) // przejscie przez wszystkie iloczyny
+                    sum += (getElement(i, k) * M.getElement(k, j)); // sumowanie kolejnych iloczynow
+                Result.setElement(i, j, sum); // ustawienie wartosci elementu macierzy wynikowej
+            }
         }
+        return Result; // zwrocenie wyniku
     }
-    return Result;
+    else // macierze jednak nie pasuja wymiarami
+    {
+        // !!! Macierze maja niepasujace wymiary
+        cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+        return Result; // zwrocenie fikcyjnego wyniku
+    }
 }
 
 
@@ -527,11 +536,28 @@ void cMatrix::mCalculateDeterminantDiagonal()
  */
 cMatrix cMatrix::mInversalMatrix1x1()
 {
-    cMatrix Result(getRows(), getColumns());
-    Result.tableElements = new double[1];
-    Result.setElement(0, 0, 1 / getElement(0, 0));
-    Result.vDeterminant = Result.getElement(0, 0);
-    return Result;
+    if ((getRows() == 1) && (getColumns() == 1)) // sprawdzenie czy macierz ma wymiary 1 na 1
+    {
+        cMatrix Result(getRows(), getColumns()); // utworzenie obiektu wynikowego
+        Result.tableElements = new double[1]; // utworzenie nowej tablicy elementow
+        if (getDeterminant() != 0) //  sprawdzenie czy wyznacznik jest rozny od '0'
+        {
+            Result.setElement(0, 0, 1 / getElement(0, 0)); // ustanowienie wartosci jedynego elementu tablicy
+            return Result; // zwrocenie wyniku
+        }
+        else // jednak wyznacznik jest '0'
+        {
+            // !!! Wyznacznik jest rowny zero
+            cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+            return Result; // zwrocenie fikcyjnego wyniku
+        }
+    }
+    else // macierz ma jednak niepoprawne wymiary
+    {
+        // !!! Macierz ma niepoprawne wymiary
+        cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+        return Result; // zwrocenie fikcyjnego wyniku
+    }
 }
 
 /*
