@@ -468,14 +468,14 @@ public:
     friend istream &operator >> (istream & streamIn, cMatrix &M);
 
     /*
-     * void operator = (const cMatrix &M) - przeladowanie
+     * void operator = (cMatrix M) - przeladowanie
      * operatora przypisania.
      * PRE:
-     * - podanie referencji do obiektu klasy cMatrix.
+     * - podanie obiektu klasy cMatrix.
      * POST:
      * - brak.
      */
-    void operator = (/*const */cMatrix /*&*/M);
+    void operator = (cMatrix M);
 
 
 

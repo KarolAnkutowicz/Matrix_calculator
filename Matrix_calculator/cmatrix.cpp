@@ -366,17 +366,17 @@ istream &operator >> (istream & streamIn, cMatrix &M)
 }
 
 /*
- * void operator = (const cMatrix &M)
+ * void operator = (cMatrix M)
  */
-void cMatrix::operator = (/*const */cMatrix /*&*/M)
+void cMatrix::operator = (cMatrix M)
 {
-    setRows(M.getRows());
-    setColumns(M.getColumns());
-    tableElements = new double[getRows() * getColumns()];
-    for (typeSize i = 0; i < getRows(); i++)
-        for (typeSize j = 0; j < getColumns(); j++)
-            tableElements[i * getColumns() + j] = M.getElement(i, j);
-    mTests();
+    setRows(M.getRows()); // ustawienie liczby wierszy
+    setColumns(M.getColumns()); // ustawienie liczby kolumn
+    tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
+    for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+        for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich elemantach
+            tableElements[i * getColumns() + j] = M.getElement(i, j); // kopiowanie elementu
+    mTests(); // sprawdzenie wlasciwosci macierzy
 }
 
 
