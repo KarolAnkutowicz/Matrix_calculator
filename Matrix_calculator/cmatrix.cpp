@@ -235,22 +235,6 @@ cMatrix::cMatrix(typeSize parColumns)
 }
 
 /*
- * cMatrix(typeSize parColumns, double *parTabElements)
- */
-/*cMatrix::cMatrix(typeSize parColumns, double parTabElements[])
-{
-    vRows = 1; // ustanowienie liczby wierszy
-    vColumns = parColumns; // ustanowienie liczby kolumn
-    tableElements = new double[vRows * vColumns];
-    mCopyTableElements(parTabElements); // skopiowanie zawartosci tablicy
-    mTests(); // sprawdzenie wlasciwosci macierzy
-    if (vIfMatrixSquare)
-        vDeterminant = getElement(0, 0); // ustanowienie wlasciwego wyznacznika
-    else
-        vDeterminant = 0; // ustanowienie wyznacznika (jedynie dla porzadku)
-}*/
-
-/*
  * cMatrix(typeSize parRows, typeSize parColumns)
  */
 cMatrix::cMatrix(typeSize parRows, typeSize parColumns)

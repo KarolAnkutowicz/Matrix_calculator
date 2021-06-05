@@ -239,18 +239,6 @@ public:
     cMatrix(typeSize parColumns);
 
     /*
-     * cMatrix(typeSize parColumns, double *parTabElements) -
-     * konstruktor wywolywany z dwoma parametrami: liczba kolumn
-     * (zatem jest to wektor) oraz tablica liczb.
-     * PRE:
-     * - podanie liczby kolumn (argument: parColumns);
-     * - podanie wartosci kolejnych elementow (argument: *parTabElements).
-     * POST:
-     * - utworzenie obiektu klasy cMatrix.
-     */
-    //cMatrix(typeSize parColumns, double *parTabElements);
-
-    /*
      * cMatrix(typeSize parRows, typeSize parColumns) - konstruktor
      * wywolywany z dwoma parametrami - wymiarami macierzy.
      * PRE:
