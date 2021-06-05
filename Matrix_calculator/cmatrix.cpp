@@ -215,7 +215,7 @@ void cMatrix::mTests()
 cMatrix::cMatrix()
 {
     vRows = vColumns = 1; // ustanowienie rozmiaru macierzy
-    tableElements = new double[vRows * vColumns];
+    tableElements = new double[vRows * vColumns]; // utworzenie nowej tablic elementow
     mClearElements(); // "wyzerowanie" elementow
     mTests(); // sprawdzenie wlasciwosci macierzy
     vDeterminant = 0; // ustanowienie wyznacznika
@@ -228,7 +228,7 @@ cMatrix::cMatrix(typeSize parColumns)
 {
     vRows = 1; // ustanowienie liczby wierszy
     vColumns = parColumns; // ustanowienie liczby kolumn
-    tableElements = new double[vRows * vColumns];
+    tableElements = new double[vRows * vColumns]; // utworzenie nowej tablicy elementow
     mClearElements(); // "wyzerowanie" elementow
     mTests(); // sprawdzenie wlasciwosci macierzy
     vDeterminant = 0; // ustanowienie wyznacznika (jedynie dla porzadku)
@@ -241,7 +241,7 @@ cMatrix::cMatrix(typeSize parRows, typeSize parColumns)
 {
     vRows = parRows; // ustanowienie liczby wierszy
     vColumns = parColumns; // ustanowienie liczby kolumn
-    tableElements = new double[vRows * vColumns];
+    tableElements = new double[vRows * vColumns]; // utworzenie nowej tablicy elementow
     mClearElements(); // "wyzerowanie" elementow
     mTests(); // sprawdzenie wlasciwosci macierzy
     vDeterminant = 0; // ustanowienie wartosci wyznacznika (dla porzadku)
@@ -254,7 +254,7 @@ cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double parTabElements[])
 {
     vRows = parRows; // ustanowienie liczby wierszy
     vColumns = parColumns; // ustanowienie liczby kolumn
-    tableElements = new double[vRows * vColumns];
+    tableElements = new double[vRows * vColumns]; // utworzenie nowej tablicy elementow
     mCopyTableElements(parTabElements); // skopiowanie zawartosci tablicy
     mTests(); // sprawdzenie wlasciwosci macierzy
     /*if (vIfMatrixSquare)
@@ -494,9 +494,25 @@ void cMatrix::mCalculateDeterminant3x3()
  */
 void cMatrix::mCalculateDeterminantDiagonal()
 {
-    vDeterminant = 1.0;
-    for (typeSize i = 0; i < getRows(); i++)
-        vDeterminant *= getElement(i, i);
+    if (getIfMatrixSquare())
+    {
+        if ((getIfMatrixIdentity() == true) || (getIfMatrixDiagonal() == true) || (getIfMatrixTriangularUpper() == true) || (getIfMatrixTriangularLower() == true)) // sprawdzenie wlasciwosci macierzy
+        {
+            vDeterminant = 1.0; // nadanie wartosci poczatkowej
+            for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich elementach glownej przekatnej
+                vDeterminant *= getElement(i, i); // przemnozenie przez kolejne elementy
+        }
+        else // jednak wlasciwosci nie sa spelnione
+        {
+            // !!! Macierz nie spelnia okreslonych wlasciwosci
+            vDeterminant = 0.0; // nadanie fikcyjnej wartosci wyznacznika
+        }
+    }
+    else
+    {
+        // !!! Macierz nie jest kwadratowa
+        vDeterminant = 0.0; // nadanie fikcyjnej wartosci wyznacznika
+    }
 }
 
 /*
