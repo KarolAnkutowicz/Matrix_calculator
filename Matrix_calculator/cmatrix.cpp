@@ -264,13 +264,6 @@ cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double parTabElements[])
 }
 
 /*
- * cMatrix(const cMatrix &M)
- */
-/*cMatrix::cMatrix(const cMatrix &M)
-{
-}*/
-
-/*
  * ~cMatrix()
  */
 cMatrix::~cMatrix()
@@ -645,10 +638,18 @@ double cMatrix::mScalarProduct(cMatrix M)
     {
         if ((getRows() == M.getRows()) && (getColumns() == M.getColumns())) // sprawdzenie czy wektory maja identyczne wymiary
         {
-            double sum = 0.0; // ustanowienie sumy poczatkowej
-            for (typeSize i = 0; i < getColumns(); i++) // przejscie przez wszystkie elementy obu wektorow
-                sum += (getElement(1, i) * M.getElement(1, i)); // dodawanie kolejnych iloczynow do wyniku
-            return sum; // zwrocenie wyniku
+            if (getRows() == 1) // sytaucja kiedy mamy wektory poziome
+            {
+                double sum = 0.0; // ustanowienie sumy poczatkowej
+                for (typeSize i = 0; i < getColumns(); i++) // przejscie przez wszystkie elementy obu wektorow
+                    sum += (getElement(1, i) * M.getElement(1, i)); // dodawanie kolejnych iloczynow do wyniku
+                return sum; // zwrocenie wyniku
+            }
+            else // sytuacja kiedy mamy wektory pionowe
+            {
+                //
+                return 0.0;
+            }
         }
         else // jednak wektory maja rozne wymiary
         {
@@ -709,7 +710,7 @@ cMatrix cMatrix::mCrossProduct(cMatrix M)
             }
             else // argumenty sa wektorami pionowymi majacymi po 2 elementy
             {
-
+                //
             }
             return Result;
         }

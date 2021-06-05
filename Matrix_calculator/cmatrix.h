@@ -263,15 +263,6 @@ public:
     cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements);
 
     /*
-     * cMatrix(const cMatrix &M) - konstruktor kopiujacy.
-     * PRE:
-     * - brak.
-     * POST:
-     * - utworzenie obiektu klasy cMatrix.
-     */
-    //cMatrix(const cMatrix &M);
-
-    /*
      * ~cMatrix() - destruktor klasy cMatrix.
      * PRE:
      * - brak.
