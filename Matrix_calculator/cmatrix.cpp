@@ -644,28 +644,53 @@ cMatrix cMatrix::mCrossProduct(cMatrix M)
 {
     if ((getIfVector() == true) && (M.getIfVector() == true)) // sprawdzenie czy argumantami sa wektory
     {
-        cMatrix Result(1, getColumns());
-        if (getColumns() > 2)
+        if ((getRows() == M.getRows()) && (getColumns() == M.getColumns())) // sprawdzenie czy wektory maja identyczne wymiary
         {
-            Result.tableElements = new double[getColumns()];
-            for (typeSize i = 0; i < getColumns(); i++)
+            cMatrix Result(getRows(), getColumns()); // utworzenie obiektu wynikowego
+            Result.tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
+            if ((getRows() == 1) && (getColumns() > 2)) // argumenty sa wektorami poziomymi majacymi wiecej niz po 2 elementy
             {
-                typeSize a = i + 1;
-                if (a >= getColumns())
-                    a -= getColumns();
-                typeSize b = i + 2;
-                if (b >= getColumns())
-                    b -= getColumns();
-                typeSize c = i + getColumns() - 1;
-                if (c >= getColumns())
-                    c -= getColumns();
-                typeSize d = i + getColumns() - 2;
-                if (d >= getColumns())
-                    d -= getColumns();
-                Result.setElement(1, i, (getElement(1, a) * M.getElement(1, b) - getElement(1, c) * M.getElement(1, d)));
+                for (typeSize i = 0; i < getColumns(); i++) // przejscie po wszystkich elementach
+                {
+                    typeSize a = i + 1; // ustalenie wspolrzednej "o 1 miejsce dalej"
+                    if (a >= getColumns()) // sprawdzenie czy przekroczono zakres
+                        a -= getColumns(); // naniesienie poprawki
+                    typeSize b = i + 2; // ustalenie wspolrzednej "o 2 miejsca dalej"
+                    if (b >= getColumns()) // sprawdzenie czy przekroczono zakres
+                        b -= getColumns(); // naniesienie poprawki
+                    typeSize c = i + getColumns() - 1; // ustalenie wspolrzednej "o 1 miejsce blizej"
+                    if (c >= getColumns()) // sprawdzenie czy przekroczono zakres
+                        c -= getColumns(); // naniesienie poprawki
+                    typeSize d = i + getColumns() - 2; // ustalenie wspolrzednej "o 2 miejsca blizej"
+                    if (d >= getColumns()) // sprawdzenie czy przekroczono zakres
+                        d -= getColumns(); // naniesienie poprawki
+                    Result.setElement(1, i, (getElement(1, a) * M.getElement(1, b) - getElement(1, c) * M.getElement(1, d))); // ustanowienie wartosci elementu
+                }
             }
+            else if ((getRows() == 1) && getColumns() == 2) // argumenty sa wektorami poziomymi majacymi po 2 elementy
+            {
+                //
+            }
+            else if ((getRows() == 1) && (getColumns() == 1)) // argumenty sa wektorami poziomymi/pionowymi majacymi po 1 elemencie
+            {
+                //
+            }
+            else if ((getRows() > 2) && (getColumns() == 1)) // argumenty sa wektorami pionowymi majacymi wiecej niz po 2 elementy
+            {
+                //
+            }
+            else // argumenty sa wektorami pionowymi majacymi po 2 elementy
+            {
+
+            }
+            return Result;
         }
-        return Result;
+        else // wektory maja rozne wymiary
+        {
+            // !!! Wektory maja rozne wymiary
+            cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+            return Result; // zwrocenie fikcyjnego wyniku
+        }
     }
     else // co najmniej jeden z argumentow nie jest wektorem
     {
