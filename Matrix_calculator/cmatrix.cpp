@@ -698,11 +698,12 @@ cMatrix cMatrix::mCrossProduct(cMatrix M)
             }
             else if ((getRows() == 1) && getColumns() == 2) // argumenty sa wektorami poziomymi majacymi po 2 elementy
             {
-                //
+                Result.setElement(0, 0, getElement(0, 1) * M.getElement(0, 0)); // ustanowienie wartosci elementow wynikowych
+                Result.setElement(0, 1, getElement(0, 0) * M.getElement(0, 1));
             }
             else if ((getRows() == 1) && (getColumns() == 1)) // argumenty sa wektorami poziomymi/pionowymi majacymi po 1 elemencie
             {
-                //
+                Result.setElement(0, 0, getElement(0, 0) * M.getElement(0, 0)); // ustanowienie wartosci elementu wynikowego
             }
             else if ((getRows() > 2) && (getColumns() == 1)) // argumenty sa wektorami pionowymi majacymi wiecej niz po 2 elementy
             {
@@ -710,9 +711,10 @@ cMatrix cMatrix::mCrossProduct(cMatrix M)
             }
             else // argumenty sa wektorami pionowymi majacymi po 2 elementy
             {
-                //
+                Result.setElement(0, 0, getElement(1, 0) * M.getElement(0, 0)); // ustanowienie wartosci elementow wynikowych
+                Result.setElement(1, 0, getElement(0, 0) * M.getElement(1, 0));
             }
-            return Result;
+            return Result; // zwrocenie wyniku
         }
         else // wektory maja rozne wymiary
         {

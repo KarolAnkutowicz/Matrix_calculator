@@ -284,6 +284,7 @@ public:
     {
         return vRows;
     }
+
     /*
      * typeSize getColumns() - metoda zwracajaca liczbe kolumn macierzy
      * PRE:
@@ -295,6 +296,7 @@ public:
     {
         return vColumns;
     }
+
     /*
      * typeSize getElement(typeSize parRows, typeSize parColumns) -
      * metoda pozwalajaca zmienic wartosc wskazanego elementu tablicy
@@ -309,6 +311,7 @@ public:
     {
         return tableElements[parRows * vColumns + parColumns];
     }
+
     /*
      * bool getIfVector() - metoda zwracajaca informacje czy macierz
      * jest wektorem.
@@ -321,6 +324,7 @@ public:
     {
         return vIfVector;
     }
+
     /*
      * bool getIfMatrixZeros() - metoda zwracajaca informacje czy
      * macierz jest macierza zerowa.
@@ -333,6 +337,7 @@ public:
     {
         return vIfMatrixZeros;
     }
+
     /*
      * bool getIfMatrixSquare() - metoda zwracajaca informacje czy
      * macierz jest macierza kwadratowa.
@@ -345,6 +350,7 @@ public:
     {
         return vIfMatrixSquare;
     }
+
     /*
      * bool getIfMatrixIdentity() - metoda zwracajaca informacje czy
      * macierz jest macierza jednostkowa.
@@ -357,6 +363,7 @@ public:
     {
         return vIfMatrixIdentity;
     }
+
     /*
      * bool getIfMatrixDiagonal() - metoda zwracajaca informacje czy
      * macierz jest macierza diagonalna.
@@ -369,6 +376,7 @@ public:
     {
         return vIfMatrixDiagonal;
     }
+
     /*
      * bool getIfMatrixTriangularUpper() - metoda zwracajaca informacje
      * czy macierz jest macierza trojkatna gorna.
@@ -381,6 +389,7 @@ public:
     {
         return vIfMatrixTriangularUpper;
     }
+
     /*
      * bool getIfMatrixTriangularLower() - metoda zwracajaca informacje
      * czy macierz jest macierza trojkatna dolna.
