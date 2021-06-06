@@ -551,9 +551,31 @@ public:
      * PRE:
      * - brak.
      * POST:
-     * - void.
+     * - brak.
      */
     void mCalculateDeterminant();
+
+    /*
+     * bool mFindZerosRow() - metoda okreslajaca czy w macierzy
+     * znajduje sie zerowy wiersz. Metoda pomocnicza dla
+     * metody mCalculateDeterminant().
+     * PRE:
+     * - brak.
+     * POST:
+     * - zwrocenie informacji o zerowym wierszu (typ: bool).
+     */
+    bool mFindZerosRow();
+
+    /*
+     * bool mFindZerosColumn() - metoda okreslajaca czy w macierzy
+     * znajduje sie zerowa kolumna. Metoda pomocnicza dla
+     * metody mCalculateSeterminant().
+     * PRE:
+     * - brak.
+     * POST:
+     * - zwrocenie informacji o zerowej kolumnie (typ: bool).
+     */
+    bool mFindZerosColumn();
 
 
 

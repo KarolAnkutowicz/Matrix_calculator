@@ -522,7 +522,7 @@ void cMatrix::mCalculateDeterminantDiagonal()
             vDeterminant = 0.0; // nadanie fikcyjnej wartosci wyznacznika
         }
     }
-    else
+    else // macierz jednak nie jest kwadratowa
     {
         // !!! Macierz nie jest kwadratowa
         vDeterminant = 0.0; // nadanie fikcyjnej wartosci wyznacznika
@@ -532,9 +532,34 @@ void cMatrix::mCalculateDeterminantDiagonal()
 /*
  * void mCalculateDeterminant()
  */
-/*void cMatrix::mCalculateDeterminant()
+void cMatrix::mCalculateDeterminant()
 {
-}*/
+    if (getIfMatrixSquare()) // sprawdzamy czy macierz jestkwadratowa
+    {
+
+    }
+    else // macierz jednak nie jest kwadratowa
+    {
+        // !!! Macierz nie jest kwadratowa
+        vDeterminant = 0.0; // nadaniw fikcyjnej wartosci wyznacznika
+    }
+}
+
+/*
+ * bool mFindZerosRow()
+ */
+bool cMatrix::mFindZerosRow()
+{
+    return true;
+}
+
+/*
+ * bool mFindZerosColumn()
+ */
+bool cMatrix::mFindZerosColumn()
+{
+    return true;
+}
 
 
 
