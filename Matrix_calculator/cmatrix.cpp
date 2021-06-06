@@ -720,23 +720,53 @@ cMatrix cMatrix::mInversalMatrix3x3()
         {
             // !!! Wyznacznik jest rowny zero
             cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
-            return Result; // zwrocenie wyniku
+            return Result; // zwrocenie fikcyjnego wyniku
         }
     }
     else // macierz ma niepoprawne wymiary
     {
         // A moze to blad wywolania?
         cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
-        return Result; // zwrocenie wyniku
+        return Result; // zwrocenie fikcyjnego wyniku
     }
 }
 
 /*
  * cMatrix mInversalMatrix()
  */
-/*cMatrix cMatrix::mInversalMatrix()
+cMatrix cMatrix::mInversalMatrix()
 {
-}*/
+    if (getIfMatrixSquare() == true) // sprawdzamy czy macierz jest kwadratowa
+    {
+        if (getRows() > 3) //sprawdzamy czy macierz ma wieksze wymiary niz 3x3
+        {
+            if (getDeterminant() != 0) // sprawdzamy czy wyznacznik jest rozny od zera
+            {
+                //
+                cMatrix Result(getRows(), getColumns()); // utworzenie obiektu wynikowego
+                return Result; // zwrocenie wyniku
+            }
+            else // wyznacznik jest jednak zerem
+            {
+                // !!! Wyznacznik jest rowny zero
+                cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+                return Result; // zwrocenie fikcyjnego wyniku
+            }
+        }
+        else // macierz nie ma wiekszych wymiarow niz 3x3
+        {
+            // moze wywolano nie te metode?
+            cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+            return Result; // zwrocenie fikcyjnego wyniku
+        }
+    }
+    else // jesli macierz nie jest kwadratowa
+    {
+        // !!! Macierz nie jest kwadratowa
+        cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+        return Result; // zwrocenie fikcyjnego wyniku
+    }
+}
 
 
 
