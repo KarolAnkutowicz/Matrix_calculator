@@ -264,6 +264,22 @@ cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double parTabElements[])
 }
 
 /*
+ * cMatrix(const cMatrix &M)
+ */
+cMatrix::cMatrix(const cMatrix &M)
+{
+    setRows(M.vRows); // ustawienie liczby wierszy
+    setColumns(M.vColumns); // ustawienie liczby kolumn
+    tableElements = new double[M.vRows * M.vColumns]; // utworzenie nowej tablicy elementow
+    for (typeSize i = 0; i < M.vRows; i++) // przejscie po wszystkich wierszach
+        for (typeSize j = 0; j < vColumns; j++) // przejscie po wszystkich elemantach
+            //tableElements[i * getColumns() + j] = M.getElement(i, j); // kopiowanie elementu
+            setElement(i, j, M.tableElements[i * vColumns + j]);
+    mTests(); // sprawdzenie wlasciwosci macierzy
+}
+
+
+/*
  * ~cMatrix()
  */
 cMatrix::~cMatrix()
@@ -345,16 +361,18 @@ istream &operator >> (istream & streamIn, cMatrix &M)
 /*
  * void operator = (cMatrix M)
  */
-void cMatrix::operator = (cMatrix M)
+cMatrix& cMatrix::operator = (const cMatrix &M)
 {
-    setRows(M.getRows()); // ustawienie liczby wierszy
-    setColumns(M.getColumns()); // ustawienie liczby kolumn
-    tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
-    for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
-        for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich elemantach
+    delete []tableElements;
+    setRows(M.vRows); // ustawienie liczby wierszy
+    setColumns(M.vColumns); // ustawienie liczby kolumn
+    tableElements = new double[M.vRows * M.vColumns]; // utworzenie nowej tablicy elementow
+    for (typeSize i = 0; i < M.vRows; i++) // przejscie po wszystkich wierszach
+        for (typeSize j = 0; j < vColumns; j++) // przejscie po wszystkich elemantach
             //tableElements[i * getColumns() + j] = M.getElement(i, j); // kopiowanie elementu
-            setElement(i, j, M.getElement(i, j));
+            setElement(i, j, M.tableElements[i * vColumns + j]);
     mTests(); // sprawdzenie wlasciwosci macierzy
+    return *this;
 }
 
 

@@ -263,6 +263,11 @@ public:
     cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements);
 
     /*
+     * cMatrix(const cMatrix &M) -
+     */
+    cMatrix(const cMatrix &M);
+
+    /*
      * ~cMatrix() - destruktor klasy cMatrix.
      * PRE:
      * - brak.
@@ -463,7 +468,7 @@ public:
      * POST:
      * - brak.
      */
-    void operator = (cMatrix M);
+    cMatrix& operator = (const cMatrix &M);
 
 
 
