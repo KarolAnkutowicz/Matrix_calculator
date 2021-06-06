@@ -706,9 +706,30 @@ cMatrix cMatrix::mInversalMatrix2x2()
 /*
  * cMatrix mInversalMatrix3x3()
  */
-/*cMatrix cMatrix::mInversalMatrix3x3()
+cMatrix cMatrix::mInversalMatrix3x3()
 {
-}*/
+    if ((getRows() == 3) && (getColumns() == 3)) // sprawdzamy czy macierz ma odpowiednie wymiary
+    {
+        if (getDeterminant() != 0) // sprawdzamy czy wyznacznik jest rozny od zera
+        {
+            //
+            cMatrix Result(getRows(), getColumns()); // utworzenie obiektu wynikowego
+            return Result; // zwrocenie wyniku
+        }
+        else // jesli wyznacznik jest rowny '0'
+        {
+            // !!! Wyznacznik jest rowny zero
+            cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+            return Result; // zwrocenie wyniku
+        }
+    }
+    else // macierz ma niepoprawne wymiary
+    {
+        // A moze to blad wywolania?
+        cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
+        return Result; // zwrocenie wyniku
+    }
+}
 
 /*
  * cMatrix mInversalMatrix()
