@@ -218,7 +218,7 @@ cMatrix::cMatrix()
     tableElements = new double[vRows * vColumns]; // utworzenie nowej tablic elementow
     mClearElements(); // "wyzerowanie" elementow
     mTests(); // sprawdzenie wlasciwosci macierzy
-    vDeterminant = 0; // ustanowienie wyznacznika
+    vDeterminant = 0.0; // ustanowienie wyznacznika
 }
 
 /*
@@ -231,7 +231,10 @@ cMatrix::cMatrix(typeSize parColumns)
     tableElements = new double[vRows * vColumns]; // utworzenie nowej tablicy elementow
     mClearElements(); // "wyzerowanie" elementow
     mTests(); // sprawdzenie wlasciwosci macierzy
-    vDeterminant = 0; // ustanowienie wyznacznika (jedynie dla porzadku)
+    if (vRows == vColumns) // sprawdzenie czy macierz jest kwadratowa
+        vDeterminant = getElement(0, 0); // jesli tak to jedyny element jedt rowniez wyznacznikiem
+    else // jesli macierz nie jest kwadratowa
+        vDeterminant = 0.0; // ustanowienie wyznacznika (jedynie dla porzadku)
 }
 
 /*
@@ -536,7 +539,8 @@ void cMatrix::mCalculateDeterminant()
 {
     if (getIfMatrixSquare()) // sprawdzamy czy macierz jestkwadratowa
     {
-
+        if (mFindZerosRow() == 0)
+            vDeterminant = 0.0;
     }
     else // macierz jednak nie jest kwadratowa
     {
@@ -550,7 +554,22 @@ void cMatrix::mCalculateDeterminant()
  */
 bool cMatrix::mFindZerosRow()
 {
-    return true;
+    bool vZeros; // utworzenie obiektu wynikowego
+    for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+    {
+        vZeros = true; // domniemanie posiadania zerowego wiersza
+        for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
+        {
+            if (getElement(i, j) != 0) // sprawdzamy czy element jest rozny od zera
+            {
+                vZeros = false; // natrafienie na niezerowy element
+                continue; // przejscie do kolejnefgo cyklu petli
+            }
+            if (vZeros == true) // jesli nie udalo sie zmienic w calym wierszu wartosci obiektu to mamy wiersz zerowy
+                break; // przerwanie petli
+        }
+    }
+    return vZeros; // zwrocenie wyniku
 }
 
 /*

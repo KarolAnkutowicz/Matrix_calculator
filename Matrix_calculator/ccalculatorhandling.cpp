@@ -470,12 +470,12 @@ void cCalculatorHandling::mChooseMatrixOthers()
                 d3 = M1.getDeterminant(); // przypisanie wyniku
                 cout << d3 << endl; // wypisanie wyniku
             }
-            /*else // tutaj macierz ma wymiar wiekszy niz 3, ktore nie sa diagonalne
+            else // tutaj macierz ma wymiar wiekszy niz 3, ktore nie sa diagonalne
             {
                 M1.mCalculateDeterminant(); // obliczenie wyznacznika
                 d3 = M1.getDeterminant(); // przypisanie wyniku
                 cout << d3 << endl; // wypisanie wyniku
-            }*/
+            }
         }
         else // macierz jednak nie jest kwadratowa
         {
