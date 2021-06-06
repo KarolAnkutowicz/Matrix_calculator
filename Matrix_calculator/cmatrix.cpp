@@ -352,7 +352,8 @@ void cMatrix::operator = (cMatrix M)
     tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
     for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
         for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich elemantach
-            tableElements[i * getColumns() + j] = M.getElement(i, j); // kopiowanie elementu
+            //tableElements[i * getColumns() + j] = M.getElement(i, j); // kopiowanie elementu
+            setElement(i, j, M.getElement(i, j));
     mTests(); // sprawdzenie wlasciwosci macierzy
 }
 
@@ -363,12 +364,38 @@ void cMatrix::operator = (cMatrix M)
  */
 cMatrix cMatrix::operator + (cMatrix M)
 {
-    if ((getRows() == M.getRows()) && (getColumns() == M.getColumns())) // s[rawdzenie czy macierz maja te same wymiary
+    if ((getRows() == M.getRows()) && (getColumns() == M.getColumns())) // sprawdzenie czy macierz maja te same wymiary
     {
         cMatrix Result(getRows(), getColumns()); // utworzenie macierzy wynikowej
-        for (typeSize i = 0; i < vRows; i++) // przejscie po wszystkich wierszach
-            for (typeSize j = 0; j < vColumns; j++) // przejscie po wszystkich kolumnach
+        Result.tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
+// do usuniecia
+        cout << "Result" << endl;
+        for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+            for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
+                cout << i << " " << j << " " << Result.getElement(i, j) << endl;
+        // do usuniecia
+                cout << "This" << endl;
+                for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+                    for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
+                        cout << i << " " << j << " " << getElement(i, j) << endl;
+                // do usuniecia
+                        cout << "M" << endl;
+                        for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+                            for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
+                                cout << i << " " << j << " " << M.getElement(i, j) << endl;
+
+        for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+            for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
                 Result.setElement(i, j, getElement(i, j) + M.getElement(i, j)); // obliczanie kolejnych elementow
+
+        // do usuniecia
+                cout << "Result" << endl;
+                for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+                    for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
+                        cout << i << " " << j << " " << Result.getElement(i, j) << endl;
+
+
+
         Result.mTests(); // sprawdzenie wlasciwosci macierzy
         return Result; // zwrocenie wyniku
     }
@@ -388,6 +415,7 @@ cMatrix cMatrix::operator - (cMatrix M)
     if ((getRows() == M.getRows()) && (getColumns() == M.getColumns())) // s[rawdzenie czy macierz maja te same wymiary
     {
         cMatrix Result(getRows(), getColumns()); // utworzenie amcierzy wynikowej
+        Result.tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
         for (typeSize i = 0; i < vRows; i++) // przejscie po wszystkich wierszach
             for (typeSize j = 0; j < vColumns; j++) // przejscie po wszystkich kolumnach
                 Result.setElement(i, j, getElement(i, j) - M.getElement(i, j)); // obliczanie kolejnych elementow
