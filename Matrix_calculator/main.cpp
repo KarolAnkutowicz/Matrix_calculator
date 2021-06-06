@@ -24,10 +24,10 @@ int main()
  * liczba * macierz  DZIALA
  * liczba / liczba   DZIALA
  * liczba ^ liczba   DZIALA
- * macierz + macierz DO POPRAWY - pierwszy rzad wyniku bledny
- * macierz - macierz DO POPRAWY - pierwszy rzad wyniku bledny
+ * macierz + macierz DZIALA
+ * macierz - macierz DZIALA
  * macierz * liczba  DZIALA
- * macierz * macierz DO POPRAWY - pierwszy rzad wyniku bledny
+ * macierz * macierz DZIALA
  * macierz o macierz DO POPRAWY - bledny wynik
  * macierz x macierz DO POPRAWY - bledny wynik
  * macierz ^-1       ?

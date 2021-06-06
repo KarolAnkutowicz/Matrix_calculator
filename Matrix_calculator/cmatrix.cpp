@@ -386,34 +386,9 @@ cMatrix cMatrix::operator + (cMatrix M)
     {
         cMatrix Result(getRows(), getColumns()); // utworzenie macierzy wynikowej
         Result.tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
-// do usuniecia
-        cout << "Result" << endl;
-        for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
-            for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
-                cout << i << " " << j << " " << Result.getElement(i, j) << endl;
-        // do usuniecia
-                cout << "This" << endl;
-                for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
-                    for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
-                        cout << i << " " << j << " " << getElement(i, j) << endl;
-                // do usuniecia
-                        cout << "M" << endl;
-                        for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
-                            for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
-                                cout << i << " " << j << " " << M.getElement(i, j) << endl;
-
         for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
             for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
                 Result.setElement(i, j, getElement(i, j) + M.getElement(i, j)); // obliczanie kolejnych elementow
-
-        // do usuniecia
-                cout << "Result" << endl;
-                for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
-                    for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
-                        cout << i << " " << j << " " << Result.getElement(i, j) << endl;
-
-
-
         Result.mTests(); // sprawdzenie wlasciwosci macierzy
         return Result; // zwrocenie wyniku
     }
