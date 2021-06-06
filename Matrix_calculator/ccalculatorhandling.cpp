@@ -307,19 +307,8 @@ void cCalculatorHandling::mChooseMatrixExponentiation()
     {
         cin >> skipws >> j; // wczytanie wykladnika
         cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie macierzy wynikowej
-        M3 = M1; // przypisanie macierzy poczatkowej do wynikowej
-        if (j == 0) // potegujemy do potegi '0'
-        {
-            // robimy macierz jednostkowa
-        }
-        else if (j == 1) // potegujemy do potegi 1
-            cout << M3 << endl; // wypisanie wyniku
-        else // potegujemy do potegi wiekszej niz 1
-        {
-            /* cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
-            M3 = M1.mExponentiationMatrix(j); // wywolanie metody potegujacej macierze
-            cout << M3 << endl; // wypisanie wyniku*/
-        }
+        M3 = M1.mExponentiationMatrix(j); // wywolanie metody potegujacej macierze
+        cout << M3 << endl; // wypisanie wyniku
     }
     else // nieudana proba potegowania macierzy niekwadratowej
     {

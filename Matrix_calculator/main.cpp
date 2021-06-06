@@ -31,7 +31,7 @@ int main()
  * macierz o macierz DZIALA
  * macierz x macierz DZIALA
  * macierz ^-1       ?
- * macierz ^n        ?
+ * macierz ^n        DZIALA
  * macierz len       DZIALA
  * macierz det       ?
  * macierz T         DZIALA

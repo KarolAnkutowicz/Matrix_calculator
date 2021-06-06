@@ -552,18 +552,24 @@ cMatrix cMatrix::mExponentiationMatrix(typeSize parPower)
                 Result.setElement(i, j, getElement(i, j)); // nadanie wartosci dla kolejnych elementow
         if (parPower == 0) // sprawdzamy czy potega jest rowna '0'
         {
-            // robimy macierz jednostkowa
-            return Result; // WYNIK DO POPRAWY
+            for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+            {
+                for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
+                {
+                    if (i == j) // sprawdzamy czy jestesmy na glownej przekatnej
+                        Result.setElement(i, j, 1); // utanowienie wartosci elementu
+                    else // jestesmy poza glowna przekatna
+                        Result.setElement(i, j, 0); // ustanowienie wartosci elementu
+                }
+            }
         }
-        else if (parPower == 1) // sprawdzamy czy potega jest rowna 1
-            return Result; // zwrocenie wyniku
-        else // tutaj potega jest wieksza niz 1
+        else if (parPower > 1) // tutaj potega jest wieksza niz 1
         {
             cMatrix X = Result; // utworzenie nowej macierzy, rownej wynikowej
             for (typeSize k = 1; k < parPower; k++) // przejscie przez odpowiednia liczbe mnozen
                 Result = Result * X; // kolejne mnozenie
-            return Result; // zwrocenie wyniku
         }
+        return Result; // zwrocenie wyniku
     }
     else // macierz jednak nie jest kwadratowa
     {
