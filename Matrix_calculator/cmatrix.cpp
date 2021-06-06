@@ -276,9 +276,9 @@ cMatrix::cMatrix(const cMatrix &M)
     tableElements = new double[M.vRows * M.vColumns]; // utworzenie nowej tablicy elementow
     for (typeSize i = 0; i < M.vRows; i++) // przejscie po wszystkich wierszach
         for (typeSize j = 0; j < vColumns; j++) // przejscie po wszystkich elemantach
-            //tableElements[i * getColumns() + j] = M.getElement(i, j); // kopiowanie elementu
-            setElement(i, j, M.tableElements[i * vColumns + j]);
+            setElement(i, j, M.tableElements[i * vColumns + j]); // kopiowanie wartosci elementu
     mTests(); // sprawdzenie wlasciwosci macierzy
+    vDeterminant = M.vDeterminant; // skopiowanie wartosci wyznacznika
 }
 
 
@@ -539,13 +539,17 @@ void cMatrix::mCalculateDeterminant()
 {
     if (getIfMatrixSquare()) // sprawdzamy czy macierz jestkwadratowa
     {
-        if (mFindZerosRow() == 0)
-            vDeterminant = 0.0;
+        if ((mFindZerosRow() == 0) && (mFindZerosColumn() == 0)) // sprawdzamy czy mamy zerowy wiersz lub kolumne
+            vDeterminant = 0.0; // nadanie wartosci wyznacznika
+        else
+        {
+
+        }
     }
     else // macierz jednak nie jest kwadratowa
     {
         // !!! Macierz nie jest kwadratowa
-        vDeterminant = 0.0; // nadaniw fikcyjnej wartosci wyznacznika
+        vDeterminant = 0.0; // nadanie fikcyjnej wartosci wyznacznika
     }
 }
 
@@ -563,7 +567,7 @@ bool cMatrix::mFindZerosRow()
             if (getElement(i, j) != 0) // sprawdzamy czy element jest rozny od zera
             {
                 vZeros = false; // natrafienie na niezerowy element
-                continue; // przejscie do kolejnefgo cyklu petli
+                continue; // przejscie do kolejnego cyklu petli
             }
             if (vZeros == true) // jesli nie udalo sie zmienic w calym wierszu wartosci obiektu to mamy wiersz zerowy
                 break; // przerwanie petli
@@ -577,7 +581,22 @@ bool cMatrix::mFindZerosRow()
  */
 bool cMatrix::mFindZerosColumn()
 {
-    return true;
+    bool vZeros; // utworzenie obiektu wynikowego
+    for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
+    {
+        vZeros = true; // domniemanie posiadania zerowej kolumny
+        for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
+        {
+            if (getElement(i, j) != 0) // sprawdzamy czy element jest rozny od zera
+            {
+                vZeros = false; // natrafienie na niezerowy element
+                continue; // przejscie do kolejnego cyklu petli
+            }
+            if (vZeros == true) // jesli nie udalo sie zmienic w calej kolumnie wartosci obiektu to mamy kolumne zerowa
+                break; // przerwanie petli
+        }
+    }
+    return vZeros; // zwrocenie wyniku
 }
 
 
