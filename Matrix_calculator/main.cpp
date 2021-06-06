@@ -28,7 +28,7 @@ int main()
  * macierz - macierz DZIALA
  * macierz * liczba  DZIALA
  * macierz * macierz DZIALA
- * macierz o macierz DO POPRAWY - bledny wynik
+ * macierz o macierz DZIALA
  * macierz x macierz DO POPRAWY - bledny wynik
  * macierz ^-1       ?
  * macierz ^n        ?

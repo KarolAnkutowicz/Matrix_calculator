@@ -659,18 +659,18 @@ double cMatrix::mScalarProduct(cMatrix M)
     {
         if ((getRows() == M.getRows()) && (getColumns() == M.getColumns())) // sprawdzenie czy wektory maja identyczne wymiary
         {
+            double sum = 0.0; // ustanowienie sumy poczatkowej
             if (getRows() == 1) // sytaucja kiedy mamy wektory poziome
             {
-                double sum = 0.0; // ustanowienie sumy poczatkowej
                 for (typeSize i = 0; i < getColumns(); i++) // przejscie przez wszystkie elementy obu wektorow
-                    sum += (getElement(1, i) * M.getElement(1, i)); // dodawanie kolejnych iloczynow do wyniku
-                return sum; // zwrocenie wyniku
+                    sum += (getElement(0, i) * M.getElement(0, i)); // dodawanie kolejnych iloczynow do wyniku
             }
             else // sytuacja kiedy mamy wektory pionowe
             {
-                //
-                return 0.0;
+                for (typeSize j = 0; j < getRows(); j++) // przejscie przez wszystkie elementy obu wektorow
+                    sum += (getElement(j, 0) * M.getElement(j, 0)); // dodawanie kolejnych iloczynow do wyniku
             }
+            return sum; // zwrocenie wyniku
         }
         else // jednak wektory maja rozne wymiary
         {
