@@ -120,7 +120,7 @@ class cMatrix
      * metopa kopiujaca zawartosc tablicy zadanej jako parametr do tablicy
      * elementow macierzy.
      * PRE:
-     * - podanie tablicy elementow (atrgument: parTableElements[).
+     * - podanie tablicy elementow (argument: parTableElements[]).
      * POST:
      * - brak.
      */
@@ -571,11 +571,31 @@ public:
      * znajduje sie zerowa kolumna. Metoda pomocnicza dla
      * metody mCalculateSeterminant().
      * PRE:
-     * - brak.
+     * - brak;
      * POST:
      * - zwrocenie informacji o zerowej kolumnie (typ: bool).
      */
     bool mFindZerosColumn();
+
+    /*
+     * void mSwapRows(typeSize i, typeSize j) - metoda zamieniajaca
+     * miejscami 2 wskazane wiersze w macierzy.
+     * PRE:
+     * - indeksy wierszy, ktore zamieniamy (argumenty: i, j);
+     * POST:
+     * - brak.
+     */
+    void mSwapRows(typeSize i, typeSize j);
+
+    /*
+     * void mSwapColumns(typeSize i, typeSize j) - metoda zamieniajaca
+     * miejsca 2 wskazane kolumny w macierzy.
+     * PRE:
+     * - indeksy kolumne, ktore zamieniamy (argumenty: i, j);
+     * POST:
+     * - brak.
+     */
+    void mSwapColumns(typeSize i, typeSize j);
 
 
 
@@ -583,7 +603,7 @@ public:
      * cMatrix mExponentiationMatrix(typeSize parPower) -
      * metoda obliczajaca potege macierzy.
      * PRE:
-     * - podanie potegi (argument: parPower).
+     * - podanie potegi (argument: parPower);
      * POST:
      * - zwrocenie wyniku (typ: cMatrix).
      */

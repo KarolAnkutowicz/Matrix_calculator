@@ -511,7 +511,7 @@ void cMatrix::mCalculateDeterminant3x3()
  */
 void cMatrix::mCalculateDeterminantDiagonal()
 {
-    if (getIfMatrixSquare())
+    if (getIfMatrixSquare()) // sprawdzamy czy macierz jest kwadratowa
     {
         if ((getIfMatrixIdentity() == true) || (getIfMatrixDiagonal() == true) || (getIfMatrixTriangularUpper() == true) || (getIfMatrixTriangularLower() == true)) // sprawdzenie wlasciwosci macierzy
         {
@@ -597,6 +597,22 @@ bool cMatrix::mFindZerosColumn()
         }
     }
     return vZeros; // zwrocenie wyniku
+}
+
+/*
+ * void mSwapRows(typeSize i, typeSize j)
+ */
+void cMatrix::mSwapRows(typeSize i, typeSize j)
+{
+    i = j;
+}
+
+/*
+ * void mSwapColumns(typeSize i, typeSize j)
+ */
+void cMatrix::mSwapColumns(typeSize i, typeSize j)
+{
+    i = j;
 }
 
 
