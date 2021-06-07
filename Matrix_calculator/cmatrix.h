@@ -7,6 +7,7 @@
 #ifndef CMATRIX_H
 #define CMATRIX_H
 
+#include "cexceptionsanderrors.h"
 #include "constantsandtypes.h"
 #include <cmath>
 #include <iostream>
@@ -276,6 +277,11 @@ public:
      */
     ~cMatrix();
 
+    /*
+     * cExceptionsAndErrors Error - obiekt odpowiedzialny za
+     * wyswietlanie komunikatow o bledach.
+     */
+    cExceptionsAndErrors Error;
 
 
     /*

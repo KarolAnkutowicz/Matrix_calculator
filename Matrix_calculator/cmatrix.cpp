@@ -263,7 +263,7 @@ cMatrix::cMatrix(typeSize parRows, typeSize parColumns, double parTabElements[])
     /*if (vIfMatrixSquare)
         vDeterminant = ...
     else*/
-        vDeterminant = 0; // ustanowienie wartosci wyznacznika (jedynie dla porzadku)
+        vDeterminant = 0.0; // ustanowienie wartosci wyznacznika (jedynie dla porzadku)
 }
 
 /*
@@ -397,7 +397,7 @@ cMatrix cMatrix::operator + (cMatrix M)
     }
     else // macierze maja rozne wymiary
     {
-        // !!! Rozne wymiary macierzy
+        Error.mDisplayMessage(101); // !!! Rozne wymiary macierzy
         cMatrix Result; // utworzenie fikcyjnej macierzy wynikowej
         return Result; // zwrocenie fikcyjnej macierzy wynikowej
     }
@@ -420,7 +420,7 @@ cMatrix cMatrix::operator - (cMatrix M)
     }
     else // macierza maja rozne wymiary
     {
-        // !!! Rozne wymiary macierzy
+        Error.mDisplayMessage(101); // !!! Rozne wymiary macierzy
         cMatrix Result; // utworzenie fikcyjnej macierzy wynikowej
         return Result; // zwrocenie fikcyjnej macierzy wynikowej
     }
