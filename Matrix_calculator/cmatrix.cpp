@@ -463,7 +463,7 @@ cMatrix cMatrix::operator * (cMatrix M)
     }
     else // macierze jednak nie pasuja wymiarami
     {
-        // !!! Macierze maja niepasujace wymiary
+        Error.mDisplayMessage(102); // !!! Macierze maja niepasujace wymiary
         cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
         return Result; // zwrocenie fikcyjnego wyniku
     }
@@ -527,7 +527,7 @@ void cMatrix::mCalculateDeterminantDiagonal()
     }
     else // macierz jednak nie jest kwadratowa
     {
-        // !!! Macierz nie jest kwadratowa
+        Error.mDisplayMessage(103); // !!! Macierz nie jest kwadratowa
         vDeterminant = 0.0; // nadanie fikcyjnej wartosci wyznacznika
     }
 }
@@ -548,7 +548,7 @@ void cMatrix::mCalculateDeterminant()
     }
     else // macierz jednak nie jest kwadratowa
     {
-        // !!! Macierz nie jest kwadratowa
+        Error.mDisplayMessage(103); // !!! Macierz nie jest kwadratowa
         vDeterminant = 0.0; // nadanie fikcyjnej wartosci wyznacznika
     }
 }
@@ -692,7 +692,7 @@ cMatrix cMatrix::mExponentiationMatrix(typeSize parPower)
     }
     else // macierz jednak nie jest kwadratowa
     {
-        // !!! Macierz nie jest kwadratowa
+        Error.mDisplayMessage(103); // !!! Macierz nie jest kwadratowa
         cMatrix Result; // ustanowienie fikcyjnego obiektu wynikowego
         return Result; // wyswietlenie fikcyjnego wyniku
     }
@@ -714,7 +714,7 @@ cMatrix cMatrix::mInversalMatrix1x1()
         }
         else // jednak wyznacznik jest '0'
         {
-            // !!! Wyznacznik jest rowny zero
+            Error.mDisplayMessage(104); // !!! Wyznacznik jest rowny zero
             cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
             return Result; // zwrocenie fikcyjnego wyniku
         }
@@ -746,7 +746,7 @@ cMatrix cMatrix::mInversalMatrix2x2()
         }
         else // jednak wyznacznik jest '0'
         {
-            // !!! Wyznacznik jest rowny zero
+            Error.mDisplayMessage(104); // !!! Wyznacznik jest rowny zero
             cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
             return Result; // zwrocenie fikcyjnego wyniku
         }
@@ -774,7 +774,7 @@ cMatrix cMatrix::mInversalMatrix3x3()
         }
         else // jesli wyznacznik jest rowny '0'
         {
-            // !!! Wyznacznik jest rowny zero
+            Error.mDisplayMessage(104); // !!! Wyznacznik jest rowny zero
             cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
             return Result; // zwrocenie fikcyjnego wyniku
         }
@@ -804,7 +804,7 @@ cMatrix cMatrix::mInversalMatrix()
             }
             else // wyznacznik jest jednak zerem
             {
-                // !!! Wyznacznik jest rowny zero
+                Error.mDisplayMessage(104); // !!! Wyznacznik jest rowny zero
                 cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
                 return Result; // zwrocenie fikcyjnego wyniku
             }
@@ -818,7 +818,7 @@ cMatrix cMatrix::mInversalMatrix()
     }
     else // jesli macierz nie jest kwadratowa
     {
-        // !!! Macierz nie jest kwadratowa
+        Error.mDisplayMessage(103); // !!! Macierz nie jest kwadratowa
         cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
         return Result; // zwrocenie fikcyjnego wyniku
     }
