@@ -604,7 +604,27 @@ bool cMatrix::mFindZerosColumn()
  */
 void cMatrix::mSwapRows(typeSize i, typeSize j)
 {
-    i = j;
+    if ((i < getRows()) && (j < getRows())) // sprawdzamy czy podane numery wierszy sa prawidlowe
+    {
+        if (i != j) // sprawdzamy czy zamieniamy 2 rozne wiersze
+        {
+            double tableAux[getColumns()]; // tworzymy tablice pomocnicza
+            for (typeSize k = 0; k < getColumns(); k++) // przechodzimy przez wszystkie kolumny
+            {
+                tableAux[k] = getElement(i, k); // zamiana elementow miejscami z wykorzystaniem tablicy pomocniczej
+                setElement(i, k, getElement(j, k));
+                setElement(j, k, tableAux[k]);
+            }
+        }
+        else // wskazalismy 2 te same wiersze
+        {
+            // !!! Zamiana nie wykonana. Wskazano 2 te same wiersze
+        }
+    }
+    else // wskazane wiersze sa poza zakresem macierzy
+    {
+        // !!! Wspolrzedne rzedu/ow poza zakresem macierzy
+    }
 }
 
 /*
@@ -612,7 +632,27 @@ void cMatrix::mSwapRows(typeSize i, typeSize j)
  */
 void cMatrix::mSwapColumns(typeSize i, typeSize j)
 {
-    i = j;
+    if ((i < getColumns()) && (j < getColumns())) // asprawdzamy czy podane numery kolumn sa prawidlowe
+    {
+        if (i != j) // sprawdzamy czy zamieniamy 2 rozne kolumny
+        {
+            double tableAux[getRows()]; // tworzymy tablice pomocnicza
+            for (typeSize k = 0; k < getRows(); k++) // przechodzimy przez wszystkie wiersze
+            {
+                tableAux[k] = getElement(k, i); // zamiana elementow miejscami z wykorzystaniem tablicy pomocniczej
+                setElement(k, i, getElement(k, j));
+                setElement(k, j, tableAux[k]);
+            }
+        }
+        else // wskazalismy 2 te same kolumny
+        {
+            // !!! Zamiana nie wykonana. Wskazano 2 te same kolumny
+        }
+    }
+    else // wskazane wiersze sa poza zakresem macierzy
+    {
+        // !!! Wspolrzedne kolumn(y) poza zakresem macierzy
+    }
 }
 
 
