@@ -26,11 +26,17 @@ void cExceptionsAndErrors::mDisplayMessage(typeSize pNumber)
     switch (pNumber)
     {
     case 101: cerr << "Macierze maja rozne wymiary!" << endl; break;
-    case 107: cerr << "" << endl; break;
-    //case 107: cerr << "" << endl; break;
-    //case 107: cerr << "" << endl; break;
-    //case 107: cerr << "" << endl; break;
-    //case 107: cerr << "" << endl; break;
+    case 102: cerr << "Niepoprawne wymiary macierzy!" << endl; break;
+    case 103: cerr << "Macierz nie jest kwadratowa!" << endl; break;
+    case 104: cerr << "Wyznacznik jest rowny zero!" << endl; break;
+    case 105: cerr << "Co najmniej jeden z argumentow nie jest wektorem!" << endl; break;
+    case 106: cerr << "Argument nie jest wektorem!" << endl; break;
+        //case 107: cerr << "" << endl; break;
+        //case 107: cerr << "" << endl; break;
+        //case 107: cerr << "" << endl; break;
+        //case 107: cerr << "" << endl; break;
+        //case 107: cerr << "" << endl; break;
+        //case 107: cerr << "" << endl; break;
     default: break;
     }
 }

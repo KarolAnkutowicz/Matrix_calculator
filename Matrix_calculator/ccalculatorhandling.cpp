@@ -225,7 +225,7 @@ void cCalculatorHandling::mChooseMatrixSum()
         }
         else // wymiary macierzy sie nie zgadzaja
         {
-            // !!! Rozne wymiary macierzy
+            Error.mDisplayMessage(101); // !!! Rozne wymiary macierzy
             cMatrix M3; // utworzenie fikcyjnego wyniku
             cout << M3 << endl; // wypisanie fikcyjnego wyniku
         }
@@ -241,7 +241,7 @@ void cCalculatorHandling::mChooseMatrixSum()
         }
         else // wymiary macierzy sie nie zgadzaja
         {
-            // !!! Rozne wymiary macierzy
+            Error.mDisplayMessage(101); // !!! Rozne wymiary macierzy
             cMatrix M3; // utworzenie fikcyjnego wyniku
             cout << M3 << endl; // wypisanie fikcyjnego wyniku
         }
@@ -275,7 +275,7 @@ void cCalculatorHandling::mChooseMatrixMultiplication()
             cout << M3 << endl; // wypisanie wyniku
         }
     }
-    else if (c == startOfMatrix)
+    else if (c == startOfMatrix) // sprawdzamy czy wczytujemy macierz
     {
         cin.unget(); // zwrocenie znaku do strumienia
         cin >> skipws >> M2; // wczytanie drugiego argumentu
@@ -287,7 +287,7 @@ void cCalculatorHandling::mChooseMatrixMultiplication()
         }
         else
         {
-            // !!! Niepoprawne wymiary macierzy
+            Error.mDisplayMessage(102); // !!! Niepoprawne wymiary macierzy
             cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
             cout << M3 << endl; // wypisanie fikcyjnego wyniku
         }
@@ -312,7 +312,7 @@ void cCalculatorHandling::mChooseMatrixExponentiation()
     }
     else // nieudana proba potegowania macierzy niekwadratowej
     {
-        // !!! Macierz nie jest kwadratowa
+        Error.mDisplayMessage(103); // !!! Macierz nie jest kwadratowa
         cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
         cout << M3 << endl; // wypisanie fikcyjnego wyniku
     }
@@ -354,14 +354,14 @@ void cCalculatorHandling::mChooseMatrixReversal()
         }
         else // jednak wyznacznik jest '0'
         {
-            // !!! Wyznacznik rozny od zera
+            Error.mDisplayMessage(104); // !!! Wyznacznik rozny od zera
             cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
             cout << M3 << endl; // wyswietlenie fikcynego wyniku
         }
     }
     else // jednak macierz nie jest kwadratowa
     {
-        // !!! Macierz nie jest kwadratowa
+        Error.mDisplayMessage(103); // !!! Macierz nie jest kwadratowa
         cMatrix M3; // utworzenie fikcyjnego wyniku
         cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
     }
@@ -385,14 +385,14 @@ void cCalculatorHandling::mChooseMatrixProducts()
             }
             else // argumenty sa wektorami ale maja rozne wymiary
             {
-                // !!! Argumenty maja rozne wymiary
+                Error.mDisplayMessage(101); // !!! Argumenty maja rozne wymiary
                 d3 = 0.0; // nadanie wynikowi fikcyjnej wartosci
                 cout << d3 << endl; // wyswietlenie fikcyjnego wyniku
             }
         }
         else // co najmniej jeden z argumentow nie jest wektorem
         {
-            // !!! Bledne argumenty
+            Error.mDisplayMessage(105); // !!! Bledne argumenty
             d3 = 0.0; // nadanie wynikowi fikcyjnej wartosci
             cout << d3 << endl; // wyswietlenie fikcyjnego wyniku
         }
@@ -410,14 +410,14 @@ void cCalculatorHandling::mChooseMatrixProducts()
             }
             else // argumenty sa wektorami ale maja rozne wymiary
             {
-                // !!! Argumenty maja rozne wymiary
+                Error.mDisplayMessage(101); // !!! Argumenty maja rozne wymiary
                 cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
                 cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
             }
         }
         else // co najmniej jeden z argumentow nie jest wektorem
         {
-            // !!! Bledne argumenty
+            Error.mDisplayMessage(105); // !!! Bledne argumenty
             cMatrix M3; // utworzenie fikcyjnego obiektu wynikowego
             cout << M3 << endl; // wyswietlenie fikcyjnego wyniku
         }
@@ -438,7 +438,7 @@ void cCalculatorHandling::mChooseMatrixOthers()
         }
         else // argument jednak nie jest wektorem
         {
-            // !!! Argument nie jest wektorem
+            Error.mDisplayMessage(106);// !!! Argument nie jest wektorem
             d3 = 0.0; // nadanie wynikowi fikcyjnej wartosci
             cout << d3 << endl; // wyswietlenie fikcyjnego wyniku
         }
@@ -479,7 +479,7 @@ void cCalculatorHandling::mChooseMatrixOthers()
         }
         else // macierz jednak nie jest kwadratowa
         {
-            // !!! Macierz nie jest kwadratowa
+            Error.mDisplayMessage(103); // !!! Macierz nie jest kwadratowa
             d3 = 0.0; // przypisanie fikcyjnej wartosci
             cout << d3 << endl; // wypisanie fikcyjnej wartosci
         }
