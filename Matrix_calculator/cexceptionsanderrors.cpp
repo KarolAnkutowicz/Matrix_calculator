@@ -31,9 +31,9 @@ void cExceptionsAndErrors::mDisplayMessage(typeSize pNumber)
     case 104: cerr << "Wyznacznik jest rowny zero!" << endl; break;
     case 105: cerr << "Co najmniej jeden z argumentow nie jest wektorem!" << endl; break;
     case 106: cerr << "Argument nie jest wektorem!" << endl; break;
-        //case 107: cerr << "" << endl; break;
-        //case 107: cerr << "" << endl; break;
-        //case 107: cerr << "" << endl; break;
+    case 107: cerr << "Proba dzielenia przez zero!" << endl; break;
+    case 108: cerr << "Blednie wprowadzony argument!" << endl; break;
+    case 109: cerr << "Bledny operator!" << endl; break;
         //case 107: cerr << "" << endl; break;
         //case 107: cerr << "" << endl; break;
         //case 107: cerr << "" << endl; break;

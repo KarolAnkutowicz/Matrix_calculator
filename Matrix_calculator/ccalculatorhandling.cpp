@@ -52,20 +52,22 @@ void cCalculatorHandling::mMainHandling()
                 d1 = -d1; // przywrocenie wlasciwego znaku dla argumentu
                 mChooseNumber(); // wywolanie odrebnej metody
             }
-            /*else
+            else
             {
-                // !!! Blednie wczytany argument
-            }*/
+                Error.mDisplayMessage(108); // !!! Blednie wczytany argument
+                mMainHandling(); // wywolanie glownego menu
+            }
         }
         else if (c == startOfMatrix) // sprawdzenie czy wczytujemy macierz
         {
             cin.unget(); // zwrocenie znaku do strumienia
             mChooseMatrix(); // wywolanie odrebnej metody
         }
-        /*else
+        else
         {
-            // !!! Blednie wczytany argument
-        }*/
+            Error.mDisplayMessage(108); // !!! Blednie wczytany argument
+            mMainHandling(); // wywolanie glownego menu
+        }
     } while (c != endOfProgram); // sprawdzenie warunku zakonczenia petli
 }
 
@@ -84,7 +86,7 @@ void cCalculatorHandling::mChooseNumber()
     case '*': mChooseNumberMultiplication(); break; // obsluga mnozenia
     case '/':
     case operatorExponentiation: mChooseNumberOthers(); break; // obsluga dzielenia i potegowania
-    default: /* !!! Bledny operator */ break;
+    default: Error.mDisplayMessage(109); break; // !!! Bledny operator
     }
 }
 
@@ -137,7 +139,8 @@ void cCalculatorHandling::mChooseNumberMultiplication()
     }
     else
     {
-        // !!! Bledny argument
+        Error.mDisplayMessage(108); // !!! Bledny argument
+        mMainHandling(); // wywolanie glownego menu
     }
 }
 
@@ -156,7 +159,9 @@ void cCalculatorHandling::mChooseNumberOthers()
         }
         else
         {
-            // !!! Proba dzielenia przez '0'
+            Error.mDisplayMessage(107);// !!! Proba dzielenia przez '0'
+            d3 = 0.0; // ustanowienie fikcyjnego wyniku
+            cout << d3 << endl; // wyswietlenie fikcyjnego wyniku
         }
     }
     else //  bedziemy potegowac
@@ -205,7 +210,7 @@ void cCalculatorHandling::mChooseMatrix()
     case operatorLengthVector:
     case operatorDeterminant:
     case operatorTransposition: mChooseMatrixOthers(); break; // obsluga pozostalych operacji
-    default: /* !!! Bledny operator */ break;
+    default: Error.mDisplayMessage(109); break; // !!! Bledny operator
     }
 }
 
@@ -292,10 +297,11 @@ void cCalculatorHandling::mChooseMatrixMultiplication()
             cout << M3 << endl; // wypisanie fikcyjnego wyniku
         }
     }
-    /*else
+    else
     {
-        // !!! Bledny argument
-    }*/
+        Error.mDisplayMessage(108); // !!! Bledny argument
+        mMainHandling(); // wywolanie glownego menu
+    }
 }
 
 /*
