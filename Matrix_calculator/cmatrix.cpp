@@ -850,14 +850,14 @@ double cMatrix::mScalarProduct(cMatrix M)
         }
         else // jednak wektory maja rozne wymiary
         {
-            // !!! Wektory maja rozne wymiary
+            Error.mDisplayMessage(101); // !!! Wektory maja rozne wymiary
             double sum = 0.0; // ustanowienie fikcyjnej sumy poczatkowej
             return sum; // zwrocenie fikcyjnego wyniku
         }
     }
     else // co najmniej jeden z argumentow nie jest wektorem
     {
-        // !!! Co najmniej jeden z argumentow nie jest wektorem
+        Error.mDisplayMessage(105); // !!! Co najmniej jeden z argumentow nie jest wektorem
         double sum = 0.0; // ustanowienie fikcyjnej sumy poczatkowej
         return sum; // zwrocenie fikcyjnego wyniku
     }
@@ -930,14 +930,14 @@ cMatrix cMatrix::mCrossProduct(cMatrix M)
         }
         else // wektory maja rozne wymiary
         {
-            // !!! Wektory maja rozne wymiary
+            Error.mDisplayMessage(101); // !!! Wektory maja rozne wymiary
             cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
             return Result; // zwrocenie fikcyjnego wyniku
         }
     }
     else // co najmniej jeden z argumentow nie jest wektorem
     {
-        // !!! Co najmniej jeden z argumentow nie jest wektorem
+        Error.mDisplayMessage(105); // !!! Co najmniej jeden z argumentow nie jest wektorem
         cMatrix Result; // utworzenie fikcyjnego obiektu wynikowego
         return Result; // zwrocenie fikcyjnego wyniku
     }
@@ -966,7 +966,7 @@ double cMatrix::mLengthVector()
     }
     else
     {
-        // !!! Macierz nie jest wektorem
+        Error.mDisplayMessage(106); // !!! Macierz nie jest wektorem
         return 0.0; // zwrocenie fikcyjnego wyniku
     }
 }

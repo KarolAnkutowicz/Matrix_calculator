@@ -447,7 +447,12 @@ void cCalculatorHandling::mChooseMatrixOthers()
     {
         if (M1.getIfMatrixSquare()) // sprawdzenie czy macierz jest kwadratowa
         {
-            if (M1.getRows() == 1) // sprawdzamy czy macierz ma wymiar 1
+            if (M1.getIfMatrixZeros() == true) // sprawdzamy czy jest sens liczyc wyznacznik
+            {
+                d3 = 0.0; // wyznacznik dla macierzy z samych zer zawsze bedzie zero
+                cout << d3 << endl; // wypisanie wyniku
+            }
+            else if (M1.getRows() == 1) // sprawdzamy czy macierz ma wymiar 1
             {
                 d3 = M1.getElement(0, 0); // wyznacznik bedzie rowny wartosci jedynego elementu
                 cout << d3 << endl; // wypisanie wyniku
@@ -464,7 +469,7 @@ void cCalculatorHandling::mChooseMatrixOthers()
                 d3 = M1.getDeterminant(); // przypisanie wyniku
                 cout << d3 << endl; // wypisanie wyniku
             }
-            else if (M1.getIfMatrixDiagonal() == true) // sprawdzamy czy macierz jest diagonalna
+            else if ((M1.getIfMatrixDiagonal() == true) || (M1.getIfMatrixTriangularLower() == true) || (M1.getIfMatrixTriangularUpper() == true)) // sprawdzamy czy macierz spelnia okreslony warunek
             {
                 M1.mCalculateDeterminantDiagonal(); // obliczenie wyznacznika
                 d3 = M1.getDeterminant(); // przypisanie wyniku
