@@ -339,18 +339,18 @@ void cCalculatorHandling::mChooseMatrixReversal()
                 M3 = M1.mInversalMatrix1x1(); // wywolanie metody wyznaczajacaj macierz odwrotna 1x1
                 cout << M3 << endl; // wypisanie wyniku
             }
-            /*else if (M1.getRows() == 2) // sprawdzamy czy wymiar macierzy jest rowny 2
+            else if (M1.getRows() == 2) // sprawdzamy czy wymiar macierzy jest rowny 2
             {
                 cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
                 M3 = M1.mInversalMatrix2x2(); // wywolanie metody wyznaczajacej macierz odwrotna 2x2
                 cout << M3 << endl; // wypisanie wyniku
-            }*/
-            /*else if (M1.getRows() == 3) // sprawdzamy czy wymiar macierzy jest rowny 3
+            }
+            else if (M1.getRows() == 3) // sprawdzamy czy wymiar macierzy jest rowny 3
             {
                 cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
                 M3 = M1.mInversalMatrix3x3(); // wywolanie metody wyznaczajacej macierz odwrotna 3x3
                 cout << M3 << endl; // wypisanie wyniku
-            }*/
+            }
             /*else // wyznaczamy macierz dla wymiarow wiekszych niz 3
             {
                 cMatrix M3(M1.getRows(), M1.getColumns()); // utworzenie obiektu wynikowego
@@ -475,7 +475,7 @@ void cCalculatorHandling::mChooseMatrixOthers()
                 d3 = M1.getDeterminant(); // przypisanie wyniku
                 cout << d3 << endl; // wypisanie wyniku
             }
-            else if ((M1.getIfMatrixDiagonal() == true) || (M1.getIfMatrixTriangularLower() == true) || (M1.getIfMatrixTriangularUpper() == true)) // sprawdzamy czy macierz spelnia okreslony warunek
+            else if (M1.getIfMatrixDiagonal() == true) // sprawdzamy czy macierz spelnia okreslony warunek
             {
                 M1.mCalculateDeterminantDiagonal(); // obliczenie wyznacznika
                 d3 = M1.getDeterminant(); // przypisanie wyniku
