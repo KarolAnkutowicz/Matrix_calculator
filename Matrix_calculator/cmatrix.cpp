@@ -738,10 +738,10 @@ cMatrix cMatrix::mInversalMatrix2x2()
         {
             cMatrix Result(getRows(), getColumns()); // utworzenie obiektu wynikowego
             Result.tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
-            Result.setElement(0, 0, getElement(1, 1)/getDeterminant()); // ustanowienie wartosci kolejnych elementow
-            Result.setElement(0, 1, getElement(1, 0)/getDeterminant());
-            Result.setElement(1, 0, getElement(0, 1)/getDeterminant());
-            Result.setElement(1, 1, getElement(0, 0)/getDeterminant());
+            Result.setElement(0, 0, getElement(1, 1) / getDeterminant()); // ustanowienie wartosci kolejnych elementow
+            Result.setElement(0, 1, getElement(1, 0) / getDeterminant());
+            Result.setElement(1, 0, getElement(0, 1) / getDeterminant());
+            Result.setElement(1, 1, getElement(0, 0) / getDeterminant());
             return Result; // zwrocenie wyniku
         }
         else // jednak wyznacznik jest '0'
@@ -770,6 +770,16 @@ cMatrix cMatrix::mInversalMatrix3x3()
         {
             //
             cMatrix Result(getRows(), getColumns()); // utworzenie obiektu wynikowego
+            Result.tableElements = new double[getRows() * getColumns()]; // utworzenie nowej tablicy elementow
+            Result.setElement(0, 0, ((getElement(1, 1) * getElement(2, 2) - getElement(1, 2) * getElement(2, 1)) / getDeterminant())); // ustanowienie...
+            Result.setElement(0, 1, (-(getElement(0, 1) * getElement(2, 2) - getElement(0, 2) * getElement(2, 1)) / getDeterminant())); // ...wartosci...
+            Result.setElement(0, 2, ((getElement(0, 1) * getElement(1, 2) - getElement(0, 2) * getElement(1, 1)) / getDeterminant())); // ... kolejnych...
+            Result.setElement(1, 0, (-(getElement(1, 0) * getElement(2, 2) - getElement(1, 2) * getElement(2, 0)) / getDeterminant())); // ...elementow
+            Result.setElement(1, 1, ((getElement(0, 0) * getElement(2, 2) - getElement(0, 2) * getElement(2, 0)) / getDeterminant()));
+            Result.setElement(1, 2, (-(getElement(0, 0) * getElement(1, 2) - getElement(0, 2) * getElement(1, 0)) / getDeterminant()));
+            Result.setElement(2, 0, ((getElement(1, 0) * getElement(2, 1) - getElement(1, 1) * getElement(2, 0)) / getDeterminant()));
+            Result.setElement(2, 1, (-(getElement(0, 0) * getElement(2, 1) - getElement(0, 1) * getElement(2, 0)) / getDeterminant()));
+            Result.setElement(2, 2, ((getElement(0, 0) * getElement(1, 1) - getElement(0, 1) * getElement(1, 0)) / getDeterminant()));
             return Result; // zwrocenie wyniku
         }
         else // jesli wyznacznik jest rowny '0'
