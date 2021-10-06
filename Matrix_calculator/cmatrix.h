@@ -14,6 +14,10 @@
 
 using namespace std;
 
+/*
+ * class cMatrix - klasa modelujaca macierz
+ * (prostokatna tablice liczb).
+ */
 class cMatrix
 {
 /********** PRIVATE: BEGINNING **********/
@@ -264,7 +268,11 @@ public:
     cMatrix(typeSize parRows, typeSize parColumns, double *parTabElements);
 
     /*
-     * cMatrix(const cMatrix &M) -
+     * cMatrix(const cMatrix &M) - konstruktor kopiujacy
+     * klasy cMatrix.
+     * - podanie referencji do obiektu klasy cMatrix;
+     * POST:
+     * - utworzenie obiektu klasy cMatrix.
      */
     cMatrix(const cMatrix &M);
 

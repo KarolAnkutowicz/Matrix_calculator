@@ -22,7 +22,7 @@ public:
      * PRE:
      * - brak
      * POST:
-     * - utworzenie obiektu.
+     * - utworzenie obiektu klasy cExceptionsAndErrors.
      */
     cExceptionsAndErrors();
 

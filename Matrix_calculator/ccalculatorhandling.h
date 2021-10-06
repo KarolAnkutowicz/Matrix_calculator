@@ -14,6 +14,10 @@
 
 using namespace std;
 
+/*
+ * class cCalculatorHandling - klasa modelujaca
+ * obsluge kalkulatora macierzy.
+ */
 class cCalculatorHandling
 {
 /********** PUBLIC: BEGINNING **********/
