@@ -7,33 +7,25 @@
 #include "cexceptionsanderrors.hpp"
 #include <iostream>
 
-using namespace std;
-
 /********** PUBLIC: BEGINNING **********/
-
-/*
- * cExceptionsAndErrors()
- */
-cExceptionsAndErrors::cExceptionsAndErrors()
-{
-}
 
 /*
  * void mDisplayMessage(typeSize pNumber)
  */
 void cExceptionsAndErrors::mDisplayMessage(typeSize pNumber)
 {
+    using std::cerr; // wykorzystanie strumienia wyjsciowego bledow ze standardowej przestrzeni nazw
     switch (pNumber) // wybranie odpowiedniej reakcji w zaleznosci od kodu bledu/wyjatku
     {
-    case 101: cerr << "Macierze maja rozne wymiary!" << endl; break;
-    case 102: cerr << "Niepoprawne wymiary macierzy!" << endl; break;
-    case 103: cerr << "Macierz nie jest kwadratowa!" << endl; break;
-    case 104: cerr << "Wyznacznik jest rowny zero!" << endl; break;
-    case 105: cerr << "Co najmniej jeden z argumentow nie jest wektorem!" << endl; break;
-    case 106: cerr << "Argument nie jest wektorem!" << endl; break;
-    case 107: cerr << "Proba dzielenia przez zero!" << endl; break;
-    case 108: cerr << "Blednie wprowadzony argument!" << endl; break;
-    case 109: cerr << "Bledny operator!" << endl; break;
+    case 101: cerr << "Macierze maja rozne wymiary!\n"; break;
+    case 102: cerr << "Niepoprawne wymiary macierzy!\n"; break;
+    case 103: cerr << "Macierz nie jest kwadratowa!\n"; break;
+    case 104: cerr << "Wyznacznik jest rowny zero!\n"; break;
+    case 105: cerr << "Co najmniej jeden z argumentow nie jest wektorem!\n"; break;
+    case 106: cerr << "Argument nie jest wektorem!\n"; break;
+    case 107: cerr << "Proba dzielenia przez zero!\n"; break;
+    case 108: cerr << "Blednie wprowadzony argument!\n"; break;
+    case 109: cerr << "Bledny operator!\n"; break;
         //case 107: cerr << "" << endl; break;
         //case 107: cerr << "" << endl; break;
         //case 107: cerr << "" << endl; break;

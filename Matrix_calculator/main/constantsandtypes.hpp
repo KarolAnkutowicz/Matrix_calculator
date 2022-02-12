@@ -4,8 +4,7 @@
  * file: constantsandtypes.hpp
  */
 
-#ifndef CONSTANTSANDTYPES_HPP
-#define CONSTANTSANDTYPES_HPP
+#pragma once
 
 /*
  * unsigned short typeSize - zdefiniowanie synonimu typu dla rozmiaru
@@ -68,8 +67,6 @@ const char operatorTransposition = 'T';
  * char endOfProgram - zdefiniowanie operatora zakonczenia programu
  */
 const char endOfProgram = 'k';
-
-#endif // CONSTANTSANDTYPES_HPP
 
 /* constantsandtypes.hpp */
 /********** END_OF_FILE **********/

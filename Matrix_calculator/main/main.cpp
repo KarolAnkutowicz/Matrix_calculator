@@ -8,8 +8,6 @@
 #include "cmatrix.hpp"
 #include <iostream>
 
-using namespace std;
-
 int main()
 {
     cCalculatorHandling Calc;

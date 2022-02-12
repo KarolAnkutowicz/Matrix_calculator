@@ -4,15 +4,12 @@
  * file: ccalculatorhandling.hpp
  */
 
-#ifndef CCALCULATORHANDLING_HPP
-#define CCALCULATORHANDLING_HPP
+#pragma once
 
 #include "cexceptionsanderrors.hpp"
 #include "cmatrix.hpp"
 #include "constantsandtypes.hpp"
 #include <iostream>
-
-using namespace std;
 
 /*
  * class cCalculatorHandling - klasa modelujaca
@@ -20,8 +17,10 @@ using namespace std;
  */
 class cCalculatorHandling
 {
-    /********** PUBLIC: BEGINNING **********/
+/********** PUBLIC: BEGINNING **********/
+
 public:
+
     /*
      * cCalculatorHandling() - konstruktor wywolywany
      * bez argumentow.
@@ -205,10 +204,8 @@ public:
      */
     void mChooseMatrixOthers();
 
-    /********** PUBLIC: END **********/
+/********** PUBLIC: END **********/
 };
-
-#endif // CCALCULATORHANDLING_HPP
 
 /* ccalculatorhandling.hpp */
 /********** END_OF_FILE **********/

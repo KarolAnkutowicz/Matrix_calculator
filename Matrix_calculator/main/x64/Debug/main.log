@@ -1,16 +1,6 @@
 ﻿  ccalculatorhandling.cpp
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.hpp(331,61): warning C4244: "return": konwersja z "double" do "typeSize", możliwa utrata danych
   cexceptionsanderrors.cpp
   cmatrix.cpp
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.hpp(331,61): warning C4244: "return": konwersja z "double" do "typeSize", możliwa utrata danych
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.cpp(611,39): error C2131: wyrażenie nie zostało obliczone do stałej
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.cpp(611,29): message : przyczyną niepowodzenia był odczyt zmiennej poza jej okresem istnienia
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.cpp(611,29): message : zobacz użycie elementu „this”
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.cpp(614,29): error C3863: nie można przydzielać typu tablicy „double ['funkcja']”
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.cpp(639,36): error C2131: wyrażenie nie zostało obliczone do stałej
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.cpp(639,29): message : przyczyną niepowodzenia był odczyt zmiennej poza jej okresem istnienia
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.cpp(639,29): message : zobacz użycie elementu „this”
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.cpp(642,29): error C3863: nie można przydzielać typu tablicy „double ['funkcja']”
   main.cpp
-C:\Github\Matrix_calculator\Matrix_calculator\main\cmatrix.hpp(331,61): warning C4244: "return": konwersja z "double" do "typeSize", możliwa utrata danych
   Generowanie kodu...
+  main.vcxproj -> C:\Github\Matrix_calculator\Matrix_calculator\x64\Debug\main.exe

@@ -12,8 +12,6 @@
 #include <iomanip>
 #include <iostream>
 
-using namespace std;
-
 /********** PUBLIC: BEGINNING **********/
 
 /*
@@ -31,6 +29,7 @@ cCalculatorHandling::cCalculatorHandling()
  */
 void cCalculatorHandling::mMainHandling()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     do
     {
         cin >> skipws >> c; // wczytanie znaku
@@ -78,6 +77,7 @@ void cCalculatorHandling::mMainHandling()
  */
 void cCalculatorHandling::mChooseNumber()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     cin >> skipws >> oper; // wczytanie operatora
     switch (oper)
     {
@@ -95,6 +95,7 @@ void cCalculatorHandling::mChooseNumber()
  */
 void cCalculatorHandling::mChooseNumberSum()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     if (oper == '+') // sprawdzenie czy bedziemy dodawac
     {
         cin >> skipws >> d2; // wczytanie drugiego argumentu
@@ -114,6 +115,7 @@ void cCalculatorHandling::mChooseNumberSum()
  */
 void cCalculatorHandling::mChooseNumberMultiplication()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     cin >> skipws >> c; // wczytanie znaku
     if (isdigit(c)) // sprawdzenie czy bedziemy wczytywac liczbe
     {
@@ -149,6 +151,7 @@ void cCalculatorHandling::mChooseNumberMultiplication()
  */
 void cCalculatorHandling::mChooseNumberOthers()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     if (oper == '/') //sprawdzenie czy bedziemy dzielic
     {
         cin >> skipws >> d2; // wczytanie drugiego argumentu
@@ -197,6 +200,7 @@ void cCalculatorHandling::mChooseNumberOthers()
  */
 void cCalculatorHandling::mChooseMatrix()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     cin >> skipws >> M1 >> oper;
     switch (oper)
     {
@@ -219,6 +223,7 @@ void cCalculatorHandling::mChooseMatrix()
  */
 void cCalculatorHandling::mChooseMatrixSum()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     if (oper == '+') // sprawdzamy czy bedziemy dodawac macierze
     {
         cin >> skipws >> M2; // wczytanie drugiego argumentu
@@ -258,6 +263,7 @@ void cCalculatorHandling::mChooseMatrixSum()
  */
 void cCalculatorHandling::mChooseMatrixMultiplication()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     cin >> skipws >> c; // wczytanie znaku
     if (isdigit(c)) // sprawdzenie czy argument bedzie liczba
     {
@@ -309,6 +315,7 @@ void cCalculatorHandling::mChooseMatrixMultiplication()
  */
 void cCalculatorHandling::mChooseMatrixExponentiation()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     if (M1.getIfMatrixSquare()) // sprawdzamy czy chcemy potegowac macierz kwardatowa
     {
         cin >> skipws >> j; // wczytanie wykladnika
@@ -329,6 +336,7 @@ void cCalculatorHandling::mChooseMatrixExponentiation()
  */
 void cCalculatorHandling::mChooseMatrixReversal()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     if (M1.getIfMatrixSquare()) // sprawdzenie czy macierz jest kwadratowa
     {
         if (M1.getDeterminant() != 0) // sprawdzenie czy wyznacznik jest rozny od '0'
@@ -379,6 +387,7 @@ void cCalculatorHandling::mChooseMatrixReversal()
  */
 void cCalculatorHandling::mChooseMatrixProducts()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     if (oper == operatorScalarProduct) // wyznaczamy iloczyn skalarny
     {
         cin >> M2; // wczytanie drugiego argumentu
@@ -435,6 +444,7 @@ void cCalculatorHandling::mChooseMatrixProducts()
  */
 void cCalculatorHandling::mChooseMatrixOthers()
 {
+    using namespace std; // zapowiedz wykorzystania nazw ze standardowej przestrzeni nazw
     if (oper == operatorLengthVector) // sprawdzenie czy bedziemy wyznaczac dlugosc wektora
     {
         if (M1.getIfVector()) // sprawdzenie czy argument jest wektorem

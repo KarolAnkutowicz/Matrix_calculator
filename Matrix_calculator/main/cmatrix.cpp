@@ -10,8 +10,6 @@
 #include <cmath>
 #include <iostream>
 
-using namespace std;
-
 /********** PRIVATE: BEGINNING **********/
 
 /*
@@ -295,7 +293,7 @@ cMatrix::~cMatrix()
 /*
  * ostream &operator << (ostream &streamOut, cMatrix &M)
  */
-ostream& operator << (ostream& streamOut, cMatrix& M)
+std::ostream& operator << (std::ostream& streamOut, cMatrix& M)
 {
     streamOut << startOfMatrix; // wypisanie znaku pocz¹tku macierzy
     for (typeSize i = 0; i < M.getRows(); i++) // przejœcie przez wszystkie wiersze
@@ -309,16 +307,16 @@ ostream& operator << (ostream& streamOut, cMatrix& M)
         }
         streamOut << endOfRow; // wypisanie znaku koñca wiersza
         if (i < (M.getRows() - 1)) // warunek przejœcia do nowej linii
-            streamOut << endl; // przejœcie do nowej linii
+            streamOut << '\n'; // przejœcie do nowej linii
     }
-    streamOut << endOfMatrix << endl; // wypisanie znaku koñca macierzy
+    streamOut << endOfMatrix << '\n'; // wypisanie znaku koñca macierzy
     return streamOut; // zwrócenie strumienia
 }
 
 /*
  *  istream &operator >> (istream & streamIn, cMatrix &M)
  */
-istream& operator >> (istream& streamIn, cMatrix& M)
+std::istream& operator >> (std::istream& streamIn, cMatrix& M)
 {
     char c; // deklaracja znaku
     typeSize rows = 0, separator = 0, columns; // deklaracje i definicje zmiennych potrzebnych do wyznaczenia wymiarów macierzy
@@ -558,10 +556,9 @@ void cMatrix::mCalculateDeterminant()
  */
 bool cMatrix::mFindZerosRow()
 {
-    bool vZeros; // utworzenie obiektu wynikowego
+    bool vZeros = true; // utworzenie obiektu wynikowego, domniemanie posiadania zerowego wiersza
     for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
     {
-        vZeros = true; // domniemanie posiadania zerowego wiersza
         for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
         {
             if (getElement(i, j) != 0) // sprawdzamy czy element jest rozny od zera
@@ -581,10 +578,9 @@ bool cMatrix::mFindZerosRow()
  */
 bool cMatrix::mFindZerosColumn()
 {
-    bool vZeros; // utworzenie obiektu wynikowego
+    bool vZeros = true; // utworzenie obiektu wynikowego, domniemanie posiadania zerowej kolumny
     for (typeSize j = 0; j < getColumns(); j++) // przejscie po wszystkich kolumnach
     {
-        vZeros = true; // domniemanie posiadania zerowej kolumny
         for (typeSize i = 0; i < getRows(); i++) // przejscie po wszystkich wierszach
         {
             if (getElement(i, j) != 0) // sprawdzamy czy element jest rozny od zera
@@ -608,7 +604,8 @@ void cMatrix::mSwapRows(typeSize i, typeSize j)
     {
         if (i != j) // sprawdzamy czy zamieniamy 2 rozne wiersze
         {
-            double tableAux[getColumns()]; // tworzymy tablice pomocnicza
+            double *tableAux; // deklarujemy wskaznik do tablicy pomocniczej
+            tableAux = new double[getColumns()]; // tworzymy tablice pomocnicza
             for (typeSize k = 0; k < getColumns(); k++) // przechodzimy przez wszystkie kolumny
             {
                 tableAux[k] = getElement(i, k); // zamiana elementow miejscami z wykorzystaniem tablicy pomocniczej
@@ -636,7 +633,8 @@ void cMatrix::mSwapColumns(typeSize i, typeSize j)
     {
         if (i != j) // sprawdzamy czy zamieniamy 2 rozne kolumny
         {
-            double tableAux[getRows()]; // tworzymy tablice pomocnicza
+            double *tableAux; // deklarujemy wskaznik do tablicy pomocniczej
+            tableAux = new double[getRows()]; // tworzymy tablice pomocnicza
             for (typeSize k = 0; k < getRows(); k++) // przechodzimy przez wszystkie wiersze
             {
                 tableAux[k] = getElement(k, i); // zamiana elementow miejscami z wykorzystaniem tablicy pomocniczej
@@ -994,10 +992,6 @@ cMatrix cMatrix::mTransposition()
     M.mTests(); // ustalanie wlasnosci macierzy
     return M; // zwrocenie macierzy
 }
-
-
-
-
 
 /********** PUBLIC: END **********/
 
